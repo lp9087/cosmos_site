@@ -1,0 +1,7 @@
+__pycache__ 
+.idea/
+/static/
+/analysis/localsettings.py
+/myvenv/
+/media/
+
