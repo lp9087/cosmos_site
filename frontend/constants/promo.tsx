@@ -12,6 +12,10 @@ const PROMO_CONFIG = {
     { icon: Compass, text: 'Контакты', link: '#' },
   ],
   COPYRIGHT: 'Copyright',
+  ADDRESS1: 'г. Ростов-на-Дону',
+  ADDRESS2: 'пр. Буденновский, 97',
+  PHONE1: '+7 (888) 888-8888',
+  PHONE2: '+7 (999) 999-9999',
 };
 
 export default PROMO_CONFIG;
