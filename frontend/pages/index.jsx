@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <Layout>
       <CTASection />
-      {/* <SecondSection /> */}
+      <SecondSection />
     </Layout>
   );
 };

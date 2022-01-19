@@ -43,14 +43,13 @@ const Hero = () => {
 const Contacts = () => {
   return (
     <div
-      className="flex fixed right-6 top-4 py-2 px-3 rounded-xl
+      className="flex absolute right-6 top-4 py-2 px-3 rounded-xl
       bg-black bg-opacity-10 hover:bg-opacity-25 transition-colors cursor-default"
     >
       <div className="pr-2 flex flex-col text-right">
         <h3>{PROMO_CONFIG.ADDRESS1}</h3>
         <h3 className="pr-3">{PROMO_CONFIG.ADDRESS2}</h3>
       </div>
-      {/* figure */}
       <div className="w-[3px] bg-white rounded -rotate-[150deg]"></div>
       <div className="pl-1 flex flex-col">
         <h3 className="pl-3">{PROMO_CONFIG.PHONE1}</h3>
