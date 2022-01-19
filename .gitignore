@@ -1,7 +1,7 @@
 __pycache__ 
 .idea/
 /static/
-/analysis/localsettings.py
+/cosmos/localsettings.py
 /myvenv/
 /media/
 
