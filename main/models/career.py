@@ -24,7 +24,7 @@ class Vacancy(BaseABSModel):
 class Resume(BaseABSModel):
     full_name = models.CharField(verbose_name='ФИО', max_length=64, default='')
     email = models.EmailField(verbose_name='Email')
-    phone = models.CharField(verbose_name='Телефон', validators=[phone_number_validator])
+    phone = models.CharField(verbose_name='Телефон', validators=[phone_number_validator],  max_length=20)
     additional = models.TextField(verbose_name='Дополнительная информация', default='', blank=True)
     attachment = models.FileField(verbose_name='Прикрепленный файл',
                                   validators=[FileExtensionValidator('pdf', 'doc', 'docx')])
