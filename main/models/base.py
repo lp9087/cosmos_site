@@ -20,3 +20,13 @@ class BaseABSModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class BaseCategoryABSModel(BaseABSModel):
+    title = models.CharField(verbose_name='Название', max_length=128, default='', blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        abstract = True

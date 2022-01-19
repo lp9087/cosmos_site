@@ -26,6 +26,12 @@ class Resume(BaseABSModel):
     email = models.EmailField(verbose_name='Email')
     phone = models.CharField(verbose_name='Телефон', validators=[phone_number_validator])
     additional = models.TextField(verbose_name='Дополнительная информация', default='', blank=True)
-    attachment = models.FileField(verbose_name='Прикрепленный файл', validators=[FileExtensionValidator('')])
+    attachment = models.FileField(verbose_name='Прикрепленный файл',
+                                  validators=[FileExtensionValidator('pdf', 'doc', 'docx')])
 
+    def __str__(self):
+        return f'Резюме от {self.full_name}'
 
+    class Meta:
+        verbose_name = 'Резюме'
+        verbose_name_plural = 'Резюме'

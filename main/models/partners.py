@@ -1,20 +1,20 @@
 from django.db import models
-from main.models.base import BaseABSModel
+from main.models.base import BaseABSModel, BaseCategoryABSModel
 
 
-class PartnersCategories(BaseABSModel):
-    title = models.CharField(verbose_name='Название категории партнёров', max_length=155, default='', blank=True)
+class PartnersTypes(BaseCategoryABSModel):
 
-    def __str__(self):
-        return self.title
+    class Meta:
+        verbose_name = 'Тип партнерства'
+        verbose_name_plural = 'Типы партнерства'
 
 
 class Partners(BaseABSModel):
-    title = models.CharField(verbose_name='Партнёр', max_length=155, default='', blank=True)
-    description = models.CharField(verbose_name='Описание', max_length=155, default='', blank=True)
-    category = models.ForeignKey('PartnersCategories', on_delete=models.SET_NULL, null=True)
-    link = models.URLField(max_length=200)
-    image = models.ImageField(upload_to="partners_images/", blank=True, verbose_name='Картинка партнёра')
+    title = models.CharField(verbose_name='Название', max_length=155, default='', blank=True)
+    description = models.TextField(verbose_name='Описание', default='', blank=True)
+    category = models.ForeignKey(PartnersTypes, verbose_name='Тип партнерства', on_delete=models.SET_NULL, null=True)
+    link = models.URLField(max_length=200, verbose_name='Ссылка на сайт')
+    image = models.ImageField(upload_to="partners_images/", blank=True, verbose_name='Изображение')
 
     def __str__(self):
         return self.title

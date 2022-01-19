@@ -1,14 +1,14 @@
 from django.db import models
 
-from main.models.base import BaseABSModel
+from main.models.base import BaseABSModel, BaseCategoryABSModel
 
 
-class ProductCategories(BaseABSModel):
-    title = models.CharField(verbose_name='Название', max_length=64, default='', blank=True)
-    icon = models.ImageField(upload_to="icon/", blank=True, verbose_name="Иконка продукта")
+class ProductCategories(BaseCategoryABSModel):
+    image = models.ImageField(upload_to="products_categories_images/", blank=True, verbose_name="Изображение")
 
-    def __str__(self):
-        return self.title
+    class Meta:
+        verbose_name = 'Категория продукции'
+        verbose_name_plural = 'Категории продукции'
 
 
 class Products(BaseABSModel):
@@ -19,3 +19,7 @@ class Products(BaseABSModel):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
