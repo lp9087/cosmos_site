@@ -23,6 +23,10 @@ MODULES = [
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -115,6 +119,11 @@ REST_FRAMEWORK = {
 }
 
 
+# Для django-admin-tools
+ADMIN_TOOLS_MENU = 'main.adminmenu.CustomMenu'
+ADMIN_TOOLS_INDEX_DASHBOARD = 'main.dashboard.CustomIndexDashboard'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -125,3 +134,4 @@ try:
     from .localsettings import *
 except ImportError:
     print('Local settings are not exists. Launch on production settings!')
+
