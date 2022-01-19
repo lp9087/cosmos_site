@@ -34,8 +34,8 @@ class CustomIndexDashboard(Dashboard):
                                  children=[
                                      ['Контакты',
                                       '/admin/main/Contacts/'],
-                                     ['Резюме',
-                                      '/admin/main/Resume/'],
+                                     ['Партнёры',
+                                      '/admin/main/Partners/'],
                                  ]),
 
             ],
