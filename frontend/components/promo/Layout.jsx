@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     const listener = e => {
-      const isFirstScreen = e.currentTarget.scrollY < e.currentTarget.innerHeight;
+      const isFirstScreen = e.currentTarget.scrollY < e.currentTarget.innerHeight - 1;
 
       if (!isFirstScreen) {
         setNavbarOpened(false);
