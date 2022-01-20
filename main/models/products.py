@@ -1,9 +1,9 @@
 from django.db import models
 
-from main.models.base import BaseABSModel, BaseCategoryABSModel
+from main.models.base import BaseABSModel, BaseCategoryABSModel, ServiceMixin
 
 
-class ProductCategories(BaseCategoryABSModel):
+class ProductCategories(BaseCategoryABSModel, ServiceMixin):
     image = models.ImageField(upload_to="products_categories_images/", blank=True, verbose_name="Изображение")
 
     class Meta:
@@ -11,7 +11,7 @@ class ProductCategories(BaseCategoryABSModel):
         verbose_name_plural = 'Категории продукции'
 
 
-class Products(BaseABSModel):
+class Products(BaseABSModel, ServiceMixin):
     title = models.CharField(verbose_name='Название продукта', max_length=64, default='', blank=True)
     categories = models.ManyToManyField(ProductCategories, verbose_name='Категории', blank=True)
     developer = models.CharField(verbose_name='Разработчик продукта', max_length=125, default='', blank=True)

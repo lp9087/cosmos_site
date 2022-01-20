@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "rest_framework",
+    'rest_framework',
+    'martor',
 ] + MODULES
 
 MIDDLEWARE = [
@@ -134,4 +135,10 @@ try:
     from .localsettings import *
 except ImportError:
     print('Local settings are not exists. Launch on production settings!')
+
+
+try:
+    from .martorsettings import *
+except ImportError:
+    print('Martor settings are not exists. Launch on production settings!')
 

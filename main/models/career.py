@@ -1,10 +1,10 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
-from main.models.base import BaseABSModel
+from main.models.base import BaseABSModel, ServiceMixin
 from main.validators import phone_number_validator
 
 
-class Vacancy(BaseABSModel):
+class Vacancy(BaseABSModel, ServiceMixin):
     title = models.CharField(verbose_name='Название', max_length=64, default='', blank=True)
     responsibility = models.TextField(verbose_name='Обязанности', default='', blank=True)
     requirements = models.TextField(verbose_name='Требования', default='', blank=True)

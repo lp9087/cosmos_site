@@ -1,8 +1,8 @@
 from django.db import models
-from main.models.base import BaseABSModel
+from main.models.base import BaseABSModel, ServiceMixin
 
 
-class Services(BaseABSModel):
+class Services(BaseABSModel, ServiceMixin):
     title = models.CharField(verbose_name='Название услуги', max_length=255, default='', blank=True)
     short_description = models.CharField(verbose_name='Краткое описание', max_length=255, default='', blank=True)
     full_description = models.TextField(verbose_name='Подробное описание', default='', blank=True)
