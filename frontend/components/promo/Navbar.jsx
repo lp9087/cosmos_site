@@ -21,7 +21,7 @@ const Navbar = ({ opened = true }) => {
             <div className={`${!opened && 'hidden'}`}>
               <Image src={Logo} alt="Logo" layout="intrinsic" />
             </div>
-            <div className={`w-32 ${opened && 'hidden'}`}>
+            <div className={`w-28 ${opened && 'hidden'}`}>
               <Image src={SmallLogo} alt="Logo" layout="intrinsic" />
             </div>
           </a>
