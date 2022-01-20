@@ -28,7 +28,10 @@ const NEWS_MOCK = [
 
 const About = () => {
   return (
-    <div id="about" className="grid grid-cols-8 gap-6 h-screen px-8 py-6 bg-slate-200">
+    <div
+      id="about"
+      className="grid grid-cols-8 gap-6 gap-y-16 min-h-screen px-8 py-6 pb-32 bg-slate-200"
+    >
       <div className="col-span-5 flex flex-col gap-8 items-center">
         <div className="flex flex-col gap-6">
           <h2 className="text-2xl font-semibold text-center">О компании</h2>
@@ -50,18 +53,6 @@ const About = () => {
             lectus rhoncus eu.
           </span>
         </div>
-        <div className="flex flex-col gap-12 w-full">
-          <h2 className="text-2xl font-semibold text-center">Наши преимущества</h2>
-          <div className="flex w-full justify-evenly">
-            <AdvantageItem icon="test" text="20 лет работы" />
-            <AdvantageItem icon="test" text="40 разработанных решений" />
-            <AdvantageItem icon="test" text="100+ клиентов" />
-          </div>
-          <div className="flex w-full justify-evenly">
-            <AdvantageItem icon="test" text="60 регионов" />
-            <AdvantageItem icon="test" text="80 звезд" />
-          </div>
-        </div>
       </div>
       <div className="col-span-3 flex flex-col gap-6">
         <h2 className="text-2xl font-semibold">Последние новости</h2>
@@ -69,6 +60,18 @@ const About = () => {
           {NEWS_MOCK.map(x => (
             <NewsCard key={x.id} {...x} />
           ))}
+        </div>
+      </div>
+      <div className="col-span-full flex flex-col gap-12 w-full">
+        <h2 className="text-2xl font-semibold text-center">Наши преимущества</h2>
+        <div className="flex w-full justify-evenly">
+          <AdvantageItem icon="test" text="20 лет работы" />
+          <AdvantageItem icon="test" text="40 разработанных решений" />
+          <AdvantageItem icon="test" text="100+ клиентов" />
+        </div>
+        <div className="flex w-full justify-evenly">
+          <AdvantageItem icon="test" text="60 регионов" />
+          <AdvantageItem icon="test" text="80 звезд" />
         </div>
       </div>
     </div>

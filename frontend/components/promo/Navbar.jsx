@@ -13,7 +13,7 @@ const Navbar = ({ opened = true }) => {
       ${opened ? 'w-[360px]' : 'w-32'} transition-all`}
     >
       <div
-        className={`flex flex-col gap-2 w-11/12 self-center place-items-center
+        className={`flex flex-col gap-2 w-11/12 min-h-[150px] self-center place-items-center
         ${opened ? 'pt-6' : ''}`}
       >
         <Link href="/" passHref>
@@ -33,7 +33,9 @@ const Navbar = ({ opened = true }) => {
           <MenuItem key={idx} {...x} minimized={!opened} />
         ))}
       </div>
-      <div className="pb-4 text-center">{opened && PROMO_CONFIG.COPYRIGHT}</div>
+      <div className="pb-4 text-center min-h-[50px]">
+        {opened && PROMO_CONFIG.COPYRIGHT}
+      </div>
     </div>
   );
 };
