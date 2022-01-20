@@ -4,8 +4,6 @@ __pycache__
 /myvenv/
 /venv/
 /media/
-
-frontend/
-venv/
+/venv/
 /cosmos/localsettings.py.example
 /cosmos/localsettings.py
