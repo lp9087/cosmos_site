@@ -1,3 +1,7 @@
+import os
+import time
+from cosmos import settings
+
 # Choices are: "semantic", "bootstrap"
 MARTOR_THEME = 'bootstrap'
 
@@ -60,8 +64,30 @@ MARTOR_SEARCH_USERS_URL = '/martor/search-user/' # default
 MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://github.githubassets.com/images/icons/emoji/'                  # default from github
 MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/'                                      # please change this to your domain
 
+
 # URL schemes that are allowed within links
 ALLOWED_URL_SCHEMES = [
     "file", "ftp", "ftps", "http", "https", "irc", "mailto",
     "sftp", "ssh", "tel", "telnet", "tftp", "vnc", "xmpp",
 ]
+
+
+# Upload to locale storage
+
+MARTOR_UPLOAD_PATH = 'images/uploads/{}'.format(time.strftime("%Y/%m/%d/"))
+MARTOR_UPLOAD_URL = '/api/uploader/'  # change to local uploader
+
+# Maximum Upload Image
+# 2.5MB - 2621440
+# 5MB - 5242880
+# 10MB - 10485760
+# 20MB - 20971520
+# 50MB - 52428800
+# 100MB 104857600
+# 250MB - 214958080
+# 500MB - 429916160
+MAX_IMAGE_UPLOAD_SIZE = 104857600  # 100MB
+
+# Media Path
+MEDIA_URL = settings.MEDIA_URL
+MEDIA_ROOT = settings.MEDIA_ROOT

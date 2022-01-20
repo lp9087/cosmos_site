@@ -13,7 +13,7 @@ class ProductCategories(BaseCategoryABSModel, ServiceMixin):
 
 class Products(BaseABSModel, ServiceMixin):
     title = models.CharField(verbose_name='Название продукта', max_length=64, default='', blank=True)
-    categories = models.ManyToManyField(ProductCategories, verbose_name='Категории', blank=True)
+    categories = models.ManyToManyField(ProductCategories, verbose_name='Категории', blank=True, related_name='products')
     developer = models.CharField(verbose_name='Разработчик продукта', max_length=125, default='', blank=True)
     version = models.CharField(verbose_name='Версия продукта', max_length=64, default='', blank=True)
 
