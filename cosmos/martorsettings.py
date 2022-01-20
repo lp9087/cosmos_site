@@ -5,7 +5,7 @@ MARTOR_THEME = 'bootstrap'
 # Input: string boolean, `true/false`
 MARTOR_ENABLE_CONFIGS = {
     'emoji': 'true',        # to enable/disable emoji icons.
-    'imgur': 'false',        # to enable/disable imgur/custom uploader.
+    'imgur': 'true',        # to enable/disable imgur/custom uploader.
     'mention': 'false',     # to enable/disable mention
     'jquery': 'true',       # to include/revoke jquery (require for admin default django)
     'living': 'false',      # to enable/disable live updates in preview
@@ -26,7 +26,7 @@ MARTOR_ENABLE_LABEL = False
 
 # Imgur API Keys
 MARTOR_IMGUR_CLIENT_ID = 'your-client-id'
-MARTOR_IMGUR_API_KEY   = 'your-api-key'
+MARTOR_IMGUR_API_KEY = 'your-api-key'
 
 # Markdownify
 MARTOR_MARKDOWNIFY_FUNCTION = 'martor.utils.markdownify' # default
@@ -62,9 +62,7 @@ MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/'              
 
 # If you need to use your own themed "bootstrap" or "semantic ui" dependency
 # replace the values with the file in your static files dir
-MARTOR_ALTERNATIVE_JS_FILE_THEME = "semantic-themed/semantic.min.js"   # default None
-MARTOR_ALTERNATIVE_CSS_FILE_THEME = "semantic-themed/semantic.min.css" # default None
-MARTOR_ALTERNATIVE_JQUERY_JS_FILE = "jquery/dist/jquery.min.js"        # default None
+
 
 # URL schemes that are allowed within links
 ALLOWED_URL_SCHEMES = [
