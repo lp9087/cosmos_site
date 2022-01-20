@@ -1,0 +1,1 @@
+- [ ] Add tooltip to navbar items
