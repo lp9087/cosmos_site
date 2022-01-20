@@ -1,4 +1,6 @@
+import styled from 'styled-components';
 import Link from 'next/link';
+import { Calendar } from 'react-feather';
 
 const NEWS_MOCK = [
   {
@@ -27,9 +29,9 @@ const NEWS_MOCK = [
 const About = () => {
   return (
     <div id="about" className="grid grid-cols-8 gap-6 h-screen px-8 py-6 bg-slate-200">
-      <div className="col-span-5 flex flex-col gap-6 items-center">
-        <h2 className="text-2xl font-semibold">О компании</h2>
-        <div>
+      <div className="col-span-5 flex flex-col gap-8 items-center">
+        <div className="flex flex-col gap-6">
+          <h2 className="text-2xl font-semibold text-center">О компании</h2>
           <span>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere
             magna sit amet sapien malesuada placerat. Curabitur lorem risus, porta eget
@@ -45,26 +47,23 @@ const About = () => {
             tristique vitae semper sed, eleifend vitae neque. Ut aliquet, mauris ut
             pretium feugiat, libero justo eleifend ligula, vel auctor velit tortor
             rhoncus turpis. Nulla facilisi. Nullam tincidunt tellus est, vel venenatis
-            lectus rhoncus eu. Class aptent taciti sociosqu ad litora torquent per
-            conubia nostra, per inceptos himenaeos. Nulla pulvinar commodo ullamcorper.
-            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-            turpis egestas. Vivamus imperdiet massa quis ligula aliquam, nec lacinia
-            massa egestas. Cras sed dui nec eros pharetra bibendum. Quisque tincidunt
-            massa at vehicula aliquet. Proin placerat lacus nec maximus dignissim. Ut
-            condimentum diam vitae ipsum molestie tempor. Maecenas faucibus ullamcorper
-            nibh non scelerisque. In placerat sodales risus. Praesent venenatis luctus
-            erat, et tincidunt odio ultricies ut. Etiam in ultrices diam, ut porttitor
-            diam. Morbi ultricies sem lectus, quis sagittis risus vulputate quis. Cras
-            gravida condimentum lacus eget varius. In nunc erat, dignissim ac quam in,
-            fermentum aliquam enim. Etiam ac felis nisi. Proin lorem libero, tempor
-            congue facilisis quis, finibus id velit. Orci varius natoque penatibus et
-            magnis dis parturient montes, nascetur ridiculus mus. Aenean non nisl id
-            justo viverra semper. Nunc et placerat est, in viverra nulla. Integer
-            tincidunt in ex in sagittis.
+            lectus rhoncus eu.
           </span>
         </div>
+        <div className="flex flex-col gap-12 w-full">
+          <h2 className="text-2xl font-semibold text-center">Наши преимущества</h2>
+          <div className="flex w-full justify-evenly">
+            <AdvantageItem icon="test" text="20 лет работы" />
+            <AdvantageItem icon="test" text="40 разработанных решений" />
+            <AdvantageItem icon="test" text="100+ клиентов" />
+          </div>
+          <div className="flex w-full justify-evenly">
+            <AdvantageItem icon="test" text="60 регионов" />
+            <AdvantageItem icon="test" text="80 звезд" />
+          </div>
+        </div>
       </div>
-      <div className="col-span-3 flex flex-col gap-6 items-center">
+      <div className="col-span-3 flex flex-col gap-6">
         <h2 className="text-2xl font-semibold">Последние новости</h2>
         <div className="flex flex-col gap-2">
           {NEWS_MOCK.map(x => (
@@ -89,5 +88,25 @@ const NewsCard = ({ title, short_content, link }) => {
         <span>{short_content}</span>
       </a>
     </Link>
+  );
+};
+
+const AdvantageContainer = styled.div`
+  &:hover .icon-container {
+    --tw-bg-opacity: 1;
+
+    svg {
+      opacity: 1;
+    }
+  }
+`;
+const AdvantageItem = ({ text }) => {
+  return (
+    <AdvantageContainer className="flex flex-col gap-4 items-center max-w-[200px]">
+      <div className="icon-container flex justify-center items-center w-16 h-16 bg-slate-400 bg-opacity-50 rounded-full transition-colors">
+        <Calendar className="transition-opacity" color="#000" opacity={0.75} size={32} />
+      </div>
+      <span className="text-md font-medium text-center">{text}</span>
+    </AdvantageContainer>
   );
 };
