@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <div className="flex flex-col justify-between fixed w-[360px] h-screen bg-black bg-opacity-50 text-white">
+    <div className="flex flex-col justify-between fixed w-[360px] h-screen bg-black bg-opacity-50 text-white z-10">
       <div className="flex flex-col gap-2 w-11/12 pt-6 self-center place-items-center">
         <Link href="/" passHref>
           <a>
