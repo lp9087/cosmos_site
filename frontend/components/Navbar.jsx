@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import Logo from '../../assets/img/Logo.png';
-import SmallLogo from '../../assets/img/SmallLogo.png';
+import Logo from '../assets/img/Logo.png';
+import SmallLogo from '../assets/img/SmallLogo.png';
 import PROMO_CONFIG from '@/constants/promo';
 
 const Navbar = ({ opened = true }) => {

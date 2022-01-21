@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 
 const Layout = ({ children }) => {
   const [navbarOpened, setNavbarOpened] = useState(true);

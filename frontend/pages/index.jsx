@@ -1,11 +1,11 @@
-import { CTASection, Layout, About } from '@/components/promo';
+import { CTASection, Layout, About, Products } from '@/components/promo';
 
 const Home = () => {
   return (
     <Layout>
       <CTASection />
       <About />
-      {/* <div className="h-screen bg-cyan-700">Third section</div> */}
+      <Products />
     </Layout>
   );
 };
