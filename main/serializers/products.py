@@ -6,7 +6,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Products
-        fields = '__all__'
+        fields = ['id', 'title', 'developer', 'version']
 
 
 class ProductsCategoryRetrieveSerializers(serializers.ModelSerializer):

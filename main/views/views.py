@@ -1,7 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import AllowAny
-
-from main.models import Vacancy, Resume, Contacts, PartnersTypes, Partners, Services
+from main.models import Vacancy, Resume, Contacts, PartnersTypes, Partners, ProductCategories
 from main.serializers.career import VacancySerializer, ResumeSerializer, ContactsSerializer, PartnerSerializer, \
     PartnersTypesSerializer
 from main.serializers.services import ServicesSerializer
