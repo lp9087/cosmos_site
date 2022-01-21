@@ -28,10 +28,7 @@ const NEWS_MOCK = [
 
 const About = () => {
   return (
-    <div
-      id="about"
-      className="grid grid-cols-8 gap-6 gap-y-16 min-h-screen px-8 pt-16 pb-32 bg-slate-200"
-    >
+    <div className="grid grid-cols-8 gap-6 gap-y-16 min-h-screen px-8 pt-16 pb-32 bg-slate-200">
       <div className="col-span-5 flex flex-col gap-8 items-center">
         <div className="flex flex-col gap-6">
           <h2 className="text-2xl font-semibold text-center">О компании</h2>
