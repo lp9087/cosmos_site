@@ -12,9 +12,9 @@ const ProductDetail = ({ product }) => {
         <h3 className="font-bold text-xl text-gray-700">Описание</h3>
         <p className="font-light">{product.full_description}</p>
       </div>
-      <div className="flex flex-col gap-24">
+      <div className="flex flex-col">
         <h3 className="font-bold text-xl text-gray-700">Преимущества</h3>
-        <div className="flex justify-evenly">
+        <div className="flex justify-evenly py-16">
           <AdvantageBadge />
           <AdvantageBadge />
           <AdvantageBadge />
