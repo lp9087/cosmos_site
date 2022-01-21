@@ -4,8 +4,8 @@ const PROMO_CONFIG = {
   NAVBAR_HEADER_TEXT: 'Ведущий разработчик программных решений для госсектора и бизнеса',
   MENU_ITEMS: [
     { icon: Home, text: 'Главная', link: '/' },
-    { icon: Info, text: 'О компании', link: '#about' },
-    { icon: Package, text: 'Продукты', link: '#' },
+    { icon: Info, text: 'О компании', link: '#' },
+    { icon: Package, text: 'Продукты', link: '/products/slug' },
     { icon: Tool, text: 'Услуги', link: '#' },
     { icon: Award, text: 'Сотрудничество', link: '#' },
     { icon: Briefcase, text: 'Вакансии', link: '#' },

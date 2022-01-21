@@ -1,12 +1,12 @@
 import { ArrowRight } from 'react-feather';
 
 import PROMO_CONFIG from '@/constants/promo';
-import ParticlesBG from './ParticlesBG';
+import ParticlesBG from '../ParticlesBG';
 
 const CTASection = () => {
   return (
     <div className="relative h-screen text-white z-[1]">
-      <ParticlesBG />
+      <ParticlesBG className="-ml-[360px] w-screen" />
       <Hero />
       <Contacts />
     </div>

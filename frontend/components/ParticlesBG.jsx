@@ -1,10 +1,10 @@
 import Particles from 'react-tsparticles';
 
-const ParticlesBG = () => {
+const ParticlesBG = ({ className = '' }) => {
   return (
     <Particles
       id="particles-bg"
-      className="-ml-[360px] absolute h-full -z-[1]"
+      className={`absolute h-full w-full -z-[1] ${className}`}
       options={{
         background: {
           color: {

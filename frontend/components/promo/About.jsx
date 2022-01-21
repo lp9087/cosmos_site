@@ -30,7 +30,7 @@ const About = () => {
   return (
     <div
       id="about"
-      className="grid grid-cols-8 gap-6 gap-y-16 min-h-screen px-8 py-6 pb-32 bg-slate-200"
+      className="grid grid-cols-8 gap-6 gap-y-16 min-h-screen px-8 pt-16 pb-32 bg-slate-200"
     >
       <div className="col-span-5 flex flex-col gap-8 items-center">
         <div className="flex flex-col gap-6">
