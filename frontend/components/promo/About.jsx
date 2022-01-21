@@ -71,9 +71,9 @@ const About = () => {
           <AdvantageItem icon="test" text="100+ клиентов" />
         </div>
       </div>
-      <div className="col-span-3 flex flex-col gap-6 px-32 pt-24 pb-48">
+      <div className="col-span-3 flex flex-col items-center gap-12 px-48 pt-24 pb-48">
         <h2 className="text-2xl font-semibold">Последние новости</h2>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           {NEWS_MOCK.map(x => (
             <NewsCard key={x.id} {...x} />
           ))}
@@ -89,11 +89,16 @@ const NewsCard = ({ title, short_content, link }) => {
   return (
     <Link href={link} passHref>
       <a
-        className="flex flex-col items-start px-6 py-4 bg-slate-300 hover:bg-slate-400 border-slate-600
-      rounded-lg cursor-pointer transition-colors"
+        className="grid grid-cols-3 min-h-[150px] bg-slate-300 hover:bg-slate-400 border-slate-600
+      rounded-lg cursor-pointer transition-colors overflow-hidden"
       >
-        <span className="text-lg font-semibold">{title}</span>
-        <span>{short_content}</span>
+        <figure className="h-full w-auto">
+          <Image src={AboutPic3} layout="responsive" />
+        </figure>
+        <div className="col-span-2 flex flex-col justify-center gap-6 py-6 px-8">
+          <h3 className="text-xl font-semibold">{title}</h3>
+          <span>{short_content}</span>
+        </div>
       </a>
     </Link>
   );
