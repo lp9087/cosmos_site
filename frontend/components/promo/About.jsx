@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Calendar } from 'react-feather';
+
+import AboutPic1 from '@/assets/img/AboutPic1.jpg';
+import AboutPic2 from '@/assets/img/AboutPic2.jpg';
+import AboutPic3 from '@/assets/img/AboutPic3.jpg';
 
 const NEWS_MOCK = [
   {
@@ -28,11 +33,11 @@ const NEWS_MOCK = [
 
 const About = () => {
   return (
-    <div className="grid grid-cols-8 gap-6 gap-y-16 min-h-screen px-8 pt-16 pb-32 bg-slate-200">
-      <div className="col-span-5 flex flex-col gap-8 items-center">
-        <div className="flex flex-col gap-6">
+    <div className="flex flex-col min-h-screen bg-slate-200">
+      <div className="col-span-5 flex flex-col items-center px-32 pt-24 pb-48">
+        <div className="flex flex-col gap-12">
           <h2 className="text-2xl font-semibold text-center">О компании</h2>
-          <span>
+          <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere
             magna sit amet sapien malesuada placerat. Curabitur lorem risus, porta eget
             vehicula non, consequat sit amet purus. Lorem ipsum dolor sit amet,
@@ -48,27 +53,30 @@ const About = () => {
             pretium feugiat, libero justo eleifend ligula, vel auctor velit tortor
             rhoncus turpis. Nulla facilisi. Nullam tincidunt tellus est, vel venenatis
             lectus rhoncus eu.
-          </span>
+          </p>
+          <div className="grid grid-cols-3 justify-between gap-3">
+            <Image className="rounded-3xl" src={AboutPic1} />
+            <Image className="rounded-3xl" src={AboutPic2} />
+            <Image className="rounded-3xl" src={AboutPic3} />
+          </div>
         </div>
       </div>
-      <div className="col-span-3 flex flex-col gap-6">
+      <div className="col-span-full flex flex-col w-full px-8 py-24 bg-slate-300">
+        <h2 className="text-2xl font-semibold text-center">Наши преимущества</h2>
+        <div className="flex w-full justify-evenly pt-36 pb-36">
+          <AdvantageItem icon="test" text="20 лет работы" />
+          <AdvantageItem icon="test" text="60 регионов" />
+          <AdvantageItem icon="test" text="40 разработанных решений" />
+          <AdvantageItem icon="test" text="80 звезд" />
+          <AdvantageItem icon="test" text="100+ клиентов" />
+        </div>
+      </div>
+      <div className="col-span-3 flex flex-col gap-6 px-32 pt-24 pb-48">
         <h2 className="text-2xl font-semibold">Последние новости</h2>
         <div className="flex flex-col gap-2">
           {NEWS_MOCK.map(x => (
             <NewsCard key={x.id} {...x} />
           ))}
-        </div>
-      </div>
-      <div className="col-span-full flex flex-col gap-12 w-full">
-        <h2 className="text-2xl font-semibold text-center">Наши преимущества</h2>
-        <div className="flex w-full justify-evenly">
-          <AdvantageItem icon="test" text="20 лет работы" />
-          <AdvantageItem icon="test" text="40 разработанных решений" />
-          <AdvantageItem icon="test" text="100+ клиентов" />
-        </div>
-        <div className="flex w-full justify-evenly">
-          <AdvantageItem icon="test" text="60 регионов" />
-          <AdvantageItem icon="test" text="80 звезд" />
         </div>
       </div>
     </div>
