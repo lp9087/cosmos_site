@@ -1,9 +1,10 @@
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 
-from main.models import Vacancy, Resume, Contacts, PartnersTypes, Partners
+from main.models import Vacancy, Resume, Contacts, PartnersTypes, Partners, Services
 from main.serializers.career import VacancySerializer, ResumeSerializer, ContactsSerializer, PartnerSerializer, \
     PartnersTypesSerializer
+from main.serializers.services import ServicesSerializer
 
 
 class VacancyViewSet(viewsets.ModelViewSet):
@@ -54,3 +55,13 @@ class PartnerViewSet(viewsets.ModelViewSet):
     # permission_classes = [AllowAny]
     queryset = Partners.objects.all()
     serializer_class = PartnerSerializer
+
+
+class ServicesViewSet(viewsets.ModelViewSet):
+    """
+
+    http://127.0.0.1:8000/api/services/
+    """
+    # permission_classes = [AllowAny]
+    queryset = Services.objects.all()
+    serializer_class = ServicesSerializer
