@@ -4,7 +4,7 @@ const Layout = ({ children, header }) => {
   return (
     <div>
       <Navbar opened={false} />
-      <div className="relative h-48 z-1">
+      <div className="relative h-48 z-[1]">
         <ParticlesBG />
         {header}
       </div>
