@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
     <div>
       <Navbar opened={navbarOpened} />
       <div
-        className={`w-full h-full min-h-screen bg-sky-900
+        className={`w-full h-full min-h-screen bg-sky-900 overflow-x-hidden
         ${navbarOpened ? 'pl-[360px]' : 'pl-32'}`}
       >
         {children}

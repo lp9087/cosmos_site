@@ -115,8 +115,9 @@ const Categories = ({ opened, minimized }) => {
   return (
     <div
       className={`flex flex-col place-items-center gap-16 fixed h-screen
-        bg-black text-white z-10 ${minimized ? 'bg-opacity-80' : 'bg-opacity-70'}
-        ${!opened ? 'hidden' : ''} ${minimized ? 'left-32' : 'left-[360px]'}`}
+        bg-black text-white z-10 transition-all
+        ${!opened ? 'hidden' : ''}
+        ${minimized ? 'left-32 bg-opacity-80' : 'left-[360px] bg-opacity-70'}`}
     >
       <h2 className="mt-8 text-2xl font-semibold">Каталог продуктов</h2>
       <div className="flex flex-col items-start gap-3 w-full px-12">
@@ -128,11 +129,9 @@ const Categories = ({ opened, minimized }) => {
             {x.nodes && (
               <div className="flex flex-col gap-1 pl-4">
                 {x.nodes.map(x => (
-                  <Link href="/products/slug" passHref>
+                  <Link key={x.id} href="/products/slug" passHref>
                     <a>
-                      <h3 key={x.id} className="font-medium cursor-pointer">
-                        {x.title}
-                      </h3>
+                      <h3 className="font-medium cursor-pointer">{x.title}</h3>
                     </a>
                   </Link>
                 ))}
