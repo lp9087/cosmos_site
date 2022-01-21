@@ -1,4 +1,4 @@
-from admin_tools.dashboard import modules, Dashboard, AppIndexDashboard
+from admin_tools.dashboard import modules, Dashboard
 
 
 class CustomIndexDashboard(Dashboard):
