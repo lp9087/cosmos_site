@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 
-from main.models import News, Vacancy, Resume, Contacts, PartnersTypes, Partners, Services
-from main.serializers.career import NewsSerializer, VacancySerializer, ResumeSerializer, ContactsSerializer
-from main.serializers.patners import PartnersTypesSerializer, PartnerSerializer
+from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners
+from main.serializers.career import VacancySerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
+from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
 from main.serializers.services import ServicesSerializer
 
 

@@ -5,3 +5,4 @@ from .products import *
 from .services import *
 from .posts import *
 from .news import *
+from .menu import *

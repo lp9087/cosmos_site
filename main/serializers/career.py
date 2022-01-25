@@ -15,14 +15,13 @@ class VacancySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ResumeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Resume
-        fields = "__all__"
-
-
 class ContactsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contacts
         fields = "__all__"
 
+
+class ResumeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Resume
+        fields = "__all__"
