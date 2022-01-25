@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
-from main.models import Contacts, Vacancy, Resume
+from main.models import Contacts, Vacancy, Resume, News
+
+
+class NewsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = News
+        fields = "__all__"
 
 
 class VacancySerializer(serializers.ModelSerializer):

@@ -1,9 +1,18 @@
 from rest_framework import viewsets
 
-from main.models import Vacancy, Resume, Contacts, PartnersTypes, Partners, Services
-from main.serializers.career import VacancySerializer, ResumeSerializer, ContactsSerializer
+from main.models import News, Vacancy, Resume, Contacts, PartnersTypes, Partners, Services
+from main.serializers.career import NewsSerializer, VacancySerializer, ResumeSerializer, ContactsSerializer
 from main.serializers.patners import PartnersTypesSerializer, PartnerSerializer
 from main.serializers.services import ServicesSerializer
+
+
+class NewsViewSet(viewsets.ModelViewSet):
+    """
+    Вакансии
+    http://127.0.0.1:8000/api/news/
+    """
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
 
 
 class VacancyViewSet(viewsets.ModelViewSet):

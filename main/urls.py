@@ -3,11 +3,12 @@ from main.views import martor as martor_views
 
 from rest_framework.routers import DefaultRouter
 
-from main.views.views import VacancyViewSet, ResumeViewSet, ContactsViewSet, PartnersTypesViewSet, PartnerViewSet, \
-    ServicesViewSet
+from main.views.views import NewsViewSet, VacancyViewSet, ResumeViewSet, ContactsViewSet, PartnersTypesViewSet, \
+    PartnerViewSet, ServicesViewSet
 from main.views.products import ProductCategoriesViewSet
 
 router = DefaultRouter()
+router.register('news', NewsViewSet)
 router.register('vacancy', VacancyViewSet)
 router.register('resume', ResumeViewSet)
 router.register('contacts', ContactsViewSet)
