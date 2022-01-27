@@ -8,7 +8,7 @@ const Screen = ({ children, className, container = 'bg-slate-100' }) => {
   const hiddenStyles = 'opacity-0 translate-y-24';
 
   return (
-    <div ref={ref} className={`flex min-h-[80vh] ml-32 ${container}`}>
+    <div ref={ref} className={`flex ml-32 ${container}`}>
       <div
         className={`container mx-auto flex flex-col justify-center px-16 py-32 transition-all
           ${className ?? ''} ${!inView ? hiddenStyles : ''}`}

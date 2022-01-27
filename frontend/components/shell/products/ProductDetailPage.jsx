@@ -1,6 +1,4 @@
-import styled from 'styled-components';
 import Image from 'next/image';
-import { Award } from 'react-feather';
 
 import { Layout } from '..';
 import { Button, Screen } from '../..';
@@ -18,13 +16,13 @@ const ProductDetailPage = () => {
     <Layout
       header={<ProductDetailHeader title={title} description={short_description} />}
     >
-      <TextScreen className="pt-20" container="bg-slate-100 min-h-0" {...description} />
+      <TextScreen className="pt-20" {...description} />
       <BadgeListScreen container="bg-slate-300" {...advantages} />
       <Screen>
         <Image src={ProductImage} alt="product image" />
       </Screen>
-      <TextScreen className="pb-8" container="bg-slate-300 min-h-0" {...anotherText} />
-      <Screen className="pt-8" container="bg-slate-300 min-h-0">
+      <TextScreen className="pb-8" container="bg-slate-300" {...anotherText} />
+      <Screen className="pt-8" container="bg-slate-300">
         <div className="flex flex-col gap-2 items-center mt-12">
           <span className="text-sm">Остались вопросы?</span>
           <Button className="px-12" text="Связаться с нами" />

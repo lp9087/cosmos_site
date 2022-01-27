@@ -14,7 +14,7 @@ const ParticlesBG = ({ className = '' }) => {
           repeat: 'no-repeat',
           size: 'cover',
         },
-        fpsLimit: 60,
+        fpsLimit: 70,
         fullScreen: {
           enable: false,
         },
@@ -67,6 +67,7 @@ const ParticlesBG = ({ className = '' }) => {
               enable: true,
             },
             value: 80,
+            max: 200,
           },
           opacity: {
             value: 0.5,
