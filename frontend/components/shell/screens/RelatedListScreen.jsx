@@ -6,7 +6,7 @@ import { Screen } from '../..';
 
 const RelatedListScreen = ({
   className,
-  bg,
+  container,
   title,
   content = [],
   displayShowAll = false,
@@ -14,7 +14,7 @@ const RelatedListScreen = ({
   onShowAll,
 }) => {
   return (
-    <Screen className={`gap-16 text-gray-700 ${className}`} bg={bg}>
+    <Screen className={`gap-16 text-gray-700 ${className}`} container={container}>
       {title && <h2 className="self-center font-bold text-3xl">{title}</h2>}
       <div className="flex flex-col gap-6">
         <div className="flex flex-wrap justify-evenly gap-x-8 gap-y-16 py-16">

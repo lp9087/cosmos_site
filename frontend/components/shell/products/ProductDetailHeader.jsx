@@ -1,6 +1,6 @@
-import { Button } from '..';
+import { Button } from '../..';
 
-const ProductHeader = ({ title, description }) => {
+const ProductDetailHeader = ({ title, description }) => {
   return (
     <div className="flex flex-col gap-6 h-full ml-32 pl-8 pr-16 pt-10 pb-8 text-white pointer-events-none">
       <div className="flex justify-between">
@@ -12,4 +12,4 @@ const ProductHeader = ({ title, description }) => {
   );
 };
 
-export default ProductHeader;
+export default ProductDetailHeader;

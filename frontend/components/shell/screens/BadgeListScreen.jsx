@@ -4,9 +4,9 @@ import { Award } from 'react-feather';
 
 import { Screen } from '../..';
 
-const BadgeListScreen = ({ className, bg, title, content = [] }) => {
+const BadgeListScreen = ({ className, container, title, content = [] }) => {
   return (
-    <Screen className={`gap-16 text-gray-700 ${className}`} bg={bg}>
+    <Screen className={`gap-16 text-gray-700 ${className}`} container={container}>
       {title && <h2 className="self-center font-bold text-3xl">{title}</h2>}
       <div className="flex justify-evenly flex-wrap gap-x-8 gap-y-16 py-16">
         {content.map(x => (
