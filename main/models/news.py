@@ -10,5 +10,5 @@ class News(BaseABSModel):
     content = MartorField("Текст")
 
     class Meta:
-        verbose_name = 'Новость'
-        verbose_name_plural = 'Новости'
+        verbose_name = 'новость'
+        verbose_name_plural = 'новости'

@@ -12,24 +12,25 @@ class CustomMenu(Menu):
         self.children += [
             items.MenuItem('Главная', reverse('admin:index')),
             items.ModelList(
-                'Услуги',
+                'Продукты и Услуги',
                 [
-                    'main.models.services.Services',
-                    'main.models.products.Products',
-                    'main.models.products.ProductCategories',
+                    'main.models.products.ProductCategories', 'main.models.products.Products',
+                    'main.models.products.ProductPages', 'main.models.products.Services',
+                    'main.models.products.ServicePages'
                 ]
             ),
             items.ModelList(
-                'Вакансии',
+                'Карьера',
                 [
                     'main.models.career.Vacancy',
                     'main.models.career.Resume',
                 ]
             ),
             items.ModelList(
-                'Организации ',
-                ['main.models.contacts.Contacts'
-                 'main.models.partners.Partners'
+                'Наполнение ',
+                [
+                    'main.models.contacts.Contacts', 'main.models.menu.MenuItems', 'main.models.news.News',
+                    'main.models.partners.PartnersTypes', 'main.models.partners.Partners'
                  ]
             ),
         ]

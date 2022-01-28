@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners
 from main.serializers.career import VacancySerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
 from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
-from main.serializers.services import ServicesSerializer
+from main.serializers.products import ServicesSerializer
 
 
 class NewsViewSet(viewsets.ModelViewSet):

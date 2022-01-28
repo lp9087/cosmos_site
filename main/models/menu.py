@@ -11,5 +11,5 @@ class MenuItems(BaseABSModel, ServiceMixin):
         return self.title
 
     class Meta:
-        verbose_name = 'Элемент меню'
-        verbose_name_plural = 'Элементы меню'
+        verbose_name = 'элемент меню'
+        verbose_name_plural = 'элементы меню'

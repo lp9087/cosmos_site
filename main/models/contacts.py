@@ -10,5 +10,5 @@ class Contacts(BaseABSModel, ServiceMixin):
         return self.title
 
     class Meta:
-        verbose_name = 'Контакт'
-        verbose_name_plural = 'Контакты'
+        verbose_name = 'контакт'
+        verbose_name_plural = 'контакты'

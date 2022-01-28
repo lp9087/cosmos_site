@@ -17,8 +17,8 @@ class Vacancy(BaseABSModel, ServiceMixin):
         return self.title
 
     class Meta:
-        verbose_name = 'Вакансия'
-        verbose_name_plural = 'Вакансии'
+        verbose_name = 'вакансия'
+        verbose_name_plural = 'вакансии'
 
 
 class Resume(BaseABSModel):
@@ -33,5 +33,5 @@ class Resume(BaseABSModel):
         return f'Резюме от {self.full_name}'
 
     class Meta:
-        verbose_name = 'Резюме'
-        verbose_name_plural = 'Резюме'
+        verbose_name = 'резюме'
+        verbose_name_plural = 'резюме'

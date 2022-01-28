@@ -4,8 +4,8 @@ from main.models.base import BaseABSModel, BaseCategoryABSModel, ServiceMixin
 
 class PartnersTypes(BaseCategoryABSModel):
     class Meta:
-        verbose_name = 'Тип партнерства'
-        verbose_name_plural = 'Типы партнерства'
+        verbose_name = 'тип партнерства'
+        verbose_name_plural = 'типы партнерства'
 
 
 class Partners(BaseABSModel, ServiceMixin):
@@ -20,5 +20,5 @@ class Partners(BaseABSModel, ServiceMixin):
         return self.title
 
     class Meta:
-        verbose_name = 'Партнёр'
-        verbose_name_plural = 'Партнёры'
+        verbose_name = 'партнёр'
+        verbose_name_plural = 'партнёры'

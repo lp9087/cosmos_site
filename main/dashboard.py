@@ -5,39 +5,21 @@ class CustomIndexDashboard(Dashboard):
     """
     Custom index dashboard for config.x
     """
+    columns = 3
+
     def init_with_context(self, context):
-        self.children.append(modules.Group(
-            title=u"Управление сайтом",
-            display="tabs",
-            children=[
-                modules.AppList(
-                    'Пользователи',
-                    models=('main.models.users.*', 'main.models.messages.*')
-                ),
-                modules.LinkList('Услуги',
-                                 children=[
-                                     ['Услуги',
-                                      '/admin/main/services/'],
-                                     ['Продукты',
-                                      '/admin/main/products/'],
-                                     ['Категории продуктов',
-                                      '/admin/main/productcategories/'],
-                                 ]),
-                modules.LinkList('Вакансии',
-                                 children=[
-                                     ['Вакансии',
-                                      '/admin/main/vacancy/'],
-                                     ['Резюме',
-                                      '/admin/main/resume/'],
-                                 ]),
-                modules.LinkList('Организации',
-                                 children=[
-                                     ['Контакты',
-                                      '/admin/main/contacts/'],
-                                     ['Партнёры',
-                                      '/admin/main/partners/'],
-                                 ]),
-
-            ],
+        self.children.append(modules.ModelList(
+            title='Продукты и Услуги',
+            models=('main.models.products.ProductCategories', 'main.models.products.Products',
+                    'main.models.products.ProductPages', 'main.models.products.Services',
+                    'main.models.products.ServicePages')
         ))
-
+        self.children.append(modules.ModelList(
+            title='Карьера',
+            models=('main.models.career.Vacancy', 'main.models.career.Resume')
+        ))
+        self.children.append(modules.ModelList(
+            title='Наполнение',
+            models=('main.models.contacts.Contacts', 'main.models.menu.MenuItems', 'main.models.news.News',
+                    'main.models.partners.PartnersTypes', 'main.models.partners.Partners')
+        ))
