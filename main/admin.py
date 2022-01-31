@@ -1,10 +1,12 @@
 from django.db import models
 from nested_admin.nested import *
 from django.contrib import admin
-
-from main.models.pages import Block, BlockImages, BlockText
+from nested_admin.nested import *
+from nested_admin.polymorphic import *
+from main.models.pages import Blocks, BlockImages, BlockText, Pages, Image, BlockIcons, Icons, ProductPages, \
+    ServicePages
 from main.models.menu import MenuItems
-from main.models.products import ProductPages, Products, ProductCategories, Services, ServicePages
+from main.models.products import Products, ProductCategories, Services
 from main.models.partners import Partners, PartnersTypes
 from main.models.news import News
 from main.models.career import Vacancy, Resume
@@ -12,7 +14,7 @@ from main.models.contacts import Contacts
 from martor.widgets import AdminMartorWidget
 
 
-@admin.register(Vacancy, Resume, Contacts, Partners, ProductCategories, Products, Services, MenuItems, PartnersTypes)
+@admin.register(Icons, Vacancy, Resume, Contacts, Partners, ProductCategories, Products, Services, MenuItems, PartnersTypes)
 class CustomAdmin(admin.ModelAdmin):
     pass
 
@@ -26,19 +28,35 @@ class NewsAdmin(admin.ModelAdmin):
 
 
 # Pages
-# class BlockImageInline(NestedTabularInline):
-#     model = BlockImages
-#
-#
-# class BlockTextInline(NestedTabularInline):
-#     model = BlockText
-#
-#
-# class BlockInline(admin.StackedInline):
-#     model = Block
-#     extra = 0
-#
-#
-# @admin.register(ServicePages, ProductPages)
-# class PageAdmin(admin.ModelAdmin):
-#     inlines = [BlockInline]
+
+
+class ImageInline(NestedStackedInline):
+    model = Image
+    sortable_field_name = 'position'
+    extra = 0
+
+
+class BlockInline(NestedStackedPolymorphicInline):
+    class TextInline(NestedStackedPolymorphicInline.Child):
+        model = BlockText
+        formfield_overrides = {
+            models.TextField: {'widget': AdminMartorWidget}
+        }
+
+    class ImageBlockInline(NestedStackedPolymorphicInline.Child):
+        model = BlockImages
+        inlines = (ImageInline,)
+
+    class IconBlockInline(NestedStackedPolymorphicInline.Child):
+        model = BlockIcons
+        filter_horizontal = ('icons',)
+
+    model = Blocks
+    extra = 0
+    sortable_field_name = "position"
+    child_inlines = (TextInline, ImageBlockInline, IconBlockInline)
+
+
+@admin.register(Pages, ProductPages, ServicePages)
+class PageAdmin(NestedPolymorphicModelAdmin):
+    inlines = (BlockInline,)

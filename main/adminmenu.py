@@ -15,8 +15,8 @@ class CustomMenu(Menu):
                 'Продукты и Услуги',
                 [
                     'main.models.products.ProductCategories', 'main.models.products.Products',
-                    'main.models.products.ProductPages', 'main.models.products.Services',
-                    'main.models.products.ServicePages'
+                    'main.models.pages.ProductPages', 'main.models.products.Services',
+                    'main.models.pages.ServicePages'
                 ]
             ),
             items.ModelList(

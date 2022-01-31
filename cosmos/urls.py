@@ -3,7 +3,6 @@ from django.conf.urls.static import static
 from cosmos import settings
 from django.urls import path, include
 
-
 app_name = 'cosmos'
 admin.site.site_header = 'Космос-2: Панель администратора'
 admin.autodiscover()
@@ -13,6 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin_tools/', include('admin_tools.urls')),
     path('martor/', include('martor.urls')),
+    path('_nested_admin/', include('nested_admin.urls')),
     path('', include('main.urls')),
 ]
 
