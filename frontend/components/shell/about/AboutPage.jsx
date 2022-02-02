@@ -10,12 +10,12 @@ const AboutPage = () => {
   return (
     <Layout header={<AboutHeader title={title} description={description} />}>
       <TextScreen className={'!pt-20'} {...about} />
-      <BadgeListScreen container="bg-slate-300" {...achievements} />
+      <BadgeListScreen container="bg-slate-300 bg-opacity-75" {...achievements} />
       <RelatedListScreen showAllLink="#" displayShowAll {...events} />
       {/* GalleryListScreen */}
       <BadgeListScreen
         className={'!text-slate-100'}
-        container="bg-sky-700"
+        container="bg-sky-700 bg-opacity-75"
         {...partners}
       />
       {/* MapWithContacts */}
