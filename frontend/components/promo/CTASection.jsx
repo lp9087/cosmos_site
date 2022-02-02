@@ -1,21 +1,14 @@
 import styled from 'styled-components';
-import { useState } from 'react';
-import { ArrowRight } from 'react-feather';
 
-import PROMO_CONFIG from '@/constants/promo';
 import ParticlesBG from '../ParticlesBG';
 
-import ContactModal from './ContactModal';
-
-const CTASection = () => {
-  const [modal, setModal] = useState(false);
-
+const CTASection = ({ onCTAClick }) => {
   return (
-    <div className="relative h-screen text-white z-[1]">
-      <ParticlesBG className="-ml-[360px] w-screen" />
-      <Hero onCTAClick={() => setModal(true)} />
-      <Contacts />
-      <ContactModal isOpen={modal} onClose={() => setModal(false)} />
+    <div className="relative h-screen z-[1] text-white">
+      <ParticlesBG />
+      <Hero onCTAClick={onCTAClick} />
+      {/* <Contacts /> */}
+      {/* <ContactModal isOpen={modal} onClose={() => setModal(false)} /> */}
       <RocketContainer className="absolute w-7 bottom-0 left-1/2 pb-4">
         <Rocket />
       </RocketContainer>
@@ -27,38 +20,24 @@ export default CTASection;
 
 const Hero = ({ onCTAClick }) => {
   return (
-    <div className="flex flex-col gap-8 h-full items-center justify-center pointer-events-none">
-      <div className="flex flex-col gap-3 text-center">
-        <h2 className="text-5xl font-semibold">Создаём полезные IT-решения</h2>
-        <h3 className="text-lg">Более 25 лет на рынке информационных технологий</h3>
+    <div className="flex flex-col gap-16 justify-center w-2/3 h-full px-32 pointer-events-none">
+      <div className="flex flex-col gap-10">
+        <h2 className="text-6xl">Создаём полезные IT-решения</h2>
+        <p className="">Более 25 лет на рынке информационных технологий</p>
       </div>
-      <button
-        className="flex gap-2 px-8 py-3 rounded-3xl
-      justify-center items-center text-lg font-medium
-      bg-emerald-600 hover:bg-emerald-700 transition-colors pointer-events-auto"
-        onClick={onCTAClick}
-      >
-        <span>Связаться с нами</span>
-        <ArrowRight />
-      </button>
-    </div>
-  );
-};
-
-const Contacts = () => {
-  return (
-    <div
-      className="flex absolute right-6 top-4 py-2 px-3 rounded-xl
-      bg-black bg-opacity-10 hover:bg-opacity-25 transition-colors cursor-default"
-    >
-      <div className="pr-2 flex flex-col text-right">
-        <h3>{PROMO_CONFIG.ADDRESS1}</h3>
-        <h3 className="pr-3">{PROMO_CONFIG.ADDRESS2}</h3>
-      </div>
-      <div className="w-[3px] bg-white rounded -rotate-[150deg]"></div>
-      <div className="pl-1 flex flex-col">
-        <h3 className="pl-3">{PROMO_CONFIG.PHONE1}</h3>
-        <h3>{PROMO_CONFIG.PHONE2}</h3>
+      <div className="grid grid-cols-2 gap-3 w-3/4">
+        <button
+          className="btn btn-primary py-6 h-auto rounded-2xl pointer-events-auto"
+          onClick={onCTAClick}
+        >
+          Связаться с нами
+        </button>
+        <button
+          className="btn btn-outline border-primary text-white py-6 h-auto rounded-2xl pointer-events-auto"
+          onClick={onCTAClick}
+        >
+          Больше о нас
+        </button>
       </div>
     </div>
   );
