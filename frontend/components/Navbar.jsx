@@ -13,7 +13,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const listener = e => {
-      const isFirstScreen = e.currentTarget.scrollY < e.currentTarget.innerHeight - 1;
+      const isFirstScreen = e.currentTarget.scrollY < e.currentTarget.innerHeight - 100;
       setIsTransparent(isFirstScreen);
     };
 
@@ -23,12 +23,12 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed flex justify-center items-center w-full h-20 z-10 text-white
+      className={`fixed flex justify-center items-center w-full h-16 z-10 text-white
         transition-colors
         ${
           isTransparent
             ? 'bg-gradient-to-b from-[#0f172a75] via-[#1e293b50] to-transparent'
-            : 'bg-slate-800 bg-opacity-95'
+            : 'bg-[#285a70] bg-opacity-95'
         }`}
     >
       <div className="container flex items-center gap-10">

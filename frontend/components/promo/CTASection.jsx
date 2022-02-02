@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 import ParticlesBG from '../ParticlesBG';
+import AnimatedCube from './AnimatedCube';
 
 const CTASection = ({ onCTAClick }) => {
   return (
-    <div className="relative h-screen z-[1] text-white">
+    <div className="relative h-screen z-[1] text-white overflow-x-hidden">
       <ParticlesBG />
       <Hero onCTAClick={onCTAClick} />
-      {/* <Contacts /> */}
-      {/* <ContactModal isOpen={modal} onClose={() => setModal(false)} /> */}
       <RocketContainer className="absolute w-7 bottom-0 left-1/2 pb-4">
         <Rocket />
       </RocketContainer>
@@ -20,24 +19,29 @@ export default CTASection;
 
 const Hero = ({ onCTAClick }) => {
   return (
-    <div className="flex flex-col gap-16 justify-center w-2/3 h-full px-32 pointer-events-none">
-      <div className="flex flex-col gap-10">
-        <h2 className="text-6xl">Создаём полезные IT-решения</h2>
-        <p className="">Более 25 лет на рынке информационных технологий</p>
+    <div className="container flex mx-auto h-full">
+      <div className="flex flex-col gap-16 justify-center max-w-[600px] h-full pointer-events-none">
+        <div className="flex flex-col gap-10">
+          <h2 className="text-6xl">Создаём полезные IT-решения</h2>
+          <p className="">Более 25 лет на рынке информационных технологий</p>
+        </div>
+        <div className="grid grid-cols-2 gap-3 w-3/4">
+          <button
+            className="btn btn-primary py-6 h-auto rounded-2xl pointer-events-auto"
+            onClick={onCTAClick}
+          >
+            Связаться с нами
+          </button>
+          <button
+            className="btn btn-outline border-primary text-white py-6 h-auto rounded-2xl pointer-events-auto"
+            onClick={onCTAClick}
+          >
+            Больше о нас
+          </button>
+        </div>
       </div>
-      <div className="grid grid-cols-2 gap-3 w-3/4">
-        <button
-          className="btn btn-primary py-6 h-auto rounded-2xl pointer-events-auto"
-          onClick={onCTAClick}
-        >
-          Связаться с нами
-        </button>
-        <button
-          className="btn btn-outline border-primary text-white py-6 h-auto rounded-2xl pointer-events-auto"
-          onClick={onCTAClick}
-        >
-          Больше о нас
-        </button>
+      <div className="flex items-center -mt-24 ml-auto mr-64">
+        <AnimatedCube className="" />
       </div>
     </div>
   );

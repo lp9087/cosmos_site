@@ -4,12 +4,13 @@ const ParticlesBG = ({ className = '' }) => {
   return (
     <Particles
       id="particles-bg"
-      className={`absolute h-full w-full -z-[1] ${className}`}
+      className={`absolute h-full w-full -z-[1]
+        bg-gradient-to-br from-slate-400 to-cyan-900 ${className}`}
       options={{
         background: {
-          color: {
-            value: '#005ca9',
-          },
+          // color: {
+          //   value: '#005ca9',
+          // },
           position: '50% 50%',
           repeat: 'no-repeat',
           size: 'cover',
