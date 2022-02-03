@@ -5,7 +5,7 @@ const BadgeListScreen = ({ title, description, items = [] }) => {
     <BaseScreen className="gap-16">
       <div className="flex flex-col gap-8">
         <h2 className="font-bold text-4xl">{title}</h2>
-        {description && <p className="text-2xl">{description}</p>}
+        {description && <p className="text-xl">{description}</p>}
       </div>
       <div className="grid grid-cols-4 gap-12">
         {items.map(({ id, ...rest }) => (
@@ -26,7 +26,7 @@ const BadgeItem = ({ title, img }) => {
           Image
         </div>
       )}
-      {title && <h3>{title}</h3>}
+      {title && <h3 className="font-medium">{title}</h3>}
     </div>
   );
 };

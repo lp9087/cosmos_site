@@ -35,7 +35,7 @@ const NewsItem = ({ title, img }) => {
       {img && (
         <div className="relative flex flex-col justify-center items-center w-full py-48 border border-slate-300">
           BG Image
-          {title && <h3 className="absolute bottom-4 left-4">{title}</h3>}
+          {title && <h3 className="absolute left-4 right-4 bottom-4">{title}</h3>}
         </div>
       )}
     </div>
