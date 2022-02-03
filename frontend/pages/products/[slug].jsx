@@ -1,3 +1,3 @@
-import { ProductDetailPage } from '@/components/shell/products';
+import { ProductDetailPage } from '@/components/products';
 
 export default ProductDetailPage;

@@ -15,7 +15,7 @@ const ContactModal = ({ isOpen = false, onClose }) => {
 
   const onSubmit = data => console.log(data);
 
-  useEffect(() => reset(), [isOpen]);
+  useEffect(() => reset(), [isOpen, reset]);
 
   return (
     <div className={`modal ${isOpen ? 'modal-open' : ''}`}>

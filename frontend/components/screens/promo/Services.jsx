@@ -1,6 +1,6 @@
 import BaseScreen from '../BaseScreen';
 
-const ServicesScreen = ({ title, items }) => {
+const ServicesScreen = ({ title, items = [] }) => {
   return (
     <BaseScreen className="gap-24">
       <h2 className="font-bold text-4xl w-2/3">{title}</h2>

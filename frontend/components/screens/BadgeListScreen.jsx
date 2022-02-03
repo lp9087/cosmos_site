@@ -1,8 +1,8 @@
 import BaseScreen from './BaseScreen';
 
-const BadgeListScreen = ({ title, description, items = [] }) => {
+const BadgeListScreen = ({ title, description, items = [], ...rest }) => {
   return (
-    <BaseScreen className="gap-16">
+    <BaseScreen className="gap-16" {...rest}>
       <div className="flex flex-col gap-8">
         <h2 className="font-bold text-4xl">{title}</h2>
         {description && <p className="text-xl">{description}</p>}
@@ -18,15 +18,18 @@ const BadgeListScreen = ({ title, description, items = [] }) => {
 
 export default BadgeListScreen;
 
-const BadgeItem = ({ title, img }) => {
+const BadgeItem = ({ title, description, img }) => {
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className={`flex flex-col gap-4 ${!description ? 'items-center' : ''}`}>
       {img && (
         <div className="flex justify-center w-4/5 py-24 border border-slate-300">
           Image
         </div>
       )}
-      {title && <h3 className="font-medium">{title}</h3>}
+      {title && (
+        <h3 className={`font-medium ${description ? 'text-lg' : ''}`}>{title}</h3>
+      )}
+      {description && <p>{description}</p>}
     </div>
   );
 };

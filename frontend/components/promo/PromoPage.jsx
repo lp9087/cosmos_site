@@ -1,23 +1,26 @@
-import PROMO_MOCK from '@/constants/mocks/promo';
-import Layout from '../Layout';
+import { useState } from 'react';
+
 import { BadgeListScreen } from '../screens';
 import { ServicesScreen } from '../screens/promo';
+import Layout from '../Layout';
+import CTAJumbotron from '../CTAJumbotron';
+import ContactModal from '../ContactModal';
 
 import CTASection from './CTASection';
-import CTAJumbotron from './CTAJumbotron';
 import NewsList from './NewsList';
 
-const PromoPage = () => {
-  const { services, partners, achievements, news } = PROMO_MOCK;
+const PromoPage = ({ services, partners, achievements, news }) => {
+  const [modal, setModal] = useState(false);
 
   return (
     <Layout>
-      <CTASection />
+      <CTASection onCTAClick={() => setModal(true)} />
       <ServicesScreen {...services} />
-      <CTAJumbotron />
+      <CTAJumbotron onCTAClick={() => setModal(true)} />
       <BadgeListScreen {...partners} />
       <BadgeListScreen {...achievements} />
       <NewsList {...news} />
+      <ContactModal isOpen={modal} onClose={() => setModal(false)} />
     </Layout>
   );
 };

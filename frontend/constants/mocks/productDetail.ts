@@ -3,7 +3,7 @@ const PRODUCT_DETAIL_MOCK = {
   short_description: `Автоматизированная информационно - справочная система контроля и управления проведением экспертизы предназначена для комплексной автоматизации 
 деятельности Организаций, предоставляющих услуги по организации и проведению экспертизы проектной документации и результатов инженерных изысканий.`,
   description: {
-    title: 'Описание',
+    title: 'Общее описание',
     content: `Автоматизированная информационно - справочная система контроля и управления проведением экспертизы (АИСС «КУПР-Экспертиза») 
 предназначена для комплексной автоматизации деятельности Организаций, предоставляющих услуги по организации и проведению экспертизы 
 проектной документации и результатов инженерных изысканий.
@@ -12,11 +12,31 @@ const PRODUCT_DETAIL_MOCK = {
   },
   advantages: {
     title: 'Преимущества',
-    content: [
-      { id: 1, title: 'Лучшая программа' },
-      { id: 2, title: 'Лучшая программа' },
-      { id: 3, title: 'Лучшая программа' },
-      { id: 4, title: 'Лучшая программа' },
+    items: [
+      {
+        id: 1,
+        title: 'Лучшая программа',
+        description:
+          'Lorem ipsum dolar sit amet junkie town words words another words more more words',
+      },
+      {
+        id: 2,
+        title: 'Лучшая программа',
+        description:
+          'Lorem ipsum dolar sit amet junkie town words words another words more more words',
+      },
+      {
+        id: 3,
+        title: 'Лучшая программа',
+        description:
+          'Lorem ipsum dolar sit amet junkie town words words another words more more words',
+      },
+      {
+        id: 4,
+        title: 'Лучшая программа',
+        description:
+          'Lorem ipsum dolar sit amet junkie town words words another words more more words',
+      },
     ],
   },
   anotherText: {

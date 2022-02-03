@@ -3,7 +3,7 @@ const PROMO_CONFIG = {
     {
       id: 'products',
       title: 'Продукты',
-      link: '#',
+      link: '/products/slug',
       nodes: [
         {
           id: 1,

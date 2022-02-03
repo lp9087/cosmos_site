@@ -6,6 +6,7 @@ const BaseScreen = ({
   className,
   container = 'bg-slate-100 bg-opacity-25',
   animated,
+  spacing = 'lg',
 }) => {
   const { ref, inView } = useInView({
     threshold: 0.4,
@@ -17,7 +18,8 @@ const BaseScreen = ({
   return (
     <div ref={ref} className={`flex ${container} `}>
       <Animated
-        className={`container mx-auto flex flex-col justify-center px-16 py-32
+        className={`container mx-auto flex flex-col justify-center
+          px-16 ${spacing === 'lg' ? 'py-32' : spacing === 'md' ? 'py-16' : null}
           ${className ?? ''} ${animated && !inView ? hiddenStyles : 'visible'}`}
       >
         {children}
