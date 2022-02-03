@@ -4,4 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~swiper/css';
+@import '~swiper/css/navigation';
 @import './AnimatedCube.css';

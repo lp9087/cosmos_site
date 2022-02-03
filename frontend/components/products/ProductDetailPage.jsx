@@ -1,23 +1,29 @@
 import { useState } from 'react';
 
 import PRODUCT_DETAIL_MOCK from '@/constants/mocks/productDetail';
-import { BadgeListScreen, MDTextScreen } from '../screens';
+import { BadgeListScreen, MDTextScreen, SliderScreen } from '../screens';
 import ParticlesBG from '../ParticlesBG';
 import Layout from '../Layout';
 import CTAJumbotron from '../CTAJumbotron';
 import ContactModal from '../ContactModal';
 
 const ProductDetailPage = ({}) => {
-  const { title, short_description, description, advantages, anotherText } =
+  const { title, short_description, description, advantages, anotherText, links } =
     PRODUCT_DETAIL_MOCK;
   const [modal, setModal] = useState(false);
 
   return (
     <Layout>
-      <Hero title={title} description={short_description} />
-      <MDTextScreen {...description} spacing="md" />
-      <BadgeListScreen {...advantages} spacing="md" />
-      <MDTextScreen {...anotherText} spacing="md" />
+      <Hero
+        title={title}
+        description={short_description}
+        onCTAClick={() => setModal(true)}
+      />
+      <MDTextScreen {...description} />
+      <SliderScreen spacing="none" />
+      <BadgeListScreen {...advantages} />
+      <MDTextScreen spacing="none" textAlign="center" {...anotherText} />
+      <BadgeListScreen {...links} />
       <CTAJumbotron
         className="mb-16"
         ctaText="Связаться с нами"
@@ -30,14 +36,27 @@ const ProductDetailPage = ({}) => {
 
 export default ProductDetailPage;
 
-const Hero = ({ title, description }) => {
+const Hero = ({ title, description, onCTAClick }) => {
   return (
     <div className="relative h-[50vh] z-[1] text-white overflow-x-hidden">
       <ParticlesBG />
-      <div className="container mx-auto h-full pt-12">
-        <div className="flex flex-col justify-center gap-8 h-full pl-16">
-          <h1 className="text-6xl font-semibold">{title}</h1>
-          <p className="text-lg w-2/3">{description}</p>
+      <div className="container flex items-center mx-auto h-full pt-16 pointer-events-none">
+        <div className="grid grid-cols-[70%,25%] gap-[5%] justify-center pl-16">
+          <div className="flex flex-col gap-8">
+            <h1 className="text-6xl font-semibold">{title}</h1>
+            <p className="text-lg">{description}</p>
+          </div>
+          <div className="flex flex-col justify-evenly gap-4 h-full">
+            <button className="btn btn-primary pointer-events-auto" onClick={onCTAClick}>
+              Заказать демонстрацию
+            </button>
+            <button className="btn btn-ghost pointer-events-auto">
+              Скачать презентацию
+            </button>
+            <button className="btn btn-ghost pointer-events-auto">
+              Посмотреть демо
+            </button>
+          </div>
         </div>
       </div>
     </div>
