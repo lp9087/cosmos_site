@@ -9,13 +9,9 @@ import PROMO_CONFIG from '@/constants/promo';
 
 const Navbar = () => {
   const [isTransparent, setIsTransparent] = useState(true);
-  // const [lastScroll, setIsTransparent] = useRef(true);
 
   useEffect(() => {
-    const listener = e => {
-      const isFirstScreen = e.currentTarget.scrollY < e.currentTarget.innerHeight - 100;
-      setIsTransparent(isFirstScreen);
-    };
+    const listener = e => setIsTransparent(e.currentTarget.scrollY < 50);
 
     window.addEventListener('scroll', listener);
     return () => window.removeEventListener('scroll', listener);
@@ -23,32 +19,31 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed flex justify-center items-center w-full h-16 z-10 text-white
-        transition-colors
-        ${
-          isTransparent
-            ? 'bg-gradient-to-b from-[#0f172a75] via-[#1e293b50] to-transparent'
-            : 'bg-[#285a70] bg-opacity-95'
-        }`}
+      className={`sticky top-0 flex justify-center items-center w-full h-16 z-10
+      border-b border-slate-50/[0.06] text-white
+        transition-colors duration-500 backdrop-blur
+        ${isTransparent ? 'bg-slate-900/20' : 'bg-slate-900/60'}`}
     >
-      <div className="container flex items-center gap-10">
+      <div className="container flex items-center justify-between gap-10">
         <Link href="/" passHref>
           <a className="flex w-40">
             <Image src={Logo} alt="Logo" layout="intrinsic" />
           </a>
         </Link>
-        <nav className="flex gap-4">
-          {PROMO_CONFIG.MENU_ITEMS.map(x => (
-            <Link key={x.id} href={x.link} passHref>
-              <NavbarLink className="text-sm font-semibold uppercase">
-                {x.title}
-              </NavbarLink>
-            </Link>
-          ))}
-        </nav>
-        <div className="ml-auto flex gap-2">
-          <Phone />
-          <span>{PROMO_CONFIG.PHONE}</span>
+        <div className="flex items-center gap-8">
+          <nav className="flex gap-4">
+            {PROMO_CONFIG.MENU_ITEMS.map(x => (
+              <Link key={x.id} href={x.link} passHref>
+                <NavbarLink className="text-sm font-semibold uppercase">
+                  {x.title}
+                </NavbarLink>
+              </Link>
+            ))}
+          </nav>
+          <div className="flex gap-2">
+            <Phone />
+            <span>{PROMO_CONFIG.PHONE}</span>
+          </div>
         </div>
       </div>
     </header>

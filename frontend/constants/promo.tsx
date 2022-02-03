@@ -1,11 +1,7 @@
-import { Award, Briefcase, Compass, Home, Info, Package, Tool } from 'react-feather';
-
 const PROMO_CONFIG = {
-  NAVBAR_HEADER_TEXT: 'Ведущий разработчик программных решений для госсектора и бизнеса',
   MENU_ITEMS: [
     {
       id: 'products',
-      icon: Package,
       title: 'Продукты',
       link: '#',
       nodes: [
@@ -28,14 +24,11 @@ const PROMO_CONFIG = {
         },
       ],
     },
-    { id: 'services', icon: Tool, title: 'Услуги', link: '#' },
-    { id: 'partnership', icon: Award, title: 'Сотрудничество', link: '#' },
-    { id: 'vacancies', icon: Briefcase, title: 'Вакансии', link: '#' },
-    { id: 'about', icon: Info, title: 'О компании', link: '#' },
+    { id: 'services', title: 'Услуги', link: '#' },
+    { id: 'partnership', title: 'Сотрудничество', link: '#' },
+    { id: 'vacancies', title: 'Вакансии', link: '#' },
+    { id: 'about', title: 'О компании', link: '#' },
   ],
-  COPYRIGHT: 'Copyright',
-  ADDRESS1: 'г. Ростов-на-Дону',
-  ADDRESS2: 'пр. Буденновский, 97',
   PHONE: '+7 (888) 888-8888',
 };
 
