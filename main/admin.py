@@ -3,6 +3,8 @@ from nested_admin.nested import *
 from django.contrib import admin
 from nested_admin.nested import *
 from nested_admin.polymorphic import *
+
+from main.models.achievements import Achievements
 from main.models.pages import Blocks, BlockImages, BlockText, Pages, Image, BlockIcons, Icons, ProductPages, \
     ServicePages
 from main.models.menu import MenuItems
@@ -14,7 +16,7 @@ from main.models.contacts import Contacts
 from martor.widgets import AdminMartorWidget
 
 
-@admin.register(Icons, Vacancy, Resume, Contacts, Partners, ProductCategories, Products, Services, MenuItems, PartnersTypes)
+@admin.register(Icons, Vacancy, Resume, Contacts, Partners, ProductCategories, Products, Services, MenuItems, PartnersTypes, Achievements)
 class CustomAdmin(admin.ModelAdmin):
     pass
 

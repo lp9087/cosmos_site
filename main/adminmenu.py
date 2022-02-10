@@ -30,7 +30,8 @@ class CustomMenu(Menu):
                 'Наполнение ',
                 [
                     'main.models.contacts.Contacts', 'main.models.menu.MenuItems', 'main.models.news.News',
-                    'main.models.partners.PartnersTypes', 'main.models.partners.Partners'
+                    'main.models.partners.PartnersTypes', 'main.models.partners.Partners',
+                    'main.models.achievements.Achievements',
                  ]
             ),
         ]

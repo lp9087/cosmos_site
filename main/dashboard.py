@@ -20,5 +20,6 @@ class CustomIndexDashboard(Dashboard):
         self.children.append(modules.ModelList(
             title='Наполнение',
             models=('main.models.contacts.Contacts', 'main.models.menu.MenuItems', 'main.models.news.News',
-                    'main.models.partners.PartnersTypes', 'main.models.partners.Partners')
+                    'main.models.partners.PartnersTypes', 'main.models.partners.Partners',
+                    'main.models.achievements.Achievements')
         ))
