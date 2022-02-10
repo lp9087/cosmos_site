@@ -1,8 +1,9 @@
 from rest_framework import viewsets
 
-from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners, Achievements
+from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners, Achievements, Feedback
 from main.serializers.achievements import AchievementsSerializer
 from main.serializers.career import VacancySerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
+from main.serializers.feedback import FeedbackSerializer
 from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
 from main.serializers.products import ServicesSerializer
 
@@ -75,3 +76,12 @@ class AchievementsViewSet(viewsets.ModelViewSet):
     """
     queryset = Achievements.objects.all()
     serializer_class = AchievementsSerializer
+
+
+class FeedbackViewSet(viewsets.ModelViewSet):
+    """
+    Услуги
+    http://127.0.0.1:8000/api/feedback/
+    """
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer

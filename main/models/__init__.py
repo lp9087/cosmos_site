@@ -6,3 +6,4 @@ from .news import *
 from .menu import *
 from .pages import *
 from .achievements import *
+from .feedback import *
