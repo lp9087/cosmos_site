@@ -11,7 +11,7 @@ class Contacts(BaseABSModel, ServiceMixin):
     )
     title = models.CharField(verbose_name='Название', max_length=155, default='', blank=True)
     type = models.CharField(verbose_name='Тип', max_length=300, choices=CHOICES)
-    значение = models.CharField(verbose_name='Значение', max_length=155, default='', blank=True)
+    values = models.CharField(verbose_name='Значение', max_length=155, default='', blank=True)
 
     def __str__(self):
         return self.title
