@@ -5,7 +5,7 @@ from main.serializers.achievements import AchievementsSerializer
 from main.serializers.career import VacancySerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
 from main.serializers.feedback import FeedbackSerializer
 from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
-from main.serializers.products import ServicesSerializer
+from main.serializers.services import ServicesSerializer
 
 
 class NewsViewSet(viewsets.ModelViewSet):

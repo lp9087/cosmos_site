@@ -24,7 +24,4 @@ class ProductsCategoryListSerializers(serializers.ModelSerializer):
         fields = ('id', 'title', 'image')
 
 
-class ServicesSerializer(serializers.Serializer):
-    class Meta:
-        model = Services
-        fields = '__all__'
+
