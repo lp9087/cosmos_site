@@ -1,4 +1,3 @@
-import PROMO_MOCK from '@/constants/mocks/promo';
 import { PromoPage } from '@/components/promo';
 
 import {
@@ -13,7 +12,6 @@ import {
 export default PromoPage;
 
 export async function getStaticProps() {
-  const { services: servicesBlock } = PROMO_MOCK;
   const partnersRes = await partnersApi.getPartners();
   const newsRes = await newsApi.getNews();
   const achievementsRes = await achievementsApi.getAchievements();
@@ -23,7 +21,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      servicesBlock,
       partners: partnersRes.data,
       achievements: achievementsRes.data,
       news: newsRes.data,

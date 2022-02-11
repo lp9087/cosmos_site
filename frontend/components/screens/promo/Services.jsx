@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import BaseScreen from '../BaseScreen';
 
 const ServicesScreen = ({ title, items = [] }) => {
@@ -15,16 +17,21 @@ const ServicesScreen = ({ title, items = [] }) => {
 
 export default ServicesScreen;
 
-const ServiceItem = ({ className, img, title, description }) => {
+const ServiceItem = ({ className, image, title, short_description }) => {
   return (
     <li className={`flex flex-col gap-4 ${className}`}>
-      {img && (
-        <div className="flex justify-center w-1/2 ml-auto py-24 border border-slate-300">
-          Image
+      {image && (
+        <div className="relative flex justify-center w-1/2 ml-auto h-48">
+          <Image
+            src={image}
+            alt={title}
+            layout="fill"
+            className="object-contain w-full relative h-auto"
+          />
         </div>
       )}
       <h3 className="font-medium text-3xl -mt-4">{title}</h3>
-      <p>{description}</p>
+      <p>{short_description}</p>
     </li>
   );
 };

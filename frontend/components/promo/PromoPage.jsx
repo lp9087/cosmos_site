@@ -12,7 +12,6 @@ import CTASection from './CTASection';
 import NewsList from './NewsList';
 
 const PromoPage = ({
-  servicesBlock,
   partners,
   achievements,
   news,
@@ -32,7 +31,10 @@ const PromoPage = ({
         <title>{PROMO_CONFIG.SEO.title}</title>
       </Head>
       <CTASection onCTAClick={() => setModal(true)} />
-      <ServicesScreen {...servicesBlock} />
+      <ServicesScreen
+        title="Исследуем, разрабатываем, развиваем IT-продукты"
+        items={services}
+      />
       <CTAJumbotron onCTAClick={() => setModal(true)} />
       <BadgeListScreen title="Наши партнеры" items={partners} />
       <BadgeListScreen title="Достижения и награды" items={achievements} />
