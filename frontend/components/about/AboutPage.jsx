@@ -3,11 +3,13 @@ import { BaseScreen } from '../screens';
 
 import RegionsMap from './RegionsMap';
 
-const AboutPage = ({}) => {
-  // const [modal, setModal] = useState(false);
-
+const AboutPage = ({ products, productCategories, services }) => {
   return (
-    <Layout>
+    <Layout
+      products={products}
+      productCategories={productCategories}
+      services={services}
+    >
       <BaseScreen>
         <div className="container flex flex-col gap-6">
           <h1 className="text-4xl font-semibold">Some large text</h1>

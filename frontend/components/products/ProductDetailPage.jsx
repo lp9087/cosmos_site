@@ -7,13 +7,23 @@ import Layout from '../Layout';
 import CTAJumbotron from '../CTAJumbotron';
 import ContactModal from '../ContactModal';
 
-const ProductDetailPage = ({}) => {
-  const { title, short_description, description, advantages, anotherText, links } =
-    PRODUCT_DETAIL_MOCK;
+const ProductDetailPage = ({ products, productCategories, services }) => {
+  const {
+    title,
+    short_description,
+    description,
+    advantages,
+    anotherText,
+    links,
+  } = PRODUCT_DETAIL_MOCK;
   const [modal, setModal] = useState(false);
 
   return (
-    <Layout>
+    <Layout
+      products={products}
+      productCategories={productCategories}
+      services={services}
+    >
       <Hero
         title={title}
         description={short_description}
@@ -47,7 +57,10 @@ const Hero = ({ title, description, onCTAClick }) => {
             <p className="text-lg">{description}</p>
           </div>
           <div className="flex flex-col justify-evenly gap-4 h-full">
-            <button className="btn btn-primary pointer-events-auto" onClick={onCTAClick}>
+            <button
+              className="btn btn-primary pointer-events-auto"
+              onClick={onCTAClick}
+            >
               Заказать демонстрацию
             </button>
             <button className="btn btn-ghost pointer-events-auto">
