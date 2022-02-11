@@ -7,7 +7,12 @@ import Layout from '../Layout';
 import CTAJumbotron from '../CTAJumbotron';
 import ContactModal from '../ContactModal';
 
-const ProductDetailPage = ({ products, productCategories, services }) => {
+const ProductDetailPage = ({
+  contacts,
+  products,
+  productCategories,
+  services,
+}) => {
   const {
     title,
     short_description,
@@ -20,6 +25,7 @@ const ProductDetailPage = ({ products, productCategories, services }) => {
 
   return (
     <Layout
+      contacts={contacts}
       products={products}
       productCategories={productCategories}
       services={services}

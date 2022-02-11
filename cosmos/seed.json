@@ -1,0 +1,126 @@
+[
+  {
+    "model": "main.contacts",
+    "pk": "1851cfef-b98f-4b78-851b-9e10739f65f6",
+    "fields": {
+      "is_active": true,
+      "title": "phone1",
+      "type": "phone",
+      "values": "+7 (888) 888 8888"
+    }
+  },
+  {
+    "model": "main.contacts",
+    "pk": "216f7ecf-6ced-47cf-926a-126bc18f5bd0",
+    "fields": {
+      "is_active": true,
+      "title": "fb",
+      "type": "link",
+      "values": "https://vk.com/cosmos2ru"
+    }
+  },
+  {
+    "model": "main.contacts",
+    "pk": "3a270325-0304-4c86-a671-7f3762e44fa4",
+    "fields": {
+      "is_active": true,
+      "title": "email",
+      "type": "mail",
+      "values": "contact@cosmos2.ru"
+    }
+  },
+  {
+    "model": "main.contacts",
+    "pk": "51c2a2a7-deba-43e1-9e53-7ec0b16977cf",
+    "fields": {
+      "is_active": true,
+      "title": "vk",
+      "type": "link",
+      "values": "https://vk.com/cosmos2ru"
+    }
+  },
+  {
+    "model": "main.contacts",
+    "pk": "81771b96-fd7f-45c1-9a94-ccc32bc800e1",
+    "fields": {
+      "is_active": true,
+      "title": "address",
+      "type": "text",
+      "values": "Россия, г. Ростов-на-Дону, пер. Буденновский, 97"
+    }
+  },
+  {
+    "model": "main.contacts",
+    "pk": "a75672ab-2202-49a7-bf71-6bc4b9633bd8",
+    "fields": {
+      "is_active": true,
+      "title": "copyright",
+      "type": "text",
+      "values": "© 2022 ООО \"НПЦ \"Космос-2\""
+    }
+  },
+  {
+    "model": "main.contacts",
+    "pk": "d343efeb-de06-4cab-be71-2251103ad2cc",
+    "fields": {
+      "is_active": true,
+      "title": "inst",
+      "type": "link",
+      "values": "https://vk.com/cosmos2ru"
+    }
+  },
+  {
+    "model": "main.contacts",
+    "pk": "f581776e-9144-4429-9d33-202669ea41bc",
+    "fields": {
+      "is_active": true,
+      "title": "phone2",
+      "type": "phone",
+      "values": "+7 (999) 999 9999"
+    }
+  },
+  {
+    "model": "main.services",
+    "pk": "12cd4d08-129d-402a-916b-e9752d8c7aea",
+    "fields": {
+      "is_active": true,
+      "title": "Сопровождение",
+      "short_description": "Создаем выделенные команды, чтобы сопровождать проекты заказчиков и обеспечивать стабильное функционирование и развитие их IT-систем. В наших выделенных командах от 5 до 30 человек, большинство команд сопровождают проекты заказчиков более 3 лет.",
+      "full_description": "",
+      "image": ""
+    }
+  },
+  {
+    "model": "main.services",
+    "pk": "8ba8cd59-c1ec-475c-8a54-4113c3720151",
+    "fields": {
+      "is_active": true,
+      "title": "R&D",
+      "short_description": "Занимаемся исследованиями в сфере искусственного интеллекта. С помощью искусственного интеллекта мы помогаем компаниям внедрять инновации и разрабатывать креативные решения. В комплекс наших услуг входит не только разработка на основе готовых технологий,",
+      "full_description": "",
+      "image": ""
+    }
+  },
+  {
+    "model": "main.services",
+    "pk": "b384e77b-f55b-4d79-a61f-9a56825356fd",
+    "fields": {
+      "is_active": true,
+      "title": "Разработка",
+      "short_description": "Мы беремся за наукоёмкие и ресурсоёмкие проекты, проектируем и разрабатываем масштабные продукты. Создаём веб-сайты, мобильные приложения, интерфейсы для роботов, интеграционные решения. Делаем проекты под ключ и подключаемся к командам разработки заказчи",
+      "full_description": "",
+      "image": ""
+    }
+  },
+  {
+    "model": "main.services",
+    "pk": "d78673bc-9e58-4def-ab0a-ae09565be2cc",
+    "fields": {
+      "is_active": true,
+      "title": "Консалтинг",
+      "short_description": "Проводим аудит существующей системы, консультируем по доработкам и развитию IT-системы. Помогаем клиентам спланировать разработку и запуск новых решений и продуктов, определить границы MVP. Готовим демо-проекты для инвесторов.",
+      "full_description": "",
+      "image": ""
+    }
+  }
+]

@@ -2,6 +2,7 @@ import { PromoPage } from '@/components/promo';
 
 import {
   achievementsApi,
+  contactsApi,
   newsApi,
   partnersApi,
   productCategoriesApi,
@@ -12,18 +13,20 @@ import {
 export default PromoPage;
 
 export async function getStaticProps() {
-  const partnersRes = await partnersApi.getPartners();
-  const newsRes = await newsApi.getNews();
-  const achievementsRes = await achievementsApi.getAchievements();
+  const partners = await partnersApi.getPartners();
+  const news = await newsApi.getNews();
+  const achievements = await achievementsApi.getAchievements();
+  const contacts = await contactsApi.getContacts();
   const productCategories = await productCategoriesApi.getProductCategories();
   const products = await productsApi.getProducts();
   const services = await servicesApi.getServices();
 
   return {
     props: {
-      partners: partnersRes.data,
-      achievements: achievementsRes.data,
-      news: newsRes.data,
+      partners: partners.data,
+      achievements: achievements.data,
+      news: news.data,
+      contacts: contacts.data,
       productCategories: productCategories.data,
       products: products.data,
       services: services.data,

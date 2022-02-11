@@ -32,7 +32,6 @@ const PROMO_CONFIG = {
     { id: 'vacancies', title: 'Вакансии', link: '#' },
     { id: 'about', title: 'О компании', link: '/about' },
   ],
-  PHONE: '+7 (888) 888-8888',
 };
 
 export default PROMO_CONFIG;

@@ -15,6 +15,7 @@ const PromoPage = ({
   partners,
   achievements,
   news,
+  contacts,
   productCategories,
   products,
   services,
@@ -23,6 +24,7 @@ const PromoPage = ({
 
   return (
     <Layout
+      contacts={contacts}
       products={products}
       productCategories={productCategories}
       services={services}

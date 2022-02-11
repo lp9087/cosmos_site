@@ -7,7 +7,7 @@ import { Phone } from 'react-feather';
 import Logo from '@/assets/img/Logo.png';
 import PROMO_CONFIG from '@/constants/promo';
 
-const Navbar = () => {
+const Navbar = ({ contacts }) => {
   const [isTransparent, setIsTransparent] = useState(true);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Navbar = () => {
           </nav>
           <div className="flex gap-2">
             <Phone />
-            <span>{PROMO_CONFIG.PHONE}</span>
+            <span>{contacts.find(x => x.title === 'phone1').values}</span>
           </div>
         </div>
       </div>

@@ -1,12 +1,8 @@
 import Link from 'next/link';
 
-import FOOTER_MOCK from '@/constants/mocks/footer';
-
 import { BaseScreen } from './screens';
 
-const Footer = ({ products, productCategories, services }) => {
-  const { email, phone1, phone2, address, socials, copyright } = FOOTER_MOCK;
-
+const Footer = ({ contacts, products, productCategories, services }) => {
   return (
     <BaseScreen
       className="gap-16 pb-16"
@@ -21,10 +17,12 @@ const Footer = ({ products, productCategories, services }) => {
           ]}
         />
         <ContactUs
-          email={email}
-          phone1={phone1}
-          phone2={phone2}
-          socials={socials}
+          email={contacts.find(x => x.title === 'email').values}
+          phone1={contacts.find(x => x.title === 'phone1').values}
+          phone2={contacts.find(x => x.title === 'phone2').values}
+          inst={contacts.find(x => x.title === 'inst').values}
+          vk={contacts.find(x => x.title === 'vk').values}
+          fb={contacts.find(x => x.title === 'fb').values}
         />
         {productCategories.map(x => {
           const curProducts = products.filter(prod =>
@@ -46,8 +44,8 @@ const Footer = ({ products, productCategories, services }) => {
         <Services items={services} />
       </div>
       <div className="flex justify-between">
-        <span>&copy; {copyright}</span>
-        <address>{address}</address>
+        <span>{contacts.find(x => x.title === 'copyright').values}</span>
+        <address>{contacts.find(x => x.title === 'address').values}</address>
       </div>
     </BaseScreen>
   );
@@ -81,23 +79,32 @@ const About = ({ items }) => (
   </div>
 );
 
-const ContactUs = ({ email, phone1, phone2, socials }) => (
+const ContactUs = ({ email, phone1, phone2, inst, vk, fb }) => (
   <div className="flex flex-col gap-4 row-start-2 col-start-4">
     <h2 className="text-lg font-semibold">Свяжитесь с нами</h2>
     <div className="flex flex-col gap-2">
       <a href={`mailto:${email}`} className="underline">
         {email}
       </a>
-      {[phone1, phone2].map(x => (
-        <span key={x.id}>{x.phone}</span>
+      {[phone1, phone2].map((x, idx) => (
+        <span key={idx}>{x}</span>
       ))}
     </div>
     <div className="flex gap-3">
-      {socials.map(x => (
+      <a href={inst} className="underline">
+        INSTAGRAM
+      </a>
+      <a href={vk} className="underline">
+        VK
+      </a>
+      <a href={fb} className="underline">
+        FB
+      </a>
+      {/* {socials.map(x => (
         <a key={x.id} href={x.link} className="underline">
           {x.name}
         </a>
-      ))}
+      ))} */}
     </div>
   </div>
 );

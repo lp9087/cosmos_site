@@ -3,9 +3,10 @@ import { BaseScreen } from '../screens';
 
 import RegionsMap from './RegionsMap';
 
-const AboutPage = ({ products, productCategories, services }) => {
+const AboutPage = ({ contacts, products, productCategories, services }) => {
   return (
     <Layout
+      contacts={contacts}
       products={products}
       productCategories={productCategories}
       services={services}

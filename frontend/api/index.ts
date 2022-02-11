@@ -15,3 +15,4 @@ export { default as achievementsApi } from './achievements';
 export { default as productCategoriesApi } from './productCategories';
 export { default as productsApi } from './products';
 export { default as servicesApi } from './services';
+export { default as contactsApi } from './contacts';
