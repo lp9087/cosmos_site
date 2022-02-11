@@ -1,4 +1,7 @@
 const PROMO_CONFIG = {
+  SEO: {
+    title: 'Космос-2',
+  },
   MENU_ITEMS: [
     {
       id: 'products',

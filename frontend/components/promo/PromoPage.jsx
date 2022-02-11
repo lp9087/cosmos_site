@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import Head from 'next/head';
 
+import PROMO_CONFIG from '@/constants/promo';
 import { BadgeListScreen } from '../screens';
 import { ServicesScreen } from '../screens/promo';
 import Layout from '../Layout';
@@ -9,17 +11,33 @@ import ContactModal from '../ContactModal';
 import CTASection from './CTASection';
 import NewsList from './NewsList';
 
-const PromoPage = ({ services, partners, achievements, news }) => {
+const PromoPage = ({
+  servicesBlock,
+  partners,
+  achievements,
+  news,
+  productCategories,
+  products,
+  services,
+}) => {
   const [modal, setModal] = useState(false);
 
+  console.log(services);
   return (
-    <Layout>
+    <Layout
+      products={products}
+      productCategories={productCategories}
+      services={services}
+    >
+      <Head>
+        <title>{PROMO_CONFIG.SEO.title}</title>
+      </Head>
       <CTASection onCTAClick={() => setModal(true)} />
-      <ServicesScreen {...services} />
+      <ServicesScreen {...servicesBlock} />
       <CTAJumbotron onCTAClick={() => setModal(true)} />
-      <BadgeListScreen {...partners} />
-      <BadgeListScreen {...achievements} />
-      <NewsList {...news} />
+      <BadgeListScreen title="Наши партнеры" items={partners} />
+      <BadgeListScreen title="Достижения и награды" items={achievements} />
+      <NewsList items={news} />
       <ContactModal isOpen={modal} onClose={() => setModal(false)} />
     </Layout>
   );

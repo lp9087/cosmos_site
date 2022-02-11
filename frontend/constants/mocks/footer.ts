@@ -16,21 +16,10 @@ const FOOTER_MOCK = {
         { id: 2, title: 'Услуга 2', link: '#' },
       ],
     },
-    {
-      id: 3,
-      title: 'Компания',
-      items: [
-        { id: 1, title: 'О компании', link: '#' },
-        { id: 2, title: 'Сотрудничество', link: '#' },
-        { id: 3, title: 'Вакансии', link: '#' },
-      ],
-    },
   ],
   copyright: '2022 ООО "НПЦ "Космос-2"',
-  phones: [
-    { id: 1, phone: '+7 (888) 888-8888' },
-    { id: 2, phone: '+7 (999) 999-9999' },
-  ],
+  phone1: { id: 1, phone: '+7 (888) 888-8888' },
+  phone2: { id: 2, phone: '+7 (999) 999-9999' },
   email: 'contact@cosmos2.ru',
   address: 'Россия, г. Ростов-на-Дону, пер. Буденновский, 97',
   socials: [

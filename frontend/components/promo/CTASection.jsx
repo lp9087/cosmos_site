@@ -23,7 +23,9 @@ const Hero = ({ onCTAClick }) => {
       <div className="flex flex-col gap-16 justify-center max-w-[750px] h-full">
         <div className="flex flex-col gap-10">
           <h2 className="font-medium text-7xl">Создаём полезные IT-решения</h2>
-          <p className="text-lg">Более 25 лет на рынке информационных технологий</p>
+          <p className="text-lg">
+            Более 25 лет на рынке информационных технологий
+          </p>
         </div>
         <div className="grid grid-cols-2 gap-3 w-3/4">
           <button
@@ -32,10 +34,7 @@ const Hero = ({ onCTAClick }) => {
           >
             Стать клиентом
           </button>
-          <button
-            className="btn btn-outline border-neutral backdrop-blur hover:bg-slate-900/25 text-white py-6 h-auto rounded-2xl pointer-events-auto"
-            onClick={onCTAClick}
-          >
+          <button className="btn btn-outline border-neutral backdrop-blur hover:bg-slate-900/25 text-white py-6 h-auto rounded-2xl pointer-events-auto">
             Больше о нас
           </button>
         </div>

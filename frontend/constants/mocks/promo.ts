@@ -32,38 +32,6 @@ const PROMO_MOCK = {
       },
     ],
   },
-  partners: {
-    title: 'Наши партнеры',
-    items: [
-      { id: 1, title: null, img: true },
-      { id: 2, title: null, img: true },
-      { id: 3, title: null, img: true },
-      { id: 4, title: null, img: true },
-      { id: 5, title: null, img: true },
-      { id: 6, title: null, img: true },
-      { id: 7, title: null, img: true },
-      { id: 8, title: null, img: true },
-    ],
-  },
-  achievements: {
-    title: 'Достижения и награды',
-    description:
-      'Проекты "Космос-2" стали победителями и призерами крупнейших конкурсов разработчиков России',
-    items: [
-      { id: 1, title: 'Золотое приложение', img: true },
-      { id: 2, title: 'Золотой сайт', img: true },
-      { id: 3, title: 'Работодатель года', img: true },
-      { id: 4, title: '#1 Рейтинг Путина', img: true },
-    ],
-  },
-  news: {
-    items: [
-      { id: 1, title: 'Long Long Long Long News Name 1', img: true },
-      { id: 2, title: 'Wow it a News 2', img: true },
-      { id: 3, title: 'Long Long Long Long lnOG long News Name 3', img: true },
-      { id: 4, title: 'Cool News 4', img: true },
-    ],
-  },
 };
 
 export default PROMO_MOCK;
