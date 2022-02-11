@@ -1,7 +1,8 @@
 from rest_framework import viewsets
 
 from main.models.products import *
-from main.serializers.products import ProductsCategoryListSerializers, ProductsCategoryRetrieveSerializers
+from main.serializers.products import ProductsCategoryListSerializers, ProductsCategoryRetrieveSerializers, \
+    ProductSerializer
 
 
 class ProductCategoriesViewSet(viewsets.ModelViewSet):
@@ -15,3 +16,8 @@ class ProductCategoriesViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         return self.serializers.get(self.action,
                                     self.serializers['default'])
+
+
+class ProductsViewSet(viewsets.ModelViewSet):
+    serializer_class = ProductSerializer
+    queryset = Products.objects.all()
