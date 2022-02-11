@@ -4,13 +4,14 @@ from main.models.base import BaseABSModel, ServiceMixin
 
 class Contacts(BaseABSModel, ServiceMixin):
     CHOICES = (
+        ('text', 'текст'),
         ('phone', 'номер телефона'),
         ('link', 'ссылка'),
         ('mail', 'почта')
     )
     title = models.CharField(verbose_name='Название', max_length=155, default='', blank=True)
     type = models.CharField(verbose_name='Тип', max_length=300, choices=CHOICES)
-    link = models.CharField(verbose_name='Ссылка', max_length=155, default='', blank=True)
+    значение = models.CharField(verbose_name='Значение', max_length=155, default='', blank=True)
 
     def __str__(self):
         return self.title
