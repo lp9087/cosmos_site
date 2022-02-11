@@ -11,12 +11,12 @@ const RegionsMap = () => {
 
   useEffect(() => {
     fetch('/rf_subjects.geojson')
-      .then((resp) => resp.json())
-      .then((json) => setGeoData(json))
-      .catch((err) => console.error('Could not load data', err));
+      .then(resp => resp.json())
+      .then(json => setGeoData(json))
+      .catch(err => console.error('Could not load data', err));
   }, []);
 
-  const onHover = useCallback((event) => {
+  const onHover = useCallback(event => {
     const {
       features,
       point: { x, y },
@@ -29,9 +29,8 @@ const RegionsMap = () => {
 
   useEffect(() => {
     if (!geoData) return;
-    const [minLng, minLat, maxLng, maxLat] = bbox(geoData);
+    // const [minLng, minLat, maxLng, maxLat] = bbox(geoData);
 
-    console.log(minLng, minLat, maxLng, maxLat);
     // if (feature) {
     //   // calculate the bounding box of the feature
     //   const [minLng, minLat, maxLng, maxLat] = bbox(feature);

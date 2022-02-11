@@ -7,7 +7,6 @@ import { BaseScreen } from './screens';
 const Footer = ({ products, productCategories, services }) => {
   const { email, phone1, phone2, address, socials, copyright } = FOOTER_MOCK;
 
-  console.log(products, productCategories, services);
   return (
     <BaseScreen
       className="gap-16 pb-16"

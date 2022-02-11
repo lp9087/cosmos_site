@@ -22,7 +22,6 @@ const BadgeListScreen = ({ title, description, items = [], ...rest }) => {
 export default BadgeListScreen;
 
 const BadgeItem = ({ title, description, image, link }) => {
-  console.log(image);
   const content = (
     <>
       {image && (

@@ -22,7 +22,6 @@ const PromoPage = ({
 }) => {
   const [modal, setModal] = useState(false);
 
-  console.log(services);
   return (
     <Layout
       products={products}

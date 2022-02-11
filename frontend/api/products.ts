@@ -2,7 +2,7 @@ import api from 'api';
 
 const productsApi = {
   getProducts() {
-    return api('/api/products/');
+    return api('/api/products');
   },
 };
 
