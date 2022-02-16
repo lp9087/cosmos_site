@@ -1,8 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import ReactMapGL, { Layer, Source } from 'react-map-gl';
-import bbox from '@turf/bbox';
-
-import BASE_MAP_STYLE from '@/lib/mapbox/map-style-basic-v8.json';
 
 const RegionsMap = () => {
   const mapRef = useRef();
@@ -22,28 +19,9 @@ const RegionsMap = () => {
       point: { x, y },
     } = event;
     const hoveredFeature = features && features[0];
-    // debugger;
 
     setHoverInfo(hoveredFeature ? { feature: hoveredFeature, x, y } : null);
   }, []);
-
-  useEffect(() => {
-    if (!geoData) return;
-    // const [minLng, minLat, maxLng, maxLat] = bbox(geoData);
-
-    // if (feature) {
-    //   // calculate the bounding box of the feature
-    //   const [minLng, minLat, maxLng, maxLat] = bbox(feature);
-
-    //   mapRef.current.fitBounds(
-    //     [
-    //       [-180, 41.188865661621094],
-    //       [180.00000000000034, 81.85732269287121],
-    //     ],
-    //     { padding: 40, duration: 1000 }
-    //   );
-    // }
-  }, [geoData]);
 
   return (
     <div className="h-[600px]">

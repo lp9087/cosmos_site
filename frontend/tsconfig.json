@@ -19,7 +19,9 @@
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
       "@/assets/*": ["assets/*"],
-      "@/constants/*": ["constants/*"]
+      "@/constants/*": ["constants/*"],
+      "@/api/*": ["api/*"],
+      "@/hooks/*": ["hooks/*"]
     }
   },
   "include": [

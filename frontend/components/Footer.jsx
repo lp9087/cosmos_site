@@ -3,11 +3,10 @@ import Link from 'next/link';
 import { BaseScreen } from './screens';
 
 const Footer = ({ contacts, products, productCategories, services }) => {
+  const getContact = name => contacts.find(x => x.title === name)?.values || '';
+
   return (
-    <BaseScreen
-      className="gap-16 pb-16"
-      container="w-full bg-sky-900 text-white"
-    >
+    <BaseScreen className="gap-16 pb-16" container="w-full bg-sky-900 text-white">
       <div className="grid grid-cols-4 gap-6 gap-y-12">
         <About
           items={[
@@ -17,35 +16,32 @@ const Footer = ({ contacts, products, productCategories, services }) => {
           ]}
         />
         <ContactUs
-          email={contacts.find(x => x.title === 'email').values}
-          phone1={contacts.find(x => x.title === 'phone1').values}
-          phone2={contacts.find(x => x.title === 'phone2').values}
-          inst={contacts.find(x => x.title === 'inst').values}
-          vk={contacts.find(x => x.title === 'vk').values}
-          fb={contacts.find(x => x.title === 'fb').values}
+          email={getContact('email')}
+          phone1={getContact('phone1')}
+          phone2={getContact('phone2')}
+          inst={getContact('inst')}
+          vk={getContact('vk')}
+          fb={getContact('fb')}
         />
-        {productCategories.map(x => {
-          const curProducts = products.filter(prod =>
-            prod.categories.includes(x.id)
-          );
-          return (
-            <div key={x.id} className="flex flex-col gap-4">
-              <h2 className="text-lg font-semibold">{x.title}</h2>
-              <div className="flex flex-col gap-2">
-                {curProducts.map(x => (
+        {productCategories.map(x => (
+          <div key={x.id} className="flex flex-col gap-4">
+            <h2 className="text-lg font-semibold">{x.title}</h2>
+            <div className="flex flex-col gap-2">
+              {products
+                .filter(prod => prod.categories.includes(x.id))
+                .map(x => (
                   <Link key={x.id} href="/products/slug" passHref>
                     <a>{x.title}</a>
                   </Link>
                 ))}
-              </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
         <Services items={services} />
       </div>
       <div className="flex justify-between">
-        <span>{contacts.find(x => x.title === 'copyright').values}</span>
-        <address>{contacts.find(x => x.title === 'address').values}</address>
+        <span>{getContact('copyright')}</span>
+        <address>{getContact('address')}</address>
       </div>
     </BaseScreen>
   );
@@ -92,7 +88,7 @@ const ContactUs = ({ email, phone1, phone2, inst, vk, fb }) => (
     </div>
     <div className="flex gap-3">
       <a href={inst} className="underline">
-        INSTAGRAM
+        INSTA
       </a>
       <a href={vk} className="underline">
         VK
