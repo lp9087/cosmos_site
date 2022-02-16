@@ -21,7 +21,7 @@ class ProductCategoriesViewSet(viewsets.ModelViewSet):
 
 class ProductsViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
-    queryset = ProductPages.objects.all()
+    queryset = Products.objects.all()
 
 
 class ProductsPagesViewSet(viewsets.ModelViewSet):
