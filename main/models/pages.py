@@ -48,16 +48,17 @@ class ServicePages(Pages):
 
 
 class Blocks(PolymorphicModel, ServiceMixin):
-    CHOICES = (
-        ('big', 'большой'),
-        ('average', 'средний'),
-        ('small', 'маленький')
+    SPACING = (
+        (None, 'без отступа'),
+        ('sm', 'маленький'),
+        ('md', 'средний'),
+        ('lg', 'большой'),
     )
 
     title = models.CharField(verbose_name='Заголовок', max_length=64, default='', blank=True)
     position = models.PositiveSmallIntegerField(verbose_name='Позиция', null=True)
     page = models.ForeignKey(Pages, verbose_name='Страница', on_delete=models.CASCADE)
-    space = models.CharField(verbose_name='Отступ', max_length=150, choices=CHOICES)
+    spacing = models.CharField(verbose_name='Отступ', max_length=150, choices=SPACING, default='md', blank=True)
 
     class Meta:
         verbose_name = 'блок'
