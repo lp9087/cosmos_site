@@ -5,8 +5,8 @@ from nested_admin.nested import *
 from nested_admin.polymorphic import *
 from main.models.feedback import Feedback
 from main.models.achievements import Achievements
-from main.models.pages import Blocks, BlockImages, BlockText, Pages, Image, BlockIcons, Icons, ProductPages, \
-    ServicePages
+from main.models.pages import Blocks, BlockImages, BlockText, Pages, Image, Icons, ProductPages, \
+    ServicePages, BlockCards, BlockCTA
 from main.models.menu import MenuItems
 from main.models.products import Products, ProductCategories, Services
 from main.models.partners import Partners, PartnersTypes
@@ -50,14 +50,16 @@ class BlockInline(NestedStackedPolymorphicInline):
         model = BlockImages
         inlines = (ImageInline,)
 
-    class IconBlockInline(NestedStackedPolymorphicInline.Child):
-        model = BlockIcons
-        filter_horizontal = ('icons',)
+    class CardsBlockInline(NestedStackedPolymorphicInline.Child):
+        model = BlockCards
+
+    class CTABlockInline(NestedStackedPolymorphicInline.Child):
+        model = BlockCTA
 
     model = Blocks
     extra = 0
     sortable_field_name = "position"
-    child_inlines = (TextInline, ImageBlockInline, IconBlockInline)
+    child_inlines = (TextInline, ImageBlockInline, CardsBlockInline, CTABlockInline)
 
 
 @admin.register(Pages, ProductPages, ServicePages)

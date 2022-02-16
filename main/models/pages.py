@@ -32,6 +32,7 @@ class Pages(BaseABSModel):
 
 class ProductPages(Pages):
     product = models.ForeignKey(Products, verbose_name='Продукт', on_delete=models.CASCADE)
+    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     class Meta:
         verbose_name = 'страница продукта'
@@ -47,9 +48,16 @@ class ServicePages(Pages):
 
 
 class Blocks(PolymorphicModel, ServiceMixin):
+    CHOICES = (
+        ('big', 'большой'),
+        ('average', 'средний'),
+        ('small', 'маленький')
+    )
+
     title = models.CharField(verbose_name='Заголовок', max_length=64, default='', blank=True)
     position = models.PositiveSmallIntegerField(verbose_name='Позиция', null=True)
     page = models.ForeignKey(Pages, verbose_name='Страница', on_delete=models.CASCADE)
+    space = models.CharField(verbose_name='Отступ', max_length=150, choices=CHOICES)
 
     class Meta:
         verbose_name = 'блок'
@@ -83,11 +91,18 @@ class BlockText(Blocks):
         verbose_name_plural = 'текстовые блоки'
 
 
-class BlockIcons(Blocks):
-    icons = models.ManyToManyField(Icons, verbose_name='Иконки')
+class BlockCards(Blocks):
+    description = models.TextField(verbose_name='Описание', default='', blank=True)
+    link = models.URLField(max_length=200, verbose_name='Ссылка на сайт')
 
     class Meta:
-        verbose_name = 'блок с иконками'
-        verbose_name_plural = 'блоки с иконками'
+        verbose_name = 'блок с карточками'
+        verbose_name_plural = 'блоки с карточками'
 
 
+class BlockCTA(Blocks):
+    ctaText = models.CharField(verbose_name='Текст вызова', max_length=225, default='', blank=True)
+
+    class Meta:
+        verbose_name = 'блок кнопки для связи'
+        verbose_name_plural = 'блоки кнопки для связи'
