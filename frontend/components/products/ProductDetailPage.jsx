@@ -13,7 +13,9 @@ const ProductDetailPage = ({
   services,
 }) => {
   const [modal, setModal] = useState(false);
-  const content = useBlocks(product.blocks);
+  const content = useBlocks(product.blocks, {
+    BlockCTA: { onCTAClick: () => setModal(true) },
+  });
 
   return (
     <Layout
@@ -32,11 +34,6 @@ const ProductDetailPage = ({
         onCTAClick={() => setModal(true)}
       />
       {content}
-      <CTAJumbotron
-        className="mb-16"
-        ctaText="Связаться с нами"
-        onCTAClick={() => setModal(true)}
-      />
       <ContactModal isOpen={modal} onClose={() => setModal(false)} />
     </Layout>
   );

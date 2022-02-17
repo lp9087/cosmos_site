@@ -1,7 +1,6 @@
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 
-import PRODUCT_DETAIL_MOCK from '@/constants/mocks/productDetail';
 import {
   contactsApi,
   productCategoriesApi,
@@ -17,7 +16,7 @@ export async function getStaticPaths() {
 
   // Get the paths we want to pre-render based on posts
   const paths = res.data.map(page => ({
-    params: { slug: page.slug },
+    params: { slug: page.id },
   }));
 
   // We'll pre-render only these paths at build time.
@@ -25,12 +24,12 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-const serializeBlocks = async blocks => {
+const deserializeBlocks = async blocks => {
   const promises = blocks.map(async x => {
-    if (x.type === 'text') {
-      const { content, ...rest } = x;
-      const { content: matterContent, data } = matter(content);
-      const source = await serialize(matterContent, { scope: data });
+    if (x.resourcetype === 'BlockText') {
+      const { text, ...rest } = x;
+      const { content, data } = matter(text);
+      const source = await serialize(content, { scope: data });
 
       return { ...rest, source };
     }
@@ -41,9 +40,11 @@ const serializeBlocks = async blocks => {
   return Promise.all(promises);
 };
 
-export async function getStaticProps() {
-  const { title, description, blocks } = PRODUCT_DETAIL_MOCK;
-  const serializedBlocks = await serializeBlocks(blocks);
+export async function getStaticProps({ params: { slug } }) {
+  // const { title, description, blocks } = PRODUCT_DETAIL_MOCK;
+  const { data: productData } = await productsApi.getProduct({ slug });
+  const { data: blocks } = await productsApi.getProductPageBlocks({ slug });
+  const serializedBlocks = await deserializeBlocks(blocks);
 
   const contacts = await contactsApi.getContacts();
   const productCategories = await productCategoriesApi.getProductCategories();
@@ -53,8 +54,8 @@ export async function getStaticProps() {
   return {
     props: {
       product: {
-        title,
-        description,
+        title: productData.title,
+        description: productData.description,
         blocks: serializedBlocks,
       },
       contacts: contacts.data,
