@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 
-from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners, Achievements, Feedback
+from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners, Achievements, Feedback, \
+    ServicePages
 from main.serializers.achievements import AchievementsSerializer
 from main.serializers.career import VacancySerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
 from main.serializers.feedback import FeedbackSerializer
@@ -66,6 +67,15 @@ class ServicesViewSet(viewsets.ModelViewSet):
     http://127.0.0.1:8000/api/services/
     """
     queryset = Services.objects.all()
+    serializer_class = ServicesSerializer
+
+
+class ServicesPagesViewSet(viewsets.ModelViewSet):
+    """
+    Страницы услуг
+    http://127.0.0.1:8000/api/services-pages/
+    """
+    queryset = ServicePages.objects.all()
     serializer_class = ServicesSerializer
 
 

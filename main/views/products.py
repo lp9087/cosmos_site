@@ -35,5 +35,5 @@ class BlocksPagesViewSet(viewsets.ModelViewSet):
     serializer_class = BlocksPolymorphicSerializers
 
     def get_queryset(self):
-        queryset = Blocks.objects.filter(page_id=self.kwargs.get('product_pages_pk'))
+        queryset = Blocks.objects.filter(page_id=[*self.kwargs.values()][0])
         return queryset
