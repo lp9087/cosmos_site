@@ -93,12 +93,23 @@ class BlockText(Blocks):
 
 
 class BlockCards(Blocks):
-    description = models.TextField(verbose_name='Описание', default='', blank=True)
-    link = models.URLField(max_length=200, verbose_name='Ссылка на сайт')
 
     class Meta:
         verbose_name = 'блок с карточками'
         verbose_name_plural = 'блоки с карточками'
+
+
+class DescriptionCards(models.Model):
+    name_card = models.CharField(verbose_name='Название карточки', max_length=64, default='', blank=True)
+    position = models.PositiveSmallIntegerField(verbose_name='Позиция', null=True)
+    block = models.ForeignKey(BlockCards, related_name='block_card', on_delete=models.CASCADE)
+    description = models.TextField(verbose_name='Описание', default='', blank=True)
+    link = models.URLField(max_length=200, verbose_name='Ссылка на сайт')
+
+    class Meta:
+        verbose_name = 'карточка'
+        verbose_name_plural = 'карточки'
+        ordering = ["position"]
 
 
 class BlockCTA(Blocks):

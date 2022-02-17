@@ -6,7 +6,7 @@ from nested_admin.polymorphic import *
 from main.models.feedback import Feedback
 from main.models.achievements import Achievements
 from main.models.pages import Blocks, BlockImages, BlockText, Pages, Image, Icons, ProductPages, \
-    ServicePages, BlockCards, BlockCTA
+    ServicePages, BlockCards, BlockCTA, DescriptionCards
 from main.models.menu import MenuItems
 from main.models.products import Products, ProductCategories, Services
 from main.models.partners import Partners, PartnersTypes
@@ -39,6 +39,12 @@ class ImageInline(NestedStackedInline):
     extra = 0
 
 
+class CardsInline(NestedStackedInline):
+    model = DescriptionCards
+    sortable_field_name = 'position'
+    extra = 0
+
+
 class BlockInline(NestedStackedPolymorphicInline):
     class TextInline(NestedStackedPolymorphicInline.Child):
         model = BlockText
@@ -52,6 +58,7 @@ class BlockInline(NestedStackedPolymorphicInline):
 
     class CardsBlockInline(NestedStackedPolymorphicInline.Child):
         model = BlockCards
+        inlines = (CardsInline,)
 
     class CTABlockInline(NestedStackedPolymorphicInline.Child):
         model = BlockCTA

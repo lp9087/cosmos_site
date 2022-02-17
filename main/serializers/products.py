@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_polymorphic.serializers import PolymorphicSerializer
 
 
-from main.models import ProductPages, Blocks, BlockImages, Image, BlockCards, BlockText, BlockCTA
+from main.models import ProductPages, Blocks, BlockImages, Image, BlockCards, BlockText, BlockCTA, DescriptionCards
 from main.models.products import ProductCategories, Products
 
 
@@ -11,7 +11,10 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Products
-        fields = ['id', 'title', 'developer', 'version', 'categories']
+        fields = ['id', 'title', 'developer', 'version', 'categories', 'slug']
+        extra_kwargs = {
+             'url': {'lookup_field': 'slug'}
+        }
 
 
 class ProductsCategoryRetrieveSerializers(serializers.ModelSerializer):
@@ -34,11 +37,6 @@ class ProductPagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductPages
         fields = '__all__'
-        # lookup_field = 'slug'
-        # extra_kwargs = {
-        #     'url': {'lookup_field': 'slug'}
-        #
-        # }
 
 
 class BlocksImagesSerializer(serializers.ModelSerializer):
@@ -52,19 +50,20 @@ class BlockImagesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = BlockImages
-        fields = ('id', 'title', 'images')
+        fields = ('id', 'spacing', 'title', 'images', 'page')
 
 
-class BlockCardsSerializer(serializers.ModelSerializer):
-
+class DescriptionCardsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = BlockCards
+        model = DescriptionCards
         fields = '__all__'
 
 
-class BlocksSerializers(serializers.ModelSerializer):
+class BlockCardsSerializer(serializers.ModelSerializer):
+    block_card = DescriptionCardsSerializer(many=True, read_only=True)
+
     class Meta:
-        model = Blocks
+        model = BlockCards
         fields = '__all__'
 
 
