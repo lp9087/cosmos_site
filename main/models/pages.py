@@ -32,7 +32,7 @@ class Pages(BaseABSModel):
 
 class ProductPages(Pages):
     product = models.ForeignKey(Products, verbose_name='Продукт', on_delete=models.CASCADE)
-    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
+    description = models.TextField(verbose_name='Описание', default='', blank=True)
 
     class Meta:
         verbose_name = 'страница продукта'
@@ -75,7 +75,7 @@ class BlockImages(Blocks):
 
 class Image(models.Model):
     position = models.PositiveSmallIntegerField(verbose_name='Позиция', null=True)
-    block = models.ForeignKey(BlockImages, on_delete=models.CASCADE)
+    block = models.ForeignKey(BlockImages, related_name='images', on_delete=models.CASCADE)
     img = models.ImageField(upload_to='images/')
 
     class Meta:

@@ -1,9 +1,9 @@
 from rest_framework import viewsets
 
-from main.models import ProductPages
+from main.models import ProductPages, Blocks, Pages, BlockImages, Image
 from main.models.products import *
 from main.serializers.products import ProductsCategoryListSerializers, ProductsCategoryRetrieveSerializers, \
-    ProductSerializer, ProductPagesSerializer
+    ProductSerializer, ProductPagesSerializer, BlocksSerializers, BlocksPolymorphicSerializers
 
 
 class ProductCategoriesViewSet(viewsets.ModelViewSet):
@@ -27,6 +27,13 @@ class ProductsViewSet(viewsets.ModelViewSet):
 class ProductsPagesViewSet(viewsets.ModelViewSet):
     serializer_class = ProductPagesSerializer
     queryset = ProductPages.objects.all()
-    lookup_field = 'slug'
+#     lookup_field = 'slug'
 
 
+class BlocksPagesViewSet(viewsets.ModelViewSet):
+    queryset = Blocks.objects.all()
+    serializer_class = BlocksPolymorphicSerializers
+
+    def get_queryset(self):
+        queryset = Blocks.objects.filter(page_id=self.kwargs.get('product_pages_pk'))
+        return queryset
