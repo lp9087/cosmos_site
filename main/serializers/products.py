@@ -11,11 +11,11 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Products
-        fields = ('id', 'title', 'developer', 'version', 'categories',)  # 'slug'
-        # lookup_field = 'slug'
-        # extra_kwargs = {
-        #      'url': {'lookup_field': 'slug'}
-        # }
+        fields = ('id', 'title', 'developer', 'version', 'categories', 'slug')  # 'slug'
+        lookup_field = 'slug'
+        extra_kwargs = {
+             'url': {'lookup_field': 'slug'}
+        }
 
 
 class ProductsCategoryRetrieveSerializers(serializers.ModelSerializer):
@@ -35,16 +35,16 @@ class ProductsCategoryListSerializers(serializers.ModelSerializer):
 
 class ProductPagesSerializer(serializers.ModelSerializer):
     # product = serializers.SlugField(max_length=50, min_length=None, allow_blank=False)
-    # URL = ProductSerializer(many=True, read_only=True)
+    # url = ProductSerializer(many=True, read_only=True)
 
     class Meta:
         model = ProductPages
-        fields = '__all__'
-        # fields = ('product', 'title', 'id', 'URL')
-        # lookup_field = 'product'
+        # fields = '__all__'
+        fields = ('product', 'title', 'id', )  # 'url'
+        # lookup_field = 'url'
         # extra_kwargs = {
-        #     'url': {'lookup_field': 'product'}
-        # #
+        #     'url': {'lookup_field': 'slug'}
+        #
         # }
 
 

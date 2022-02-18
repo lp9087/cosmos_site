@@ -17,6 +17,8 @@ router.register('partners_types', PartnersTypesViewSet)
 router.register('partners', PartnerViewSet)
 router.register('product-categories', ProductCategoriesViewSet)
 router.register('products', ProductsViewSet)
+products_router = routers.NestedSimpleRouter(router, 'products', lookup='products')
+products_router.register('products-pages', ProductsPagesViewSet, basename='product_pages')
 router.register('products-pages', ProductsPagesViewSet)
 pages_router_products = routers.NestedSimpleRouter(router, 'products-pages', lookup='product_pages')
 pages_router_products.register('blocks-pages', BlocksPagesViewSet, basename='blocks_pages')
@@ -30,6 +32,7 @@ router.register('feedback', FeedbackViewSet)
 urlpatterns = [
     path('api/uploader/', martor_views.markdown_uploader, name='markdown_uploader_page'),
     path('api/', include(router.urls)),
+    path('api/', include(products_router.urls)),
     path('api/', include(pages_router_products.urls)),
     path('api/', include(pages_router_services.urls)),
 ]
