@@ -28,11 +28,10 @@ class ProductsViewSet(viewsets.ModelViewSet):
 class ProductsPagesViewSet(viewsets.ModelViewSet):
     serializer_class = ProductPagesSerializer
     queryset = ProductPages.objects.all()
-    # lookup_field = 'product'
 
     def get_queryset(self):
-        queryset = ProductPages.objects.filter(product_id='e0520feb-0418-46df-9f15-ff15ec530c26')
-        print(self.kwargs.get('products__pk'))
+        product = Products.objects.get(slug=self.kwargs.get('products_slug'))
+        queryset = ProductPages.objects.filter(product_id=product.id)
         return queryset
 
 
