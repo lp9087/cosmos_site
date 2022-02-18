@@ -16,6 +16,7 @@ class Products(BaseABSModel, ServiceMixin):
     categories = models.ManyToManyField(ProductCategories, verbose_name='Категории', blank=True, related_name='products')
     developer = models.CharField(verbose_name='Разработчик продукта', max_length=125, default='', blank=True)
     version = models.CharField(verbose_name='Версия продукта', max_length=64, default='', blank=True)
+    # slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     def __str__(self):
         return self.title

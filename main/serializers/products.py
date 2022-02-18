@@ -11,10 +11,11 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Products
-        fields = ['id', 'title', 'developer', 'version', 'categories', 'slug']
-        extra_kwargs = {
-             'url': {'lookup_field': 'slug'}
-        }
+        fields = ('id', 'title', 'developer', 'version', 'categories',)  # 'slug'
+        # lookup_field = 'slug'
+        # extra_kwargs = {
+        #      'url': {'lookup_field': 'slug'}
+        # }
 
 
 class ProductsCategoryRetrieveSerializers(serializers.ModelSerializer):
