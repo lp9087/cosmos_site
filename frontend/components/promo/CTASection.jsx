@@ -1,9 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import { ParticlesBG } from '@/components/index';
-
-import AnimatedCube from './AnimatedCube';
+import Cube from '@/assets/Cube.gif';
 
 const CTASection = ({ onCTAClick }) => {
   return (
@@ -46,8 +46,8 @@ const Hero = ({ onCTAClick }) => {
           </Link>
         </div>
       </div>
-      <div className="flex items-center -mt-24 ml-auto mr-64">
-        <AnimatedCube className="" />
+      <div className="flex items-center m-2">
+        <Image src={Cube} layout="intrinsic" alt="cube" />
       </div>
     </div>
   );
