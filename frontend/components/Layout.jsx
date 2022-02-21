@@ -11,7 +11,11 @@ const Layout = ({
 }) => {
   return (
     <main className="flex flex-col items-center">
-      <Navbar contacts={contacts} />
+      <Navbar
+        products={products}
+        productCategories={productCategories}
+        contacts={contacts}
+      />
       <div className={`w-full -mt-16 ${className ?? ''}`}>{children}</div>
       <Footer
         contacts={contacts}
