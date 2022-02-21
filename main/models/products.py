@@ -40,6 +40,7 @@ class Services(BaseABSModel, ServiceMixin):
     short_description = models.CharField(verbose_name='Краткое описание', max_length=255, default='', blank=True)
     full_description = models.TextField(verbose_name='Подробное описание', default='', blank=True)
     image = models.ImageField(upload_to="services_images/", blank=True, verbose_name='Изображение')
+    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     def __str__(self):
         return self.title

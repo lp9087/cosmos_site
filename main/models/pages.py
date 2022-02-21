@@ -31,7 +31,8 @@ class Pages(BaseABSModel):
 
 
 class ProductPages(Pages):
-    product = models.ForeignKey(Products, verbose_name='Продукт', on_delete=models.CASCADE)
+    product = models.ForeignKey(Products,
+                                verbose_name='Продукт', on_delete=models.CASCADE, related_name='product_pages')
     description = models.TextField(verbose_name='Описание', default='', blank=True)
 
     class Meta:
@@ -40,7 +41,7 @@ class ProductPages(Pages):
 
 
 class ServicePages(Pages):
-    service = models.ForeignKey(Services, verbose_name='Услуга', on_delete=models.CASCADE)
+    service = models.ForeignKey(Services, verbose_name='Услуга', on_delete=models.CASCADE, related_name='service_pages')
 
     class Meta:
         verbose_name = 'страница услуги'
@@ -57,7 +58,7 @@ class Blocks(PolymorphicModel, ServiceMixin):
 
     title = models.CharField(verbose_name='Заголовок', max_length=64, default='', blank=True)
     position = models.PositiveSmallIntegerField(verbose_name='Позиция', null=True)
-    page = models.ForeignKey(Pages, verbose_name='Страница', on_delete=models.CASCADE)
+    page = models.ForeignKey(Pages, verbose_name='Страница', on_delete=models.CASCADE, related_name='blocks')
     spacing = models.CharField(verbose_name='Отступ', max_length=150, choices=SPACING, default='md', blank=True)
 
     class Meta:

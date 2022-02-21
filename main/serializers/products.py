@@ -7,47 +7,6 @@ from main.models import ProductPages, Blocks, BlockImages, Image, BlockCards, Bl
 from main.models.products import ProductCategories, Products
 
 
-class ProductSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Products
-        fields = ('id', 'title', 'developer', 'version', 'categories', 'slug')  # 'slug'
-        lookup_field = 'slug'
-        extra_kwargs = {
-             'url': {'lookup_field': 'slug'}
-        }
-
-
-class ProductsCategoryRetrieveSerializers(serializers.ModelSerializer):
-    products = ProductSerializer(read_only=True, many=True)
-
-    class Meta:
-        model = ProductCategories
-        fields = '__all__'
-
-
-class ProductsCategoryListSerializers(serializers.ModelSerializer):
-
-    class Meta:
-        model = ProductCategories
-        fields = ('id', 'title', 'image')
-
-
-class ProductPagesSerializer(serializers.ModelSerializer):
-    # product = serializers.SlugField(max_length=50, min_length=None, allow_blank=False)
-    # url = ProductSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = ProductPages
-        # fields = '__all__'
-        fields = ('product', 'title', 'id', )  # 'url'
-        # lookup_field = 'url'
-        # extra_kwargs = {
-        #     'url': {'lookup_field': 'slug'}
-        #
-        # }
-
-
 class BlocksSerializers(serializers.ModelSerializer):
     class Meta:
         model = Blocks
@@ -102,3 +61,39 @@ class BlocksPolymorphicSerializers(PolymorphicSerializer):
         BlockText: BlockTextSerializer,
         BlockCTA: BlockCTASerializer,
     }
+
+
+class ProductPagesSerializer(serializers.ModelSerializer):
+
+    blocks = BlocksPolymorphicSerializers(many=True, read_only=True)
+
+    class Meta:
+        model = ProductPages
+        fields = ('title', 'description', 'blocks')
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    product_pages = ProductPagesSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Products
+        fields = ('id', 'title', 'developer', 'version', 'categories', 'slug', 'product_pages')
+        lookup_field = 'slug'
+        extra_kwargs = {
+             'url': {'lookup_field': 'slug'}
+        }
+
+
+class ProductsCategoryRetrieveSerializers(serializers.ModelSerializer):
+    products = ProductSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = ProductCategories
+        fields = '__all__'
+
+
+class ProductsCategoryListSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = ProductCategories
+        fields = ('id', 'title', 'image')
