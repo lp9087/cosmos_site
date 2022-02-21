@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 
-import { useSpacing } from '@/hooks/index';
+import useSpacing from '@/hooks/useSpacing';
 
 const BaseScreen = ({
   children,
