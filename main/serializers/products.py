@@ -72,12 +72,22 @@ class ProductPagesSerializer(serializers.ModelSerializer):
         fields = ('title', 'description', 'blocks')
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Products
+        fields = ('id', 'title', 'developer', 'version', 'categories', 'slug')
+        lookup_field = 'slug'
+        extra_kwargs = {
+             'url': {'lookup_field': 'slug'}
+        }
+
+
+class ProductRetrieveSerializer(serializers.ModelSerializer):
     product_pages = ProductPagesSerializer(many=True, read_only=True)
 
     class Meta:
         model = Products
-        fields = ('id', 'title', 'developer', 'version', 'categories', 'slug', 'product_pages')
+        fields = '__all__'
         lookup_field = 'slug'
         extra_kwargs = {
              'url': {'lookup_field': 'slug'}
@@ -85,7 +95,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class ProductsCategoryRetrieveSerializers(serializers.ModelSerializer):
-    products = ProductSerializer(read_only=True, many=True)
+    products = ProductListSerializer(read_only=True, many=True)
 
     class Meta:
         model = ProductCategories
