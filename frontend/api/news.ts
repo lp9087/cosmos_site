@@ -2,7 +2,7 @@ import api from 'api';
 
 const newsApi = {
   getNews() {
-    return api('/api/news');
+    return api('/api/news/');
   },
 };
 

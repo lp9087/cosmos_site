@@ -1,7 +1,12 @@
-const CTAJumbotron = ({ className, title, ctaText, onCTAClick }) => {
+import { useSpacing } from '@/hooks/index';
+
+const CTAJumbotron = ({ className, title, ctaText, onCTAClick, spacing }) => {
+  const containerSpacing = useSpacing(spacing, true);
+
   return (
     <div
-      className={`container mx-auto py-24 flex justify-center bg-teal-100/40
+      className={`container mx-auto flex justify-center py-24 bg-teal-100/40
+        ${containerSpacing}
         ${className ?? ''}`}
     >
       <div className="flex flex-col gap-8 items-center">

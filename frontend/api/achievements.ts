@@ -2,7 +2,7 @@ import api from 'api';
 
 const achievementsApi = {
   getAchievements() {
-    return api('/api/achievements');
+    return api('/api/achievements/');
   },
 };
 

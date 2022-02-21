@@ -10,7 +10,7 @@ const Footer = ({ contacts, products, productCategories, services }) => {
       <div className="grid grid-cols-4 gap-6 gap-y-12">
         <About
           items={[
-            { id: 1, title: 'О компании', link: '#' },
+            { id: 1, title: 'О компании', link: '/about' },
             { id: 2, title: 'Сотрудничество', link: '#' },
             { id: 3, title: 'Вакансии', link: '#' },
           ]}
@@ -30,7 +30,7 @@ const Footer = ({ contacts, products, productCategories, services }) => {
               {products
                 .filter(prod => prod.categories.includes(x.id))
                 .map(x => (
-                  <Link key={x.id} href="/products/slug" passHref>
+                  <Link key={x.id} href={`/products/${x.slug}`} passHref>
                     <a>{x.title}</a>
                   </Link>
                 ))}

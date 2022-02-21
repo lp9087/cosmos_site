@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 
+import { useSpacing } from '@/hooks/index';
+
 const BaseScreen = ({
   children,
   className,
@@ -12,14 +14,15 @@ const BaseScreen = ({
     threshold: 0.4,
     triggerOnce: true,
   });
+  const containerSpacing = useSpacing(spacing);
 
   const hiddenStyles = 'invisible';
 
   return (
     <div ref={ref} className={`flex ${container} `}>
       <Animated
-        className={`container mx-auto flex flex-col justify-center
-          px-16 ${spacing === 'lg' ? 'py-32' : spacing === 'md' ? 'py-16' : null}
+        className={`container mx-auto px-16 flex flex-col justify-center
+          ${containerSpacing}
           ${className ?? ''} ${animated && !inView ? hiddenStyles : 'visible'}`}
       >
         {children}

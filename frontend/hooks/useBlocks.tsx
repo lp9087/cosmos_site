@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { CTAJumbotron } from '@/components/index';
 import { BadgeListScreen, MDTextScreen, SliderScreen } from '@/components/screens';
 
-type TBlockType = 'BlockText' | 'BlockImages' | 'BlockCTA';
+type TBlockType = 'BlockText' | 'BlockCards' | 'BlockImages' | 'BlockCTA';
 type TSpacing = 'lg' | 'md' | 'sm' | '';
 
 interface IBlock {
@@ -17,7 +17,7 @@ interface IBlock {
 
 const TYPE_TO_COMPONENT: Record<TBlockType, React.FC<any>> = {
   BlockText: MDTextScreen,
-  // cards: BadgeListScreen,
+  BlockCards: BadgeListScreen,
   BlockImages: SliderScreen,
   BlockCTA: CTAJumbotron,
 };

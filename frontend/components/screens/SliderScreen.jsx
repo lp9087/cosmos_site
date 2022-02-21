@@ -1,31 +1,28 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import BaseScreen from './BaseScreen';
 
-const SliderScreen = ({ title, content, ...rest }) => {
+const SliderScreen = ({ title, images, ...rest }) => {
   return (
     <BaseScreen className="gap-12" {...rest}>
       {title && <h2 className="font-bold text-4xl">{title}</h2>}
       <StyledSwiper
         slidesPerView={3}
         spaceBetween={30}
-        modules={[Navigation]} // items_count > 3
-        loop // items_count > 3
-        navigation // items_count > 3
+        modules={images.length > 3 ? [Navigation] : []}
+        loop={images.length > 3}
+        navigation={images.length > 3}
         //
-        alignCenter={false} // items_count < 3
+        alignCenter={images.length <= 3}
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        {/* <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide> */}
+        {images.map(x => (
+          <SwiperSlide key={x.id}>
+            <Image src={x.img} layout="fill" alt="" />
+          </SwiperSlide>
+        ))}
       </StyledSwiper>
     </BaseScreen>
   );
@@ -34,6 +31,8 @@ const SliderScreen = ({ title, content, ...rest }) => {
 export default SliderScreen;
 
 const StyledSwiper = styled(Swiper)`
+  --swiper-navigation-color: #fff;
+
   width: 100%;
   height: 100%;
   min-height: 300px;

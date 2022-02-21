@@ -2,7 +2,7 @@ import api from 'api';
 
 const partnersApi = {
   getPartners() {
-    return api('/api/partners');
+    return api('/api/partners/');
   },
 };
 

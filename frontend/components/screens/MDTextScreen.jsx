@@ -50,6 +50,7 @@ const ResponsiveImage = ({ src, ...rest }) => (
       src={src.startsWith('/') ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${src}` : src}
       layout="fill"
       objectFit="contain"
+      alt=""
       {...rest}
     />
   </div>

@@ -9,7 +9,7 @@ export interface FeedpackPayload {
 
 const feedpackApi = {
   sendFeedback({ name, comment, phone, email }: FeedpackPayload) {
-    return api('/api/feedback', {
+    return api('/api/feedback/', {
       method: 'POST',
       data: {
         full_name: name,

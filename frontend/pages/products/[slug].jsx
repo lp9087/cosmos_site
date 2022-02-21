@@ -12,12 +12,10 @@ import { ProductDetailPage } from '@/components/products';
 export default ProductDetailPage;
 
 export async function getStaticPaths() {
-  const res = await productsApi.getProductPages();
+  const res = await productsApi.getProducts();
 
   // Get the paths we want to pre-render based on posts
-  const paths = res.data.map(page => ({
-    params: { slug: page.id },
-  }));
+  const paths = res.data.map(x => ({ params: { slug: x.slug } }));
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
@@ -41,10 +39,9 @@ const deserializeBlocks = async blocks => {
 };
 
 export async function getStaticProps({ params: { slug } }) {
-  // const { title, description, blocks } = PRODUCT_DETAIL_MOCK;
   const { data: productData } = await productsApi.getProduct({ slug });
-  const { data: blocks } = await productsApi.getProductPageBlocks({ slug });
-  const serializedBlocks = await deserializeBlocks(blocks);
+  const pageData = productData.product_pages[0];
+  const serializedBlocks = await deserializeBlocks(pageData.blocks);
 
   const contacts = await contactsApi.getContacts();
   const productCategories = await productCategoriesApi.getProductCategories();
@@ -54,8 +51,8 @@ export async function getStaticProps({ params: { slug } }) {
   return {
     props: {
       product: {
-        title: productData.title,
-        description: productData.description,
+        title: pageData.title,
+        description: pageData.description,
         blocks: serializedBlocks,
       },
       contacts: contacts.data,

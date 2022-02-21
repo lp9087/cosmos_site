@@ -6,16 +6,10 @@ interface IDetailPayload {
 
 const productsApi = {
   getProducts() {
-    return api('/api/products');
-  },
-  getProductPages() {
-    return api('/api/products-pages');
+    return api('/api/products/');
   },
   getProduct({ slug }: IDetailPayload) {
-    return api(`/api/products-pages/${slug}/`);
-  },
-  getProductPageBlocks({ slug }: IDetailPayload) {
-    return api(`/api/products-pages/${slug}/blocks-pages/`);
+    return api(`/api/products/${slug}/`);
   },
 };
 
