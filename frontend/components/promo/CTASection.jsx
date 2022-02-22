@@ -46,7 +46,7 @@ const Hero = ({ onCTAClick }) => {
           </Link>
         </div>
       </div>
-      <div className="flex items-center m-2">
+      <div className="flex items-center mx-auto">
         <Image src={Cube} layout="intrinsic" alt="cube" />
       </div>
     </div>
