@@ -1,4 +1,3 @@
-from django.template.defaultfilters import slugify
 from rest_framework import serializers
 from rest_polymorphic.serializers import PolymorphicSerializer
 

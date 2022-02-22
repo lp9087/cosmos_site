@@ -1,5 +1,4 @@
 from rest_framework import viewsets
-
 from main.models.products import *
 from main.serializers.products import ProductsCategoryListSerializers, ProductsCategoryRetrieveSerializers, \
     ProductListSerializer, ProductRetrieveSerializer
@@ -24,11 +23,9 @@ class ProductsViewSet(viewsets.ModelViewSet):
         'retrieve': ProductRetrieveSerializer,
         'default': ProductRetrieveSerializer
     }
-
     queryset = Products.objects.all()
     lookup_field = 'slug'
-    
+
     def get_serializer_class(self):
         return self.serializers.get(self.action,
                                     self.serializers['default'])
-

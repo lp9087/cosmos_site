@@ -8,16 +8,16 @@ from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
 from main.serializers.services import ServicesSerializer
 
 
-class NewsViewSet(viewsets.ModelViewSet):
+class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    Вакансии
+    Новости
     http://127.0.0.1:8000/api/news/
     """
     queryset = News.objects.all()
     serializer_class = NewsSerializer
 
 
-class VacancyViewSet(viewsets.ModelViewSet):
+class VacancyViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Вакансии
     http://127.0.0.1:8000/api/vacancy/
@@ -35,7 +35,7 @@ class ResumeViewSet(viewsets.ModelViewSet):
     serializer_class = ResumeSerializer
 
 
-class ContactsViewSet(viewsets.ModelViewSet):
+class ContactsViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Контакты
     http://127.0.0.1:8000/api/contacts/
@@ -44,7 +44,7 @@ class ContactsViewSet(viewsets.ModelViewSet):
     serializer_class = ContactsSerializer
 
 
-class PartnersTypesViewSet(viewsets.ModelViewSet):
+class PartnersTypesViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Типы партнеров
     """
@@ -52,7 +52,7 @@ class PartnersTypesViewSet(viewsets.ModelViewSet):
     serializer_class = PartnersTypesSerializer
 
 
-class PartnerViewSet(viewsets.ModelViewSet):
+class PartnerViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Партнеры
     """
@@ -60,7 +60,7 @@ class PartnerViewSet(viewsets.ModelViewSet):
     serializer_class = PartnerSerializer
 
 
-class ServicesViewSet(viewsets.ModelViewSet):
+class ServicesViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Услуги
     http://127.0.0.1:8000/api/services/
@@ -70,9 +70,9 @@ class ServicesViewSet(viewsets.ModelViewSet):
     lookup_field = 'slug'
 
 
-class AchievementsViewSet(viewsets.ModelViewSet):
+class AchievementsViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    Услуги
+    Достижения
     http://127.0.0.1:8000/api/achievements/
     """
     queryset = Achievements.objects.all()
@@ -81,7 +81,7 @@ class AchievementsViewSet(viewsets.ModelViewSet):
 
 class FeedbackViewSet(viewsets.ModelViewSet):
     """
-    Услуги
+    Обратная связь
     http://127.0.0.1:8000/api/feedback/
     """
     queryset = Feedback.objects.all()
