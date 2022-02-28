@@ -8,7 +8,7 @@ const BaseScreen = ({
   className,
   container = 'bg-slate-100 bg-opacity-25',
   animated,
-  spacing = 'lg',
+  spacing,
 }) => {
   const { ref, inView } = useInView({
     threshold: 0.4,

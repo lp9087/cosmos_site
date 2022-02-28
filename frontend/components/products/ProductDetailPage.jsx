@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import PROMO_CONFIG from '@/constants/promo';
 import { useBlocks } from '@/hooks/index';
-import { Layout, ParticlesBG, ContactModal, CTAJumbotron } from '@/components/index';
+import { Layout, ParticlesBG, ContactModal } from '@/components/index';
 
 const ProductDetailPage = ({
   product,

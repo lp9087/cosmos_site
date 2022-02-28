@@ -109,8 +109,8 @@ const ProductsMenu = ({ products, productCategories }) => {
   return (
     <div
       id="products-menu"
-      className="absolute w-[450px] top-16 left-1/2 -translate-x-1/2 bg-slate-100 text-black
-        px-8 py-6 grid grid-cols-2 gap-y-4
+      className="absolute w-[450px] top-16 left-1/2 -translate-x-1/2 bg-slate-100 text-black 
+        px-8 py-6 grid grid-cols-2 gap-x-6 gap-y-4 border border-slate-200/75 shadow-md
         before:absolute before:-top-[10px] before:left-1/2 before:-translate-x-1/2
         before:border-x-[10px] before:border-b-[10px] before:border-x-transparent before:border-b-slate-100
         transition-all"
