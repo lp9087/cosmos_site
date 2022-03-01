@@ -3,7 +3,6 @@ from django.db import models
 from martor.models import MartorField
 from polymorphic.models import PolymorphicModel
 
-from main.models.products import Products, Services
 from main.models.base import BaseABSModel, ServiceMixin
 
 
@@ -31,7 +30,7 @@ class Pages(BaseABSModel):
 
 
 class ProductPages(Pages):
-    product = models.ForeignKey(Products,
+    product = models.ForeignKey('main.Products',
                                 verbose_name='Продукт', on_delete=models.CASCADE, related_name='product_pages')
     description = models.TextField(verbose_name='Описание', default='', blank=True)
 
@@ -41,7 +40,7 @@ class ProductPages(Pages):
 
 
 class ServicePages(Pages):
-    service = models.ForeignKey(Services, verbose_name='Услуга', on_delete=models.CASCADE, related_name='service_pages')
+    service = models.ForeignKey('main.Services', verbose_name='Услуга', on_delete=models.CASCADE, related_name='service_pages')
 
     class Meta:
         verbose_name = 'страница услуги'

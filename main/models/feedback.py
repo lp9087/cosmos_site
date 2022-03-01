@@ -4,6 +4,7 @@ from main.validators import phone_number_validator
 
 
 class Feedback(BaseABSModel):
+    page_title = models.CharField(verbose_name='Название страницы', max_length=128, default='')
     full_name = models.CharField(verbose_name='ФИО', max_length=64, default='')
     phone = models.CharField(verbose_name='Контактный телефон', validators=[phone_number_validator],  max_length=20)
     email = models.EmailField(verbose_name='Email', default='', blank=True)

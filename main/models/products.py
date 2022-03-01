@@ -1,5 +1,6 @@
 from django.db import models
 
+from main.models.pages import ProductPages, ServicePages
 from main.models.base import BaseABSModel, BaseCategoryABSModel, ServiceMixin
 
 
@@ -21,18 +22,14 @@ class Products(BaseABSModel, ServiceMixin):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not ProductPages.objects.filter(product=self):
+            ProductPages.objects.create(product=self, title="Пусто")
+
     class Meta:
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
-
-
-# class ProductPages(Pages):
-#     product = models.ForeignKey(Products, verbose_name='Продукт', related_name='pages', on_delete=models.CASCADE)
-#     page = models.OneToOneField(Pages, verbose_name='Страница', parent_link=True, on_delete=models.CASCADE)
-#
-#     class Meta:
-#         verbose_name = 'страница продукта'
-#         verbose_name_plural = 'страницы продуктов'
 
 
 class Services(BaseABSModel, ServiceMixin):
@@ -45,15 +42,11 @@ class Services(BaseABSModel, ServiceMixin):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not ServicePages.objects.filter(service=self):
+            ServicePages.objects.create(service=self, title="Пусто")
+
     class Meta:
         verbose_name = 'услуга'
         verbose_name_plural = 'услуги'
-
-#
-# class ServicePages(Pages):
-#     product = models.ForeignKey(Services, verbose_name='Услуга', related_name='pages', on_delete=models.CASCADE)
-#     page = models.OneToOneField(Pages, verbose_name='Страница', parent_link=True, on_delete=models.CASCADE)
-#
-#     class Meta:
-#         verbose_name = 'страница услуги'
-#         verbose_name_plural = 'страницы услуг'
