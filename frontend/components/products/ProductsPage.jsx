@@ -7,7 +7,6 @@ import { Layout, ParticlesBG } from '@/components/index';
 import { BaseScreen } from '@/components/screens';
 
 const ProductsPage = ({ contacts, products, productCategories, services }) => {
-  console.log(products, productCategories);
   return (
     <Layout
       contacts={contacts}
@@ -74,14 +73,14 @@ const CategoryItem = ({ title, image, products }) => {
     <div className="flex flex-col gap-8">
       <div
         className="relative flex items-center px-12 py-16 border rounded-lg overflow-hidden
-      !bg-slate-900 !border-slate-600 text-white cursor-pointer"
+        bg-slate-900 border-slate-400/50 text-white"
       >
         {image && (
           <Image
             src={image}
             alt={title}
             layout="fill"
-            className="object-cover opacity-50 hover:opacity-70 transition-opacity"
+            className="object-cover opacity-70"
           />
         )}
         <div className="absolute pointer-events-none">
