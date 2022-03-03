@@ -74,6 +74,7 @@ class BlockImages(Blocks):
 
 
 class Image(models.Model):
+    name_image = models.CharField(verbose_name='Название картинки', max_length=120, default='', blank=True)
     position = models.PositiveSmallIntegerField(verbose_name='Позиция', null=True)
     block = models.ForeignKey(BlockImages, related_name='images', on_delete=models.CASCADE)
     img = models.ImageField(upload_to='images/')
