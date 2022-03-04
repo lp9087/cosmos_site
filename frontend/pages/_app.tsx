@@ -10,16 +10,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SWRConfig
       value={{
-        fetcher: (resource, init) =>
-          fetch(resource, init).then((res) => res.json()),
+        fetcher: (resource, init) => fetch(resource, init).then(res => res.json()),
       }}
     >
-      <Head>
-        <link
-          href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
-          rel="stylesheet"
-        />
-      </Head>
       <Component {...pageProps} />
       <ToastContainer />
     </SWRConfig>

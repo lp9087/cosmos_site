@@ -21,6 +21,7 @@ const PromoPage = ({
   services,
 }) => {
   const [modal, setModal] = useState(false);
+  console.log(partners);
 
   return (
     <Layout
@@ -38,7 +39,11 @@ const PromoPage = ({
         items={services}
       />
       <CTAJumbotron onCTAClick={() => setModal(true)} />
-      <BadgeListScreen title="Наши партнеры" items={partners} />
+      <BadgeListScreen
+        title="Наши партнеры"
+        items={partners}
+        showItemDescription={false}
+      />
       <BadgeListScreen title="Достижения и награды" items={achievements} />
       <NewsList items={news} />
       <ContactModal isOpen={modal} onClose={() => setModal(false)} />

@@ -13,6 +13,7 @@ interface IBlock {
   text?: string;
   images?: { id: number; img: string }[];
   ctaText?: string;
+  items?: any[];
 }
 
 const TYPE_TO_COMPONENT: Record<TBlockType, React.FC<any>> = {
@@ -33,8 +34,19 @@ const useBlocks = (
           const Component = TYPE_TO_COMPONENT[resourcetype];
           if (!Component) return null;
 
+          const props = rest;
+          if (resourcetype === 'BlockCards') {
+            props.items = (props as any).block_card.map(
+              ({ name_card, ...rest }: any) => ({
+                title: name_card,
+                ...rest,
+              })
+            );
+            delete (props as any).block_card;
+          }
+
           return (
-            <Component key={idx} {...rest} {...(propsForType[resourcetype] ?? {})} />
+            <Component key={idx} {...props} {...(propsForType[resourcetype] ?? {})} />
           );
         })
         .filter(Boolean),

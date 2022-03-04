@@ -1,20 +1,10 @@
-import dynamic from 'next/dynamic';
-
 import {
   contactsApi,
   productCategoriesApi,
   productsApi,
   servicesApi,
-} from 'api';
-
-const DynamicComponentWithNoSSR = dynamic(
-  () => import('../../components/about/AboutPage'),
-  {
-    ssr: false,
-  }
-);
-
-const AboutPage = ({ ...props }) => <DynamicComponentWithNoSSR {...props} />;
+} from '@/api/index';
+import { AboutPage } from '@/components/about';
 
 export default AboutPage;
 

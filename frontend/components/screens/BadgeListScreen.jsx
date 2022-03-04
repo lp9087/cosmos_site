@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import BaseScreen from './BaseScreen';
 
-const BadgeListScreen = ({ title, block_card: items = [], ...rest }) => {
+const BadgeListScreen = ({ title, items = [], showItemDescription = true, ...rest }) => {
   return (
     <BaseScreen className="gap-16" {...rest}>
       <div className="flex flex-col gap-8">
@@ -11,8 +11,12 @@ const BadgeListScreen = ({ title, block_card: items = [], ...rest }) => {
         {/* {description && <p className="text-xl">{description}</p>} */}
       </div>
       <div className="flex flex-wrap justify-center gap-12">
-        {items.map(({ id, ...rest }) => (
-          <BadgeItem key={id} {...rest} />
+        {items.map(({ id, description, ...rest }) => (
+          <BadgeItem
+            key={id}
+            description={showItemDescription ? description : null}
+            {...rest}
+          />
         ))}
       </div>
     </BaseScreen>
@@ -21,7 +25,7 @@ const BadgeListScreen = ({ title, block_card: items = [], ...rest }) => {
 
 export default BadgeListScreen;
 
-const BadgeItem = ({ name_card: title, description, image, link }) => {
+const BadgeItem = ({ title, description, image, link }) => {
   const content = (
     <>
       {image && (

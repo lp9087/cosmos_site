@@ -7,3 +7,7 @@
 @import '~swiper/css';
 @import '~swiper/css/navigation';
 @import './AnimatedCube.css';
+
+ul ul {
+  @apply !my-0 !ml-6;
+}
