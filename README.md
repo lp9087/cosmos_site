@@ -13,9 +13,9 @@
 9. Создать суперюзера `python manage.py createsuperuser`
 
 10. Если не установлен, то установить `Node js`
-11. В папке frontend выполнить `npx install`
-12. В папке frontend выполнить `npm run build`
-13. Запуск npm `npm run start`
+11. В папке frontend выполнить `npm install`
+12. В папке frontend выполнить `npm run build` # не обязательно 
+13. Запуск npm `npm run dev`
 
 ---
 
