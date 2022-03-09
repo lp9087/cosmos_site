@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import { ParticlesBG } from '@/components/index';
+import { ParticlesBG } from '@/components';
 import Cube from '@/assets/Cube.gif';
 
 const CTASection = ({ onCTAClick }) => {

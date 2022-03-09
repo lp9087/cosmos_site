@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import PROMO_CONFIG from '@/constants/promo';
-import { Layout, ParticlesBG } from '@/components/index';
+import { Layout, ParticlesBG } from '@/components';
 import { BaseScreen } from '@/components/screens';
 
 const ProductsPage = ({ contacts, products, productCategories, services }) => {

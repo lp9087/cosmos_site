@@ -1,7 +1,7 @@
 import { contactsApi, productCategoriesApi, productsApi, servicesApi } from '@/api';
-import { AboutPage } from '@/components/about';
+import { ServicesPage } from '@/components/services';
 
-export default AboutPage;
+export default ServicesPage;
 
 export async function getStaticProps() {
   const contacts = await contactsApi.getContacts();

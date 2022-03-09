@@ -16,12 +16,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"],
-      "@/assets/*": ["assets/*"],
-      "@/constants/*": ["constants/*"],
-      "@/api/*": ["api/*"],
-      "@/hooks/*": ["hooks/*"]
+      "@/*": ["./*"]
     }
   },
   "include": [

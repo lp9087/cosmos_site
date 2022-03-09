@@ -5,7 +5,7 @@ import { deserializeBlocks } from '@/utils/blocks';
 export default ProductDetailPage;
 
 export async function getStaticPaths() {
-  const res = await productsApi.getProducts();
+  const res = await servicesApi.getServices();
 
   // Get the paths we want to pre-render based on posts
   const paths = res.data.map(x => ({ params: { slug: x.slug } }));
@@ -16,8 +16,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const { data: productData } = await productsApi.getProduct({ slug });
-  const pageData = productData.product_pages[0];
+  const { data: serviceData } = await servicesApi.getService({ slug });
+  const pageData = serviceData.service_pages[0];
   const serializedBlocks = await deserializeBlocks(pageData.blocks);
 
   const contacts = await contactsApi.getContacts();
@@ -29,7 +29,7 @@ export async function getStaticProps({ params: { slug } }) {
     props: {
       product: {
         title: pageData.title,
-        description: pageData.description,
+        description: pageData.description || '',
         blocks: serializedBlocks,
       },
       contacts: contacts.data,

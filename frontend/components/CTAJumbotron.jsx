@@ -1,4 +1,4 @@
-import { useSpacing } from '@/hooks/index';
+import { useSpacing } from '@/hooks';
 
 const CTAJumbotron = ({ className, title, ctaText, onCTAClick, spacing }) => {
   const containerSpacing = useSpacing(spacing, true);
@@ -9,12 +9,12 @@ const CTAJumbotron = ({ className, title, ctaText, onCTAClick, spacing }) => {
         ${containerSpacing}
         ${className ?? ''}`}
     >
-      <div className="flex flex-col gap-8 items-center">
-        <p className="font-medium text-4xl">
+      <div className="flex flex-col items-center gap-8">
+        <p className="text-4xl font-medium">
           {title || 'Нужна консультация по проекту?'}
         </p>
         <button
-          className="btn btn-primary h-12 w-96 font-medium rounded-md"
+          className="h-12 font-medium rounded-md btn btn-primary w-96"
           onClick={onCTAClick}
         >
           {ctaText || 'Расскажите нам о проекте'}

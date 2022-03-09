@@ -1,9 +1,4 @@
-import {
-  contactsApi,
-  productCategoriesApi,
-  productsApi,
-  servicesApi,
-} from '@/api/index';
+import { contactsApi, productCategoriesApi, productsApi, servicesApi } from '@/api';
 import { ProductsPage } from '@/components/products';
 
 export default ProductsPage;

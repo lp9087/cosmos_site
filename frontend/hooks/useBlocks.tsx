@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { CTAJumbotron } from '@/components/index';
+import { CTAJumbotron } from '@/components';
 import { BadgeListScreen, MDTextScreen, SliderScreen } from '@/components/screens';
 
 type TBlockType = 'BlockText' | 'BlockCards' | 'BlockImages' | 'BlockCTA';
