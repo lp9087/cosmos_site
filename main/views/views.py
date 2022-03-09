@@ -1,11 +1,12 @@
 from rest_framework import viewsets
 
-from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners, Achievements, Feedback
+from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners, Achievements, Feedback, \
+    Pages
 from main.serializers.achievements import AchievementsSerializer
 from main.serializers.career import VacancySerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
 from main.serializers.feedback import FeedbackSerializer
 from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
-from main.serializers.services import ServicesSerializer
+from main.serializers.services import PagesSerializer, ServicesListSerializer, ServicesRetrieveSerializer
 
 
 class NewsViewSet(viewsets.ReadOnlyModelViewSet):
@@ -66,8 +67,15 @@ class ServicesViewSet(viewsets.ReadOnlyModelViewSet):
     http://127.0.0.1:8000/api/services/
     """
     queryset = Services.objects.all()
-    serializer_class = ServicesSerializer
-    lookup_field = 'slug'
+    serializers = {
+        'list': ServicesListSerializer,
+        'retrieve': ServicesRetrieveSerializer,
+        'default': ServicesRetrieveSerializer
+    }
+
+    def get_serializer_class(self):
+        return self.serializers.get(self.action,
+                                    self.serializers['default'])
 
 
 class AchievementsViewSet(viewsets.ReadOnlyModelViewSet):
@@ -87,3 +95,28 @@ class FeedbackViewSet(viewsets.ModelViewSet):
     queryset = Feedback.objects.all()
     serializer_class = FeedbackSerializer
     http_method_names = ('post', )
+
+
+class PagesViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Страница
+    http://127.0.0.1:8000/api/pages/
+    """
+    queryset = Pages.objects.all()
+    serializer_class = PagesSerializer
+    lookup_field = 'slug'
+
+
+# class DownloadFileView(APIView):
+#     """
+#     Скачивание архива группы файлов Конъюктурного анализа по 'id' : 'conjuctural_analysis_id'
+#     """
+#     lookup_url_kwarg = 'products_id'
+#
+#     def get(self, *args, **kwargs):
+#         file_handle = self.get_object().file.open()
+#         file_name = self.get_object().file.name.split('/')[2]
+#         response = FileResponse(file_handle, content_type='whatever')
+#         response['Content-Length'] = self.get_object().file.size
+#         response['Content-Disposition'] = 'attachment; filename="%s"' % urllib.parse.quote(file_name)
+#         return response

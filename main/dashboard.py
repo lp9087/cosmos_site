@@ -11,7 +11,8 @@ class CustomIndexDashboard(Dashboard):
         self.children.append(modules.ModelList(
             title='Продукты и Услуги',
             models=('main.models.products.ProductCategories', 'main.models.products.Products',
-                    'main.models.pages.ProductPages', 'main.models.pages.Services','main.models.pages.ServicePages')
+                    'main.models.pages.ProductPages', 'main.models.products.Services',
+                    'main.models.pages.ServicePages', 'main.models.pages.Pages', 'main.models.products.ProductFile',)
         ))
         self.children.append(modules.ModelList(
             title='Карьера',

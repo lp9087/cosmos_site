@@ -1,11 +1,13 @@
 from django.urls import path, include
+from rest_framework_nested import routers
 
 from main.views import martor as martor_views
 
-from rest_framework.routers import DefaultRouter
+from rest_framework_nested.routers import DefaultRouter
 from main.views.views import NewsViewSet, VacancyViewSet, ResumeViewSet, ContactsViewSet, PartnersTypesViewSet, \
-    PartnerViewSet, ServicesViewSet, AchievementsViewSet, FeedbackViewSet
+    PartnerViewSet, ServicesViewSet, AchievementsViewSet, FeedbackViewSet, PagesViewSet
 from main.views.products import ProductCategoriesViewSet, ProductsViewSet
+from .views import products as files_views
 
 router = DefaultRouter()
 router.register('news', NewsViewSet)
@@ -19,8 +21,12 @@ router.register('products', ProductsViewSet)
 router.register('services', ServicesViewSet)
 router.register('achievements', AchievementsViewSet)
 router.register('feedback', FeedbackViewSet)
+router.register('pages', PagesViewSet)
+file_router = routers.NestedSimpleRouter(router, 'products', lookup='product')
+file_router.register(r'files', files_views.FileDownloadView, basename='file-download')
 
 urlpatterns = [
     path('api/uploader/', martor_views.markdown_uploader, name='markdown_uploader_page'),
     path('api/', include(router.urls)),
+    path('api/', include(file_router.urls)),
 ]

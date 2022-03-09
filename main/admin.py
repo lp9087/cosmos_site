@@ -8,7 +8,7 @@ from main.models.achievements import Achievements
 from main.models.pages import Blocks, BlockImages, BlockText, Pages, Image, Icons, ProductPages, \
     ServicePages, BlockCards, BlockCTA, DescriptionCards
 from main.models.menu import MenuItems
-from main.models.products import Products, ProductCategories, Services
+from main.models.products import Products, ProductCategories, Services, ProductFile
 from main.models.partners import Partners, PartnersTypes
 from main.models.news import News
 from main.models.career import Vacancy, Resume
@@ -72,3 +72,13 @@ class BlockInline(NestedStackedPolymorphicInline):
 @admin.register(Pages, ProductPages, ServicePages)
 class PageAdmin(NestedPolymorphicModelAdmin):
     inlines = (BlockInline,)
+
+
+#################
+#     Files     #
+#################
+
+
+@admin.register(ProductFile)
+class ProductFileAdmin(admin.ModelAdmin):
+    list_display = ('product',)

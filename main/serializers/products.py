@@ -3,7 +3,7 @@ from rest_polymorphic.serializers import PolymorphicSerializer
 
 
 from main.models import ProductPages, Blocks, BlockImages, Image, BlockCards, BlockText, BlockCTA, DescriptionCards
-from main.models.products import ProductCategories, Products
+from main.models.products import ProductCategories, Products, ProductFile
 
 
 class BlocksSerializers(serializers.ModelSerializer):
@@ -74,11 +74,7 @@ class ProductPagesSerializer(serializers.ModelSerializer):
 class ProductListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Products
-        fields = ('id', 'title', 'developer', 'version', 'categories', 'slug')
-        lookup_field = 'slug'
-        extra_kwargs = {
-             'url': {'lookup_field': 'slug'}
-        }
+        fields = ('id', 'title', 'developer', 'version', 'categories')
 
 
 class ProductRetrieveSerializer(serializers.ModelSerializer):
@@ -87,10 +83,6 @@ class ProductRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Products
         fields = '__all__'
-        lookup_field = 'slug'
-        extra_kwargs = {
-             'url': {'lookup_field': 'slug'}
-        }
 
 
 class ProductsCategoryRetrieveSerializers(serializers.ModelSerializer):
@@ -106,3 +98,10 @@ class ProductsCategoryListSerializers(serializers.ModelSerializer):
     class Meta:
         model = ProductCategories
         fields = ('id', 'title', 'image')
+
+
+class ProductFileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ProductFile
+        fields = '__all__'

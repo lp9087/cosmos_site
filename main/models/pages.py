@@ -20,6 +20,8 @@ class Icons(BaseABSModel):
 
 class Pages(BaseABSModel):
     title = models.CharField(verbose_name='Заголовок', max_length=64, default='', blank=True)
+    description = models.TextField(verbose_name='Описание', default='', blank=True)
+    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     def __str__(self):
         return self.title
@@ -32,7 +34,6 @@ class Pages(BaseABSModel):
 class ProductPages(Pages):
     product = models.ForeignKey('main.Products',
                                 verbose_name='Продукт', on_delete=models.CASCADE, related_name='product_pages')
-    description = models.TextField(verbose_name='Описание', default='', blank=True)
 
     class Meta:
         verbose_name = 'страница продукта'
@@ -40,7 +41,8 @@ class ProductPages(Pages):
 
 
 class ServicePages(Pages):
-    service = models.ForeignKey('main.Services', verbose_name='Услуга', on_delete=models.CASCADE, related_name='service_pages')
+    service = models.ForeignKey('main.Services', verbose_name='Услуга', on_delete=models.CASCADE,
+                                related_name='service_pages')
 
     class Meta:
         verbose_name = 'страница услуги'

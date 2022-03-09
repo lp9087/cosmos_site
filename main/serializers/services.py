@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from main.models import Services, ServicePages
+from main.models import Services, ServicePages, Pages
 from main.serializers.products import BlocksPolymorphicSerializers
 
 
@@ -11,11 +11,25 @@ class ServicePagesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ServicesSerializer(serializers.ModelSerializer):
+class ServicesListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Services
+        fields = ('id', 'title', 'image', 'short_description')
+
+
+class ServicesRetrieveSerializer(serializers.ModelSerializer):
     service_pages = ServicePagesSerializer(many=True, read_only=True)
 
     class Meta:
         model = Services
+        fields = '__all__'
+
+
+class PagesSerializer(serializers.ModelSerializer):
+    blocks = BlocksPolymorphicSerializers(many=True, read_only=True)
+
+    class Meta:
+        model = Pages
         fields = '__all__'
         lookup_field = 'slug'
         extra_kwargs = {
