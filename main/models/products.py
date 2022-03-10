@@ -22,7 +22,7 @@ class Products(BaseABSModel, ServiceMixin):
     categories = models.ManyToManyField(ProductCategories, verbose_name='Категории', blank=True, related_name='products')
     developer = models.CharField(verbose_name='Разработчик продукта', max_length=125, default='', blank=True)
     version = models.CharField(verbose_name='Версия продукта', max_length=64, default='', blank=True)
-    slug = models.SlugField(verbose_name='URL', max_length=50)
+    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     def __str__(self):
         return self.title
@@ -51,7 +51,7 @@ class Services(BaseABSModel, ServiceMixin):
     title = models.CharField(verbose_name='Название услуги', max_length=255, default='', blank=True)
     short_description = models.TextField(verbose_name='Краткое описание', default='', blank=True)
     image = models.ImageField(upload_to="services_images/", blank=True, verbose_name='Изображение')
-    slug = models.SlugField(verbose_name='URL', max_length=50)
+    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     def __str__(self):
         return self.title
