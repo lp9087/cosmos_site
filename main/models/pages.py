@@ -107,7 +107,7 @@ class DescriptionCards(models.Model):
     position = models.PositiveSmallIntegerField(verbose_name='Позиция', null=True)
     block = models.ForeignKey(BlockCards, related_name='block_card', on_delete=models.CASCADE)
     description = models.TextField(verbose_name='Описание', default='', blank=True)
-    link = models.URLField(max_length=200, verbose_name='Ссылка на сайт')
+    link = models.URLField(max_length=200, verbose_name='Ссылка на сайт', default='', blank=True)
 
     class Meta:
         verbose_name = 'карточка'
