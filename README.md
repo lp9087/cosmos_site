@@ -18,5 +18,6 @@
 13. Запуск npm `npm run dev`
 
 ---
-
+Additional:
+`python -Xutf8 manage.py dumpdata main > db_main2.json` - создать дамп файл
 #### Стек: Python 3, Django, PostgreSQL, ReactJS

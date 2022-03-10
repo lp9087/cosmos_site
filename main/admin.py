@@ -3,11 +3,13 @@ from nested_admin.nested import *
 from django.contrib import admin
 from nested_admin.nested import *
 from nested_admin.polymorphic import *
+from polymorphic.admin import PolymorphicChildModelAdmin, PolymorphicParentModelAdmin
+
 from main.models.feedback import Feedback
 from main.models.achievements import Achievements
-from main.models.pages import Blocks, BlockImages, BlockText, Pages, Image, Icons, ProductPages, \
-    ServicePages, BlockCards, BlockCTA, DescriptionCards
-from main.models.menu import MenuItems
+from main.models.pages import Blocks, BlockImages, BlockText, Image, Icons, ProductPages, \
+    ServicePages, BlockCards, BlockCTA, DescriptionCards, CustomPages
+from main.models.menu import MenuItems, ServiceMenuItems, ProductMenuItems, CustomPageMenuItems
 from main.models.products import Products, ProductCategories, Services, ProductFile
 from main.models.partners import Partners, PartnersTypes
 from main.models.news import News
@@ -16,7 +18,7 @@ from main.models.contacts import Contacts
 from martor.widgets import AdminMartorWidget
 
 
-@admin.register(Icons, Vacancy, Resume, Contacts, Partners, ProductCategories, Products, Services, MenuItems,
+@admin.register(Icons, Vacancy, Resume, Contacts, Partners, ProductCategories, Products, Services,
                 PartnersTypes, Achievements, Feedback)
 class CustomAdmin(admin.ModelAdmin):
     pass
@@ -69,7 +71,7 @@ class BlockInline(NestedStackedPolymorphicInline):
     child_inlines = (TextInline, ImageBlockInline, CardsBlockInline, CTABlockInline)
 
 
-@admin.register(Pages, ProductPages, ServicePages)
+@admin.register(CustomPages, ProductPages, ServicePages)
 class PageAdmin(NestedPolymorphicModelAdmin):
     inlines = (BlockInline,)
 
@@ -82,3 +84,32 @@ class PageAdmin(NestedPolymorphicModelAdmin):
 @admin.register(ProductFile)
 class ProductFileAdmin(admin.ModelAdmin):
     list_display = ('product',)
+
+
+#################
+#     Menu      #
+#################
+
+class MenuItemChildAdmin(PolymorphicChildModelAdmin):
+    base_model = MenuItems
+
+
+@admin.register(ProductMenuItems)
+class ProductMenuItemChildAdmin(MenuItemChildAdmin):
+    base_model = ProductMenuItems
+
+
+@admin.register(ServiceMenuItems)
+class ServiceMenuItemChildAdmin(MenuItemChildAdmin):
+    base_model = ServiceMenuItems
+
+
+@admin.register(CustomPageMenuItems)
+class CustomPageMenuItemChildAdmin(MenuItemChildAdmin):
+    base_model = CustomPageMenuItems
+
+
+@admin.register(MenuItems)
+class MenuItemParentAdmin(PolymorphicParentModelAdmin):
+    base_model = MenuItems
+    child_models = (ProductMenuItems, ServiceMenuItems, CustomPageMenuItems)

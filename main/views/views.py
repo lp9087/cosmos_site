@@ -1,12 +1,13 @@
 from rest_framework import viewsets
 
 from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners, Achievements, Feedback, \
-    Pages
+    Pages, CustomPages
 from main.serializers.achievements import AchievementsSerializer
 from main.serializers.career import VacancySerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
 from main.serializers.feedback import FeedbackSerializer
 from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
-from main.serializers.services import PagesSerializer, ServicesListSerializer, ServicesRetrieveSerializer
+from main.serializers.services import ServicesListSerializer, ServicesRetrieveSerializer
+from main.serializers.custompages import CustomPageSerializer
 
 
 class NewsViewSet(viewsets.ReadOnlyModelViewSet):
@@ -102,8 +103,8 @@ class PagesViewSet(viewsets.ReadOnlyModelViewSet):
     Страница
     http://127.0.0.1:8000/api/pages/
     """
-    queryset = Pages.objects.all()
-    serializer_class = PagesSerializer
+    queryset = CustomPages.objects.all()
+    serializer_class = CustomPageSerializer
     lookup_field = 'slug'
 
 

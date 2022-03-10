@@ -31,7 +31,8 @@ class CustomMenu(Menu):
                 [
                     'main.models.contacts.Contacts', 'main.models.menu.MenuItems', 'main.models.news.News',
                     'main.models.partners.PartnersTypes', 'main.models.partners.Partners',
-                    'main.models.achievements.Achievements', 'main.models.feedback.Feedback'
-                 ]
+                    'main.models.achievements.Achievements', 'main.models.feedback.Feedback',
+                    'main.models.pages.CustomPages'
+                ]
             ),
         ]

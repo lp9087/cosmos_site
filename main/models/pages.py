@@ -21,7 +21,6 @@ class Icons(BaseABSModel):
 class Pages(BaseABSModel):
     title = models.CharField(verbose_name='Заголовок', max_length=64, default='', blank=True)
     description = models.TextField(verbose_name='Описание', default='', blank=True)
-    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     def __str__(self):
         return self.title
@@ -47,6 +46,15 @@ class ServicePages(Pages):
     class Meta:
         verbose_name = 'страница услуги'
         verbose_name_plural = 'страницы услуг'
+
+
+class CustomPages(Pages):
+    map = models.BooleanField('Отображение карты проектов', default=False)
+    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
+
+    class Meta:
+        verbose_name = 'кастомная страница'
+        verbose_name_plural = 'кастомные страницы'
 
 
 class Blocks(PolymorphicModel, ServiceMixin):

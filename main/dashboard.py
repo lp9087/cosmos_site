@@ -12,7 +12,7 @@ class CustomIndexDashboard(Dashboard):
             title='Продукты и Услуги',
             models=('main.models.products.ProductCategories', 'main.models.products.Products',
                     'main.models.pages.ProductPages', 'main.models.products.Services',
-                    'main.models.pages.ServicePages', 'main.models.pages.Pages', 'main.models.products.ProductFile',)
+                    'main.models.pages.ServicePages', 'main.models.products.ProductFile',)
         ))
         self.children.append(modules.ModelList(
             title='Карьера',
@@ -22,5 +22,6 @@ class CustomIndexDashboard(Dashboard):
             title='Наполнение',
             models=('main.models.contacts.Contacts', 'main.models.menu.MenuItems', 'main.models.news.News',
                     'main.models.partners.PartnersTypes', 'main.models.partners.Partners',
-                    'main.models.achievements.Achievements', 'main.models.feedback.Feedback')
+                    'main.models.achievements.Achievements', 'main.models.feedback.Feedback',
+                    'main.models.pages.CustomPages')
         ))
