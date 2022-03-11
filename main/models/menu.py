@@ -16,7 +16,6 @@ class MenuItems(BaseABSModel, PolymorphicModel, ServiceMixin):
 
 
 class ProductMenuItems(MenuItems):
-    product = models.ForeignKey('main.Products', verbose_name='Продукт', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'продукт'
@@ -24,7 +23,6 @@ class ProductMenuItems(MenuItems):
 
 
 class ServiceMenuItems(MenuItems):
-    service = models.ForeignKey('main.Services', verbose_name='Услуга', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'услуга'
