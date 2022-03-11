@@ -8,6 +8,8 @@ from main.views.views import NewsViewSet, VacancyViewSet, ResumeViewSet, Contact
     PartnerViewSet, ServicesViewSet, AchievementsViewSet, FeedbackViewSet, CustomPagesViewSet
 from main.views.products import ProductCategoriesViewSet, ProductsViewSet
 from .views import products as files_views
+from main.views import menu as menu_views
+
 
 router = DefaultRouter()
 router.register('news', NewsViewSet)
@@ -27,6 +29,7 @@ file_router.register(r'files', files_views.FileDownloadView, basename='file-down
 
 urlpatterns = [
     path('api/uploader/', martor_views.markdown_uploader, name='markdown_uploader_page'),
+    path('api/menu', menu_views.MenuAPIView.as_view()),
     path('api/', include(router.urls)),
     path('api/', include(file_router.urls)),
 ]
