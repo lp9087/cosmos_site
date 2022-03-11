@@ -73,6 +73,7 @@ class ServicesViewSet(viewsets.ReadOnlyModelViewSet):
         'retrieve': ServicesRetrieveSerializer,
         'default': ServicesRetrieveSerializer
     }
+    lookup_field = 'slug'
 
     def get_serializer_class(self):
         return self.serializers.get(self.action,
@@ -98,7 +99,7 @@ class FeedbackViewSet(viewsets.ModelViewSet):
     http_method_names = ('post', )
 
 
-class PagesViewSet(viewsets.ReadOnlyModelViewSet):
+class CustomPagesViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Страница
     http://127.0.0.1:8000/api/pages/

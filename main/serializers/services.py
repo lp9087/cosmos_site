@@ -14,7 +14,7 @@ class ServicePagesSerializer(serializers.ModelSerializer):
 class ServicesListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Services
-        fields = ('id', 'title', 'image', 'short_description')
+        fields = ('id', 'title', 'slug', 'image', 'short_description')
 
 
 class ServicesRetrieveSerializer(serializers.ModelSerializer):
@@ -23,6 +23,10 @@ class ServicesRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Services
         fields = '__all__'
+        lookup_fields = 'slug'
+        extra_kwargs = {
+            'url': {'lookup_field': 'slug'}
+        }
 
 
 class PagesSerializer(serializers.ModelSerializer):
@@ -31,7 +35,3 @@ class PagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pages
         fields = '__all__'
-        lookup_field = 'slug'
-        extra_kwargs = {
-             'url': {'lookup_field': 'slug'}
-        }
