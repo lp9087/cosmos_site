@@ -10,7 +10,7 @@ class CustomPageRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomPages
-        fields = ('title', 'slug', 'description', 'blocks')
+        fields = ('title', 'slug', 'description', 'blocks', 'map')
         lookup_fields = 'slug'
         extra_kwargs = {
             'url': {'lookup_field': 'slug'}

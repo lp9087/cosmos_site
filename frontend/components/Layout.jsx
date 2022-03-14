@@ -4,6 +4,7 @@ import Footer from './Footer';
 const Layout = ({
   children,
   className,
+  menuItems,
   contacts,
   products,
   productCategories,
@@ -12,6 +13,7 @@ const Layout = ({
   return (
     <main className="flex flex-col items-center">
       <Navbar
+        menuItems={menuItems}
         products={products}
         productCategories={productCategories}
         contacts={contacts}

@@ -1,4 +1,10 @@
-import { contactsApi, productCategoriesApi, productsApi, servicesApi } from '@/api';
+import {
+  contactsApi,
+  menuApi,
+  productCategoriesApi,
+  productsApi,
+  servicesApi,
+} from '@/api';
 import { ProductDetailPage } from '@/components/products';
 import { deserializeBlocks } from '@/utils/blocks';
 
@@ -20,6 +26,7 @@ export async function getStaticProps({ params: { slug } }) {
   const pageData = productData.product_pages[0];
   const serializedBlocks = await deserializeBlocks(pageData.blocks);
 
+  const menuItems = await menuApi.getMenuItems();
   const contacts = await contactsApi.getContacts();
   const productCategories = await productCategoriesApi.getProductCategories();
   const products = await productsApi.getProducts();
@@ -32,6 +39,7 @@ export async function getStaticProps({ params: { slug } }) {
         description: pageData.description,
         blocks: serializedBlocks,
       },
+      menuItems: menuItems.data,
       contacts: contacts.data,
       productCategories: productCategories.data,
       products: products.data,

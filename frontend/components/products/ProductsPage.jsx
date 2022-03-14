@@ -6,9 +6,16 @@ import PROMO_CONFIG from '@/constants/promo';
 import { Layout, ParticlesBG } from '@/components';
 import { BaseScreen } from '@/components/screens';
 
-const ProductsPage = ({ contacts, products, productCategories, services }) => {
+const ProductsPage = ({
+  menuItems,
+  contacts,
+  products,
+  productCategories,
+  services,
+}) => {
   return (
     <Layout
+      menuItems={menuItems}
       contacts={contacts}
       products={products}
       productCategories={productCategories}

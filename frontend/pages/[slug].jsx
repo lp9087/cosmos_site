@@ -1,17 +1,18 @@
 import {
   contactsApi,
+  customPagesApi,
   menuApi,
   productCategoriesApi,
   productsApi,
   servicesApi,
 } from '@/api';
-import { ProductDetailPage } from '@/components/products';
+import { CustomPage } from '@/components/customPages';
 import { deserializeBlocks } from '@/utils/blocks';
 
-export default ProductDetailPage;
+export default CustomPage;
 
 export async function getStaticPaths() {
-  const res = await servicesApi.getServices();
+  const res = await customPagesApi.getCustomPages();
 
   // Get the paths we want to pre-render based on posts
   const paths = res.data.map(x => ({ params: { slug: x.slug } }));
@@ -22,8 +23,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const { data: serviceData } = await servicesApi.getService({ slug });
-  const pageData = serviceData.service_pages[0];
+  const { data: pageData } = await customPagesApi.getCustomPage({ slug });
   const serializedBlocks = await deserializeBlocks(pageData.blocks);
 
   const menuItems = await menuApi.getMenuItems();
@@ -34,12 +34,12 @@ export async function getStaticProps({ params: { slug } }) {
 
   return {
     props: {
-      product: {
+      page: {
         title: pageData.title,
-        description: pageData.description || '',
+        description: pageData.description,
         blocks: serializedBlocks,
+        map: pageData.map,
       },
-
       menuItems: menuItems.data,
       contacts: contacts.data,
       productCategories: productCategories.data,

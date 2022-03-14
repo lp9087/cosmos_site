@@ -5,9 +5,21 @@ import Image from 'next/image';
 import { ChevronDown, Phone } from 'react-feather';
 
 import Logo from '@/assets/img/Logo.png';
-import PROMO_CONFIG from '@/constants/promo';
 
-const Navbar = ({ products, productCategories, contacts }) => {
+const menuPriority = {
+  ProductMenuItems: 1,
+  ServiceMenuItems: 2,
+  CustomPageMenuItems: 99,
+};
+
+const getMenuLink = (type, slug) => {
+  if (type === 'ProductMenuItems') return `/products${slug ? `/${slug}` : ''}`;
+  if (type === 'ServiceMenuItems') return '/services';
+
+  return `/${slug}`;
+};
+
+const Navbar = ({ menuItems, products, productCategories, contacts }) => {
   const [isTransparent, setIsTransparent] = useState(true);
 
   useEffect(() => {
@@ -24,30 +36,34 @@ const Navbar = ({ products, productCategories, contacts }) => {
         transition-colors duration-500 backdrop-blur
         ${isTransparent ? 'bg-slate-900/20' : 'bg-slate-900/60'}`}
     >
-      <div className="container flex items-center justify-between gap-10 h-full">
+      <div className="container flex items-center justify-between h-full gap-10">
         <Link href="/" passHref>
           <a className="flex w-40">
             <Image src={Logo} alt="Logo" layout="intrinsic" />
           </a>
         </Link>
-        <div className="flex items-center gap-8 h-full">
+        <div className="flex items-center h-full gap-8">
           <nav className="flex h-full">
-            {PROMO_CONFIG.MENU_ITEMS.map(x => (
-              <NavbarItem key={x.id} className="p-2">
-                <Link href={x.link} passHref>
-                  <NavbarLink className="text-sm font-semibold uppercase">
-                    {x.title}
-                  </NavbarLink>
-                </Link>
-                {x.id === 'products' && <ChevronDown size={20} />}
-                {x.id === 'products' && (
-                  <ProductsMenu
-                    products={products}
-                    productCategories={productCategories}
-                  />
-                )}
-              </NavbarItem>
-            ))}
+            {[...menuItems]
+              .sort(
+                (a, b) => menuPriority[a.resourcetype] - menuPriority[b.resourcetype]
+              )
+              .map(x => (
+                <NavbarItem key={x.title} className="p-2">
+                  <Link href={getMenuLink(x.resourcetype, x.page_slug)} passHref>
+                    <NavbarLink className="text-sm font-semibold uppercase">
+                      {x.title}
+                    </NavbarLink>
+                  </Link>
+                  {x.resourcetype === 'ProductMenuItems' && <ChevronDown size={20} />}
+                  {x.resourcetype === 'ProductMenuItems' && (
+                    <ProductsMenu
+                      products={products}
+                      productCategories={productCategories}
+                    />
+                  )}
+                </NavbarItem>
+              ))}
           </nav>
           <div className="flex gap-2">
             <Phone />
@@ -109,11 +125,11 @@ const ProductsMenu = ({ products, productCategories }) => {
   return (
     <div
       id="products-menu"
-      className="absolute w-[450px] top-16 left-1/2 -translate-x-1/2 bg-slate-100 text-black 
-        px-8 py-6 grid grid-cols-2 gap-x-6 gap-y-4 border border-slate-200/75 shadow-md
+      className="absolute w-[650px] top-16 left-1/2 -translate-x-1/2 bg-slate-100 text-black 
+        px-8 py-6 grid grid-cols-2 gap-x-6 gap-y-4 border border-slate-200/75 shadow-xl
         before:absolute before:-top-[10px] before:left-1/2 before:-translate-x-1/2
         before:border-x-[10px] before:border-b-[10px] before:border-x-transparent before:border-b-slate-100
-        transition-all"
+        transition-all rounded-md"
     >
       {productCategories.map(category => (
         <div key={category.id} className="flex flex-col gap-3">

@@ -16,3 +16,5 @@ export { default as productCategoriesApi } from './productCategories';
 export { default as productsApi } from './products';
 export { default as servicesApi } from './services';
 export { default as contactsApi } from './contacts';
+export { default as menuApi } from './menu';
+export { default as customPagesApi } from './customPages';

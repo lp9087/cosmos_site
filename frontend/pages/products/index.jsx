@@ -1,9 +1,16 @@
-import { contactsApi, productCategoriesApi, productsApi, servicesApi } from '@/api';
+import {
+  contactsApi,
+  menuApi,
+  productCategoriesApi,
+  productsApi,
+  servicesApi,
+} from '@/api';
 import { ProductsPage } from '@/components/products';
 
 export default ProductsPage;
 
 export async function getStaticProps() {
+  const menuItems = await menuApi.getMenuItems();
   const contacts = await contactsApi.getContacts();
   const productCategories = await productCategoriesApi.getProductCategories();
   const products = await productsApi.getProducts();
@@ -11,6 +18,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      menuItems: menuItems.data,
       contacts: contacts.data,
       productCategories: productCategories.data,
       products: products.data,

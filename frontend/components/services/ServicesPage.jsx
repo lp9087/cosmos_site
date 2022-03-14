@@ -7,9 +7,16 @@ import Layout from '@/components/Layout';
 import ParticlesBG from '@/components/ParticlesBG';
 import { BaseScreen } from '@/components/screens';
 
-const ServicesPage = ({ contacts, products, productCategories, services }) => {
+const ServicesPage = ({
+  menuItems,
+  contacts,
+  products,
+  productCategories,
+  services,
+}) => {
   return (
     <Layout
+      menuItems={menuItems}
       contacts={contacts}
       products={products}
       productCategories={productCategories}

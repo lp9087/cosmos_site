@@ -10,7 +10,7 @@ const Footer = ({ contacts, products, productCategories, services }) => {
       <div className="grid grid-cols-4 gap-6 gap-y-12">
         <About
           items={[
-            { id: 1, title: 'О компании', link: '/about' },
+            { id: 1, title: 'О компании', link: '#' },
             { id: 2, title: 'Сотрудничество', link: '#' },
             { id: 3, title: 'Вакансии', link: '#' },
           ]}

@@ -12,6 +12,7 @@ import CTASection from './CTASection';
 import NewsList from './NewsList';
 
 const PromoPage = ({
+  menuItems,
   partners,
   achievements,
   news,
@@ -24,6 +25,7 @@ const PromoPage = ({
 
   return (
     <Layout
+      menuItems={menuItems}
       contacts={contacts}
       products={products}
       productCategories={productCategories}

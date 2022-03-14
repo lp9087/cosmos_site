@@ -3,18 +3,18 @@ import Head from 'next/head';
 
 import PROMO_CONFIG from '@/constants/promo';
 import { useBlocks } from '@/hooks';
-import { Layout, ParticlesBG, ContactModal } from '@/components';
+import { Layout, ParticlesBG, ContactModal, RegionsMap } from '@/components';
 
-const ProductDetailPage = ({
+const CustomPage = ({
+  page,
   menuItems,
-  product,
   contacts,
   products,
   productCategories,
   services,
 }) => {
   const [modal, setModal] = useState(false);
-  const content = useBlocks(product.blocks, {
+  const content = useBlocks(page.blocks, {
     BlockCTA: { onCTAClick: () => setModal(true) },
   });
 
@@ -27,21 +27,22 @@ const ProductDetailPage = ({
       services={services}
     >
       <Head>
-        <title>{`${product.title} | ${PROMO_CONFIG.SEO.title}`}</title>
+        <title>{`${page.title} | ${PROMO_CONFIG.SEO.title}`}</title>
       </Head>
 
       <Hero
-        title={product.title}
-        description={product.description}
+        title={page.title}
+        description={page.description}
         onCTAClick={() => setModal(true)}
       />
       {content}
+      {page.map && <RegionsMap />}
       <ContactModal isOpen={modal} onClose={() => setModal(false)} />
     </Layout>
   );
 };
 
-export default ProductDetailPage;
+export default CustomPage;
 
 const Hero = ({ title, description, onCTAClick }) => {
   return (
@@ -53,7 +54,7 @@ const Hero = ({ title, description, onCTAClick }) => {
             <h1 className="text-6xl font-semibold">{title}</h1>
             <p className="text-lg">{description}</p>
           </div>
-          <div className="flex flex-col h-full gap-4 justify-evenly">
+          {/* <div className="flex flex-col h-full gap-4 justify-evenly">
             <button className="pointer-events-auto btn btn-primary" onClick={onCTAClick}>
               Заказать демонстрацию
             </button>
@@ -63,7 +64,7 @@ const Hero = ({ title, description, onCTAClick }) => {
             <button className="pointer-events-auto btn btn-ghost">
               Посмотреть демо
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

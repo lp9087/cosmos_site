@@ -29,7 +29,7 @@ file_router.register(r'files', files_views.FileDownloadView, basename='file-down
 
 urlpatterns = [
     path('api/uploader/', martor_views.markdown_uploader, name='markdown_uploader_page'),
-    path('api/menu', menu_views.MenuAPIView.as_view()),
+    path('api/menu/', menu_views.MenuAPIView.as_view()),
     path('api/', include(router.urls)),
     path('api/', include(file_router.urls)),
 ]
