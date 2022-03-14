@@ -7,7 +7,7 @@ from main.serializers.career import VacancySerializer, ContactsSerializer, Resum
 from main.serializers.feedback import FeedbackSerializer
 from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
 from main.serializers.services import ServicesListSerializer, ServicesRetrieveSerializer
-from main.serializers.custompages import CustomPageSerializer
+from main.serializers.custompages import CustomPageListSerializer, CustomPageRetrieveSerializer
 
 
 class NewsViewSet(viewsets.ReadOnlyModelViewSet):
@@ -104,9 +104,17 @@ class CustomPagesViewSet(viewsets.ReadOnlyModelViewSet):
     Страница
     http://127.0.0.1:8000/api/pages/
     """
+    serializers = {
+        'list': CustomPageListSerializer,
+        'retrieve': CustomPageRetrieveSerializer,
+        'default': CustomPageRetrieveSerializer
+    }
     queryset = CustomPages.objects.all()
-    serializer_class = CustomPageSerializer
     lookup_field = 'slug'
+
+    def get_serializer_class(self):
+        return self.serializers.get(self.action,
+                                    self.serializers['default'])
 
 
 # class DownloadFileView(APIView):
