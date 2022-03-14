@@ -21,3 +21,7 @@
 Additional:
 `python -Xutf8 manage.py dumpdata main > db_main2.json` - создать дамп файл
 #### Стек: Python 3, Django, PostgreSQL, ReactJS
+
+#docker-compose exec backend python manage.py collectstatic
+#docker-compose exec backend python manage.py loaddata db_main_new.json
+#docker-compose exec backend python manage.py createsuperuser
