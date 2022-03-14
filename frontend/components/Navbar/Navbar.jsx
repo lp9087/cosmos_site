@@ -133,14 +133,14 @@ const ProductsMenu = ({ products, productCategories }) => {
     >
       {productCategories.map(category => (
         <div key={category.id} className="flex flex-col gap-3">
-          <h2 className="text-lg font-semibold">{category.title}</h2>
+          <h2 className="font-semibold">{category.title}</h2>
           <div className="flex flex-col gap-1">
             {products
               .filter(x => x.categories.includes(category.id))
               .map(x => (
                 <Link key={x.id} href={`/products/${x.slug}`} passHref>
-                  <a className="hover:font-medium">
-                    <h3>{x.title}</h3>
+                  <a className="hover:text-blue-600">
+                    <h3 className="text-sm">{x.title}</h3>
                   </a>
                 </Link>
               ))}
