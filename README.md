@@ -34,3 +34,12 @@ Additional: `python -Xutf8 manage.py dumpdata main > db_main2.json` - созда
 'docker-compose stop' - остановка контейнеров
 'docker-compose down -v' - полное удаление контейнеров
 ```
+#### Для prod версии 
+
+```bash
+'docker-compose -f docker-compose.prod.yml up -d --build'
+'docker-compose -f docker-compose.prod.yml exec backend python manage.py migrate --noinput'
+'docker-compose -f docker-compose.prod.yml exec backend python manage.py collectstatic' 
+'docker-compose -f docker-compose.prod.yml exec backend python manage.py loaddata db_main_new.json'
+'docker-compose -f docker-compose.prod.yml exec backend python manage.py createsuperuser'
+```
