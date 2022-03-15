@@ -2,10 +2,12 @@ version: '3.8'
 
 services:
   backend:
-    build: .
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/cosmos
+      - ./backend:/backend
       - static:/backend/static
     ports:
       - 8000:8000
@@ -32,8 +34,7 @@ services:
       dockerfile: Dockerfile
     networks:
       - core
-    command:
-      "npm run dev"
+    command: 'npm run dev'
     volumes:
       - ./frontend:/frontend
       - node-modules:/frontend/node_modules
@@ -41,7 +42,6 @@ services:
       - 3000:3000
     links:
       - backend:backend
-
 
   nginx:
     container_name: boiler_nginx
@@ -58,8 +58,7 @@ services:
       - frontend
     networks:
       - core
-    command: [ nginx-debug, '-g', 'daemon off;' ]
-
+    command: [nginx-debug, '-g', 'daemon off;']
 
 networks:
   core:

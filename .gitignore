@@ -1,7 +1,1 @@
-__pycache__ 
 .idea/
-/static/
-/myvenv/
-/venv/
-!/media/
-/cosmos/localsettings.py

@@ -1,0 +1,6 @@
+__pycache__ 
+/static/
+/myvenv/
+/venv/
+!/media/
+/cosmos/localsettings.py

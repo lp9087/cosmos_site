@@ -1,6 +1,6 @@
 FROM python:3.9.6-alpine
 
-WORKDIR /cosmos
+WORKDIR /backend
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -15,12 +15,12 @@ RUN apk update \
     && apk add postgresql-dev gcc python3-dev musl-dev
 
 COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' /cosmos/entrypoint.sh
-RUN chmod +x /cosmos/entrypoint.sh
+RUN sed -i 's/\r$//g' /backend/entrypoint.sh
+RUN chmod +x /backend/entrypoint.sh
 
 COPY . .
 
-ENTRYPOINT ["/cosmos/entrypoint.sh"]
+ENTRYPOINT ["/backend/entrypoint.sh"]
 
 
 
