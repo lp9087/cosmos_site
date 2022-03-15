@@ -23,9 +23,14 @@ Additional: `python -Xutf8 manage.py dumpdata main > db_main2.json` - созда
 
 #### Стек: Python 3, Django, PostgreSQL, ReactJS
 
+#### Для разворачивания Docker
+1. В localsettings необходимо закомментить настройки БД
+2. Выполнить следующие комманды:
 ```bash
-docker-compose up -d --build
-docker-compose exec backend python manage.py collectstatic
-docker-compose exec backend python manage.py loaddata db_main_new.json
-docker-compose exec backend python manage.py createsuperuser
+'docker-compose up -d --build' - поднимание контейнеров докера и билд изменений одновременно 
+'docker-compose exec backend python manage.py collectstatic' 
+'docker-compose exec backend python manage.py loaddata db_main_new.json'
+'docker-compose exec backend python manage.py createsuperuser'
+'docker-compose stop' - остановка контейнеров
+'docker-compose down -v' - полное удаление контейнеров
 ```

@@ -6,6 +6,7 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/cosmos
+      - static:/backend/static
     ports:
       - 8000:8000
     env_file:
@@ -35,10 +36,29 @@ services:
       "npm run dev"
     volumes:
       - ./frontend:/frontend
+      - node-modules:/frontend/node_modules
     ports:
       - 3000:3000
     links:
       - backend:backend
+
+
+  nginx:
+    container_name: boiler_nginx
+    image: nginx
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    volumes:
+      - static:/backend/static
+    ports:
+      - 4200:4200
+    links:
+      - backend
+      - frontend
+    networks:
+      - core
+    command: [ nginx-debug, '-g', 'daemon off;' ]
 
 
 networks:
@@ -46,3 +66,5 @@ networks:
 
 volumes:
   postgres_data:
+  node-modules:
+  static:

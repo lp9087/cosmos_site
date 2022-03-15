@@ -5,7 +5,7 @@ const nextConfig = {
     outputStandalone: true,
   },
   images: {
-    domains: ['localhost'],
+    domains: ['backend'],
   },
   async rewrites() {
     return [
