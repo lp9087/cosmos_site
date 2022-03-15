@@ -9,6 +9,7 @@ services:
     volumes:
       - ./backend:/backend
       - static:/backend/static
+      - media:/backend/media
     ports:
       - 8000:8000
     env_file:
@@ -51,6 +52,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - static:/backend/static
+      - media:/backend/media
     ports:
       - 4200:4200
     links:
@@ -67,3 +69,4 @@ volumes:
   postgres_data:
   node-modules:
   static:
+  media:
