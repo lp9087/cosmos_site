@@ -4,7 +4,7 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
     command: gunicorn cosmos.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./backend:/backend
