@@ -27,6 +27,7 @@ class VacancyViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Vacancy.objects.all()
     serializer_class = VacancySerializer
+    lookup_field = 'slug'
 
 
 class ResumeViewSet(viewsets.ModelViewSet):
@@ -36,6 +37,7 @@ class ResumeViewSet(viewsets.ModelViewSet):
     """
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
+    http_method_names = ('post',)
 
 
 class ContactsViewSet(viewsets.ReadOnlyModelViewSet):
