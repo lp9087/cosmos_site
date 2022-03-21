@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from rest_polymorphic.serializers import PolymorphicSerializer
 
-from main.models.menu import MenuItems, ProductMenuItems, ServiceMenuItems, CustomPageMenuItems
+from main.models.menu import MenuItems, ProductMenuItems, ServiceMenuItems, CustomPageMenuItems, VacancyMenuItems, \
+    NewsMenuItems
 
 
 class ProductMenuItemSerializer(serializers.ModelSerializer):
@@ -24,10 +25,24 @@ class CustomPageMenuItemSerializer(serializers.ModelSerializer):
         fields = ('title', 'page_slug')
 
 
+class NewsMenuItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsMenuItems
+        fields = ('title',)
+
+
+class VacancyMenuItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VacancyMenuItems
+        fields = ('title',)
+
+
 class MenuItemSerializer(PolymorphicSerializer):
     model_serializer_mapping = {
         ServiceMenuItems: ServiceMenuItemSerializer,
         ProductMenuItems: ProductMenuItemSerializer,
-        CustomPageMenuItems: CustomPageMenuItemSerializer
+        CustomPageMenuItems: CustomPageMenuItemSerializer,
+        NewsMenuItems: NewsMenuItemSerializer,
+        VacancyMenuItems: VacancyMenuItemSerializer
     }
 

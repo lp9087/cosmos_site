@@ -9,7 +9,8 @@ from main.models.feedback import Feedback
 from main.models.achievements import Achievements
 from main.models.pages import Blocks, BlockImages, BlockText, Image, Icons, ProductPages, \
     ServicePages, BlockCards, BlockCTA, DescriptionCards, CustomPages
-from main.models.menu import MenuItems, ServiceMenuItems, ProductMenuItems, CustomPageMenuItems
+from main.models.menu import MenuItems, ServiceMenuItems, ProductMenuItems, CustomPageMenuItems, VacancyMenuItems, \
+    NewsMenuItems
 from main.models.products import Products, ProductCategories, Services, ProductFile
 from main.models.partners import Partners, PartnersTypes
 from main.models.news import News
@@ -109,7 +110,17 @@ class CustomPageMenuItemChildAdmin(MenuItemChildAdmin):
     base_model = CustomPageMenuItems
 
 
+@admin.register(NewsMenuItems)
+class NewsMenuItemChildAdmin(MenuItemChildAdmin):
+    base_model = NewsMenuItems
+
+
+@admin.register(VacancyMenuItems)
+class VacancyMenuItemChildAdmin(MenuItemChildAdmin):
+    base_model = VacancyMenuItems
+
+
 @admin.register(MenuItems)
 class MenuItemParentAdmin(PolymorphicParentModelAdmin):
     base_model = MenuItems
-    child_models = (ProductMenuItems, ServiceMenuItems, CustomPageMenuItems)
+    child_models = (ProductMenuItems, ServiceMenuItems, CustomPageMenuItems, NewsMenuItems, VacancyMenuItems)

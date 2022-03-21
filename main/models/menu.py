@@ -37,4 +37,15 @@ class CustomPageMenuItems(MenuItems):
         verbose_name_plural = 'кастомные страницы'
 
 
+class NewsMenuItems(MenuItems):
 
+    class Meta:
+        verbose_name = 'новость'
+        verbose_name_plural = 'новости'
+
+
+class VacancyMenuItems(MenuItems):
+
+    class Meta:
+        verbose_name = 'вакансия'
+        verbose_name_plural = 'вакансии'
