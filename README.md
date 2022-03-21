@@ -8,7 +8,7 @@
 4. Активировать окружение (`myvenv\Scripts\activate`)
 5. Установить пакеты в окружение `pip install -r requirements.txt`
 6. Провести миграции в базу `python manage.py migrate`
-7. Загрузить начальные данные в базу `python manage.py loaddata db_cosmos.json`
+7. Загрузить начальные данные в базу `python manage.py loaddata db_main_new.json`
 8. Собрать статику `python manage.py collectstatic`
 9. Создать суперюзера `python manage.py createsuperuser`
 

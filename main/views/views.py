@@ -17,6 +17,7 @@ class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = News.objects.all()
     serializer_class = NewsSerializer
+    lookup_field = 'slug'
 
 
 class VacancyViewSet(viewsets.ReadOnlyModelViewSet):

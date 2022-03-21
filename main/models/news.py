@@ -8,6 +8,7 @@ class News(BaseABSModel):
     dt_add = models.DateTimeField('Время добавления', auto_now_add=True)
     content = MartorField("Текст")
     image = models.ImageField(verbose_name='Изображение', upload_to='images/news/', default='')
+    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     class Meta:
         verbose_name = 'новость'
