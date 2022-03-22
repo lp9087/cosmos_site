@@ -13,7 +13,13 @@ class NewsSerializer(serializers.ModelSerializer):
         }
 
 
-class VacancySerializer(serializers.ModelSerializer):
+class VacancyListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vacancy
+        fields = ('id', 'title', 'description', 'slug')
+
+
+class VacancyRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacancy
         fields = "__all__"
