@@ -16,6 +16,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ALLOWED_ORIGINS = [
+    "https://cosmos-frontend.vercel.app",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
 MODULES = [
     'main'
 ]
@@ -23,6 +29,7 @@ MODULES = [
 # Application definition
 
 INSTALLED_APPS = [
+    "corsheaders",
     'admin_tools',
     'admin_tools.theming',
     'admin_tools.menu',
@@ -40,6 +47,7 @@ INSTALLED_APPS = [
 ] + MODULES
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
