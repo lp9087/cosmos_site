@@ -1,3 +1,4 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
 
 from main.models.pages import ProductPages, ServicePages
@@ -50,7 +51,8 @@ class ProductFile(models.Model):
 class Services(BaseABSModel, ServiceMixin):
     title = models.CharField(verbose_name='Название услуги', max_length=255, default='', blank=True)
     short_description = models.TextField(verbose_name='Краткое описание', default='', blank=True)
-    image = models.ImageField(upload_to="services_images/", blank=True, verbose_name='Изображение')
+    image = models.FileField(upload_to="services_images/", blank=True, verbose_name='Изображение',
+                             validators=[FileExtensionValidator(['jpg', 'png', 'jpeg', 'svg'])])
     slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     def __str__(self):
