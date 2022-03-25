@@ -8,13 +8,13 @@ from main.models.menu import MenuItems, ProductMenuItems, ServiceMenuItems, Cust
 class ProductMenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductMenuItems
-        fields = ('title',)
+        fields = ('title', 'priority')
 
 
 class ServiceMenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceMenuItems
-        fields = ('title',)
+        fields = ('title', 'priority')
 
 
 class CustomPageMenuItemSerializer(serializers.ModelSerializer):
@@ -22,19 +22,19 @@ class CustomPageMenuItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomPageMenuItems
-        fields = ('title', 'page_slug')
+        fields = ('title', 'page_slug', 'priority')
 
 
 class NewsMenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsMenuItems
-        fields = ('title',)
+        fields = ('title', 'priority')
 
 
 class VacancyMenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = VacancyMenuItems
-        fields = ('title',)
+        fields = ('title', 'priority')
 
 
 class MenuItemSerializer(PolymorphicSerializer):
@@ -45,4 +45,5 @@ class MenuItemSerializer(PolymorphicSerializer):
         NewsMenuItems: NewsMenuItemSerializer,
         VacancyMenuItems: VacancyMenuItemSerializer
     }
+
 
