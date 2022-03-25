@@ -1,5 +1,6 @@
 from django.core.validators import FileExtensionValidator
 from django.db import models
+from martor.models import MartorField
 
 from main.models.pages import ProductPages, ServicePages
 from main.models.base import BaseABSModel, BaseCategoryABSModel, ServiceMixin
@@ -12,6 +13,8 @@ def file_upload_path(instance, filename):
 
 class ProductCategories(BaseCategoryABSModel, ServiceMixin):
     image = models.ImageField(upload_to="products_categories_images/", blank=True, verbose_name="Изображение")
+    content = MartorField("Текст")
+    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     class Meta:
         verbose_name = 'категория продукции'
