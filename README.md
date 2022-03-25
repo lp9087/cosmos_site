@@ -14,10 +14,11 @@
 
 10. Если не установлен, то установить `Node js`
 11. В папке frontend выполнить `npm install`
-12. В папке frontend выполнить `npm run build` # не обязательно 
-13. Запуск npm `npm run dev`
+12. Запуск `npm run dev` / `npm run build && npm run start`
 
 ---
+
 Additional:
-`python -Xutf8 manage.py dumpdata main > db_main2.json` - создать дамп файл
+`python -Xutf8 manage.py dumpdata main > db_main.json` - создать дамп файл
+
 #### Стек: Python 3, Django, PostgreSQL, ReactJS
