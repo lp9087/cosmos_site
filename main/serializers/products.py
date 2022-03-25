@@ -101,7 +101,7 @@ class ProductsCategoryListSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = ProductCategories
-        fields = ('id', 'title', 'image', 'slug')
+        fields = ('id', 'title', 'image', 'slug', 'priority')
 
 
 class ProductFileSerializer(serializers.ModelSerializer):
