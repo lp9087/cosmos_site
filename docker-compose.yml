@@ -39,7 +39,7 @@ services:
       - static:/backend/static
       - media:/backend/media
     ports:
-      - 4200:4200
+      - 1337:1337
     links:
       - backend
     networks:
