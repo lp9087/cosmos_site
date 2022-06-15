@@ -1,16 +1,16 @@
 from django.db import models
 from polymorphic.models import PolymorphicModel
 
-from .base import BaseABSModel, ServiceMixin
+from .base import BaseABSModel, ServiceMixin, PriorityMixin
 
 
-class MenuItems(BaseABSModel, PolymorphicModel, ServiceMixin):
+class MenuItems(BaseABSModel, PolymorphicModel, ServiceMixin, PriorityMixin):
     title = models.CharField(verbose_name='Название', max_length=64)
 
     def __str__(self):
         return self.title
 
-    class Meta:
+    class Meta(PriorityMixin.Meta):
         verbose_name = 'элемент меню'
         verbose_name_plural = 'элементы меню'
 
@@ -37,4 +37,15 @@ class CustomPageMenuItems(MenuItems):
         verbose_name_plural = 'кастомные страницы'
 
 
+class NewsMenuItems(MenuItems):
 
+    class Meta:
+        verbose_name = 'новость'
+        verbose_name_plural = 'новости'
+
+
+class VacancyMenuItems(MenuItems):
+
+    class Meta:
+        verbose_name = 'вакансия'
+        verbose_name_plural = 'вакансии'

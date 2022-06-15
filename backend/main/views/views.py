@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners, Achievements, Feedback, \
     Pages, CustomPages
 from main.serializers.achievements import AchievementsSerializer
-from main.serializers.career import VacancySerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
+from main.serializers.career import VacancyListSerializer, VacancyRetrieveSerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
 from main.serializers.feedback import FeedbackSerializer
 from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
 from main.serializers.services import ServicesListSerializer, ServicesRetrieveSerializer
@@ -17,6 +17,7 @@ class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = News.objects.all()
     serializer_class = NewsSerializer
+    lookup_field = 'slug'
 
 
 class VacancyViewSet(viewsets.ReadOnlyModelViewSet):
@@ -24,8 +25,17 @@ class VacancyViewSet(viewsets.ReadOnlyModelViewSet):
     Вакансии
     http://127.0.0.1:8000/api/vacancy/
     """
+    serializers = {
+        'list': VacancyListSerializer,
+        'retrieve': VacancyRetrieveSerializer,
+        'default': VacancyRetrieveSerializer
+    }
     queryset = Vacancy.objects.all()
-    serializer_class = VacancySerializer
+    lookup_field = 'slug'
+
+    def get_serializer_class(self):
+        return self.serializers.get(self.action,
+                                    self.serializers['default'])
 
 
 class ResumeViewSet(viewsets.ModelViewSet):
@@ -35,6 +45,7 @@ class ResumeViewSet(viewsets.ModelViewSet):
     """
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
+    http_method_names = ('post',)
 
 
 class ContactsViewSet(viewsets.ReadOnlyModelViewSet):

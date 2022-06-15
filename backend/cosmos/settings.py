@@ -18,6 +18,12 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
+CORS_ALLOWED_ORIGINS = [
+    "https://cosmos-frontend.vercel.app",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
 MODULES = [
     'main'
 ]
@@ -25,6 +31,7 @@ MODULES = [
 # Application definition
 
 INSTALLED_APPS = [
+    "corsheaders",
     'admin_tools',
     'admin_tools.theming',
     'admin_tools.menu',
@@ -42,6 +49,7 @@ INSTALLED_APPS = [
 ] + MODULES
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,7 +65,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [(os.path.join(BASE_DIR, 'templates')), ],
-        #'APP_DIRS': True,
+        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -69,7 +77,6 @@ TEMPLATES = [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
                 'admin_tools.template_loaders.Loader',
-
             ],
         },
     },
@@ -150,9 +157,7 @@ ADMIN_TOOLS_INDEX_DASHBOARD = 'main.dashboard.CustomIndexDashboard'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
-]
+
 
 try:
     from .localsettings import *

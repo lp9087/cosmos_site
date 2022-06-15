@@ -8,18 +8,18 @@
 4. Активировать окружение (`myvenv\Scripts\activate`)
 5. Установить пакеты в окружение `pip install -r requirements.txt`
 6. Провести миграции в базу `python manage.py migrate`
-7. Загрузить начальные данные в базу `python manage.py loaddata db_cosmos.json`
+7. Загрузить начальные данные в базу `python manage.py loaddata db_main_new.json`
 8. Собрать статику `python manage.py collectstatic`
 9. Создать суперюзера `python manage.py createsuperuser`
 
 10. Если не установлен, то установить `Node js`
 11. В папке frontend выполнить `npm install`
-12. В папке frontend выполнить `npm run build` # не обязательно
-13. Запуск npm `npm run dev`
+12. Запуск `npm run dev` / `npm run build && npm run start`
 
 ---
 
-Additional: `python -Xutf8 manage.py dumpdata main > db_main2.json` - создать дамп файл
+Additional:
+`python -Xutf8 manage.py dumpdata main > db_main.json` - создать дамп файл
 
 #### Стек: Python 3, Django, PostgreSQL, ReactJS
 

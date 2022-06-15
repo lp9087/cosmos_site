@@ -7,6 +7,14 @@ class IsActiveManager(models.Manager):
         return super().get_queryset().filter(is_active=True)
 
 
+class PriorityMixin(models.Model):
+    priority = models.PositiveSmallIntegerField(verbose_name='Приоритет')
+
+    class Meta:
+        ordering = ('priority',)
+        abstract = True
+
+
 class ServiceMixin(models.Model):
     is_active = models.BooleanField(
         'Активный',

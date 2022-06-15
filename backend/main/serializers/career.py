@@ -7,12 +7,26 @@ class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
         fields = "__all__"
+        lookup_fields = 'slug'
+        extra_kwargs = {
+            'url': {'lookup_field': 'slug'}
+        }
 
 
-class VacancySerializer(serializers.ModelSerializer):
+class VacancyListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vacancy
+        fields = ('id', 'title', 'description', 'slug')
+
+
+class VacancyRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacancy
         fields = "__all__"
+        lookup_fields = 'slug'
+        extra_kwargs = {
+            'url': {'lookup_field': 'slug'}
+        }
 
 
 class ContactsSerializer(serializers.ModelSerializer):

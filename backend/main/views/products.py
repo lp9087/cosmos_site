@@ -16,6 +16,7 @@ class ProductCategoriesViewSet(viewsets.ModelViewSet):
         'default': ProductsCategoryRetrieveSerializers
     }
     queryset = ProductCategories.objects.all()
+    lookup_field = 'slug'
 
     def get_serializer_class(self):
         return self.serializers.get(self.action,
