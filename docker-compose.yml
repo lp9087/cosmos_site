@@ -5,43 +5,29 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn cosmos.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./backend:/backend
       - static:/backend/static
+      - media:/backend/media
     ports:
       - 8000:8000
     env_file:
-      - ./.env.dev
+      - ./.env.prod
     networks:
       - core
+    depends_on:
+      - db
 
   db:
     image: postgres:13.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=cosmos2
+    env_file:
+      - ./.env.prod.db
     networks:
       - core
 
-  frontend:
-    container_name: frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    networks:
-      - core
-    command: 'npm run dev'
-    volumes:
-      - ./frontend:/frontend
-      - node-modules:/frontend/node_modules
-    ports:
-      - 3000:3000
-    links:
-      - backend:backend
 
   nginx:
     container_name: boiler_nginx
@@ -51,19 +37,36 @@ services:
       dockerfile: Dockerfile
     volumes:
       - static:/backend/static
+      - media:/backend/media
     ports:
       - 4200:4200
     links:
       - backend
-      - frontend
     networks:
       - core
     command: [nginx-debug, '-g', 'daemon off;']
+
+#
+#  frontend:
+#    container_name: frontend
+#    build:
+#      context: ./frontend
+#      dockerfile: Dockerfile
+#    networks:
+#      - core
+#    command: 'npm run dev'
+#    volumes:
+#      - ./frontend:/frontend
+#      - node-modules:/frontend/node_modules
+#    ports:
+#      - 3000:3000
+#    links:
+#      - backend:backend
 
 networks:
   core:
 
 volumes:
   postgres_data:
-  node-modules:
   static:
+  media:

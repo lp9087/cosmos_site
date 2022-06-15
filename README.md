@@ -26,20 +26,31 @@ Additional:
 #### Для разворачивания Docker
 1. В localsettings необходимо закомментить настройки БД
 2. Выполнить следующие комманды:
-```bash
-'docker-compose up -d --build' - поднимание контейнеров докера и билд изменений одновременно 
-'docker-compose exec backend python manage.py collectstatic' 
-'docker-compose exec backend python manage.py loaddata db_main_new.json'
-'docker-compose exec backend python manage.py createsuperuser'
-'docker-compose stop' - остановка контейнеров
-'docker-compose down -v' - полное удаление контейнеров
-```
-#### Для prod версии 
 
+Поднимание контейнеров докера и билд изменений одновременно 
 ```bash
-'docker-compose -f docker-compose.prod.yml up -d --build'
-'docker-compose -f docker-compose.prod.yml exec backend python manage.py migrate --noinput'
-'docker-compose -f docker-compose.prod.yml exec backend python manage.py collectstatic' 
-'docker-compose -f docker-compose.prod.yml exec backend python manage.py loaddata db_main_new.json'
-'docker-compose -f docker-compose.prod.yml exec backend python manage.py createsuperuser'
+docker-compose up -d --build 
+```
+```bash
+docker-compose exec backend python manage.py makemigrations
+```
+```bash
+docker-compose exec backend python manage.py migrate --noinput
+```
+```bash
+docker-compose exec backend python manage.py collectstatic
+```
+```bash
+docker-compose exec backend python manage.py loaddata db_main2.json
+```
+```bash
+docker-compose exec backend python manage.py createsuperuser
+```
+Остановка контейнеров
+```bash
+docker-compose stop 
+```
+Полное удаление контейнеров
+```bash
+docker-compose down -v 
 ```
