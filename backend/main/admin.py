@@ -5,6 +5,7 @@ from nested_admin.nested import *
 from nested_admin.polymorphic import *
 from polymorphic.admin import PolymorphicChildModelAdmin, PolymorphicParentModelAdmin
 
+from main.models.banners import Banners
 from main.models.feedback import Feedback
 from main.models.achievements import Achievements
 from main.models.pages import Blocks, BlockImages, BlockText, Image, Icons, ProductPages, \
@@ -20,7 +21,7 @@ from martor.widgets import AdminMartorWidget
 
 
 @admin.register(Icons, Vacancy, Resume, Contacts, Partners, ProductCategories, Products, Services,
-                PartnersTypes, Achievements, Feedback)
+                PartnersTypes, Achievements, Feedback, Banners)
 class CustomAdmin(admin.ModelAdmin):
     pass
 

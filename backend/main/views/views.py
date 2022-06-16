@@ -2,7 +2,9 @@ from rest_framework import viewsets
 
 from main.models import Vacancy, Resume, Contacts, PartnersTypes, Services, News, Partners, Achievements, Feedback, \
     Pages, CustomPages
+from main.models.banners import Banners
 from main.serializers.achievements import AchievementsSerializer
+from main.serializers.banners import BannersSerializer
 from main.serializers.career import VacancyListSerializer, VacancyRetrieveSerializer, ContactsSerializer, ResumeSerializer, NewsSerializer
 from main.serializers.feedback import FeedbackSerializer
 from main.serializers.partners import PartnersTypesSerializer, PartnerSerializer
@@ -126,6 +128,14 @@ class CustomPagesViewSet(viewsets.ReadOnlyModelViewSet):
     def get_serializer_class(self):
         return self.serializers.get(self.action,
                                     self.serializers['default'])
+
+
+class BannersViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Баннеры
+    """
+    queryset = Banners.objects.all()
+    serializer_class = BannersSerializer
 
 
 # class DownloadFileView(APIView):

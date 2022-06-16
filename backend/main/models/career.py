@@ -26,7 +26,7 @@ class Resume(BaseABSModel):
     additional = models.TextField(verbose_name='Дополнительная информация', default='', blank=True)
     attachment = models.FileField(verbose_name='Прикрепленный файл',
                                   validators=[FileExtensionValidator(['pdf', 'doc', 'docx'])])
-    vacancy = models.ForeignKey(Vacancy, verbose_name='Ваканисия', on_delete=models.SET_NULL,
+    vacancy = models.ForeignKey(Vacancy, verbose_name='Вакансия', on_delete=models.SET_NULL,
                                 null=True, related_name='vacancy')
 
     def __str__(self):

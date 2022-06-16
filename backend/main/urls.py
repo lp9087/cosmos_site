@@ -5,7 +5,7 @@ from main.views import martor as martor_views
 
 from rest_framework_nested.routers import DefaultRouter
 from main.views.views import NewsViewSet, VacancyViewSet, ResumeViewSet, ContactsViewSet, PartnersTypesViewSet, \
-    PartnerViewSet, ServicesViewSet, AchievementsViewSet, FeedbackViewSet, CustomPagesViewSet
+    PartnerViewSet, ServicesViewSet, AchievementsViewSet, FeedbackViewSet, CustomPagesViewSet, BannersViewSet
 from main.views.products import ProductCategoriesViewSet, ProductsViewSet
 from .views import products as files_views
 from main.views import menu as menu_views
@@ -24,6 +24,7 @@ router.register('services', ServicesViewSet)
 router.register('achievements', AchievementsViewSet)
 router.register('feedback', FeedbackViewSet)
 router.register('pages', CustomPagesViewSet)
+router.register('banners', BannersViewSet)
 file_router = routers.NestedSimpleRouter(router, 'products', lookup='product')
 file_router.register(r'files', files_views.FileDownloadView, basename='file-download')
 
