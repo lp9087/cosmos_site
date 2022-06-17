@@ -46,22 +46,16 @@ services:
       - core
     command: [nginx-debug, '-g', 'daemon off;']
 
-#
-#  frontend:
-#    container_name: frontend
-#    build:
-#      context: ./frontend
-#      dockerfile: Dockerfile
-#    networks:
-#      - core
-#    command: 'npm run dev'
-#    volumes:
-#      - ./frontend:/frontend
-#      - node-modules:/frontend/node_modules
-#    ports:
-#      - 3000:3000
-#    links:
-#      - backend:backend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    networks:
+      - core
+    ports:
+      - 3000:3000
+    links:
+      - backend:backend
 
 networks:
   core:
