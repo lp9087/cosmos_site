@@ -40,7 +40,7 @@ const Slider = ({ slides = [] }) => {
         <ArrowRight />
       </div>
       <div
-        className="grid grid-flow-col gap-5"
+        className="grid grid-flow-col gap-5 transition-all"
         style={{ transform: `translate(${activeSlide * -395}px)` }}
       >
         {slides.map(({ title, description, image, link }, idx) => (
