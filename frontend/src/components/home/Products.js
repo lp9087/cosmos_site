@@ -34,7 +34,9 @@ const Item = ({ title, link, icon }) => {
         >
           <Image src={icon} alt={title} layout="fill" />
         </div>
-        <h4 className="text-lg font-medium !leading-[21px] 2xl:text-xl">{title}</h4>
+        <h4 className="text-lg font-medium !leading-[21px] 2xl:text-xl transition-all">
+          {title}
+        </h4>
       </a>
     </Link>
   );

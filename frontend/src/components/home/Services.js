@@ -55,7 +55,7 @@ const Slider = ({ slides = [] }) => {
               <Image src={image} alt={title} layout="fill" />
             </div>
             <div className="flex flex-col grow gap-6">
-              <h4 className="text-lg font-semibold 2xl:text-xl !leading-tight text-secondary">
+              <h4 className="h-[50px] text-lg font-semibold 2xl:text-xl !leading-tight text-secondary">
                 {title}
               </h4>
               <p className="my-auto text-[15px] !leading-tight">{description}</p>
