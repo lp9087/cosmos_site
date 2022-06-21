@@ -12,8 +12,8 @@ export const Header = () => {
         mx-auto py-5 2xl:py-10 text-white"
       >
         <Link href="/">
-          <a className="relative h-10 w-40">
-            <Image src="/assets/logo.svg" alt="Logo" layout="fill" priority />
+          <a className="relative h-11 w-40">
+            <Image src="/assets/logo.png" alt="Logo" layout="fill" priority />
           </a>
         </Link>
         <div className="flex gap-6 2xl:gap-10 text-sm font-semibold">

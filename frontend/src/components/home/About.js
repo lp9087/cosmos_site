@@ -4,10 +4,10 @@ import { ADVANTAGES_MOCK } from '../../constants/about';
 
 export const About = () => {
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen gap-24 pt-28 pb-52">
+    <div className="relative flex flex-col items-center justify-center min-h-screen gap-10 pt-28 pb-52">
       <div className="absolute w-full h-full -z-10">
         <Image
-          className="scale-y-[1.5] scale-x-[1.7] translate-x-[5%] translate-y-[9%]"
+          className="scale-y-[1.6] scale-x-[1.6] translate-x-[10%] translate-y-[6%]"
           src="/assets/about-bg.svg"
           alt="Advatages backgound"
           layout="fill"

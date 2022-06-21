@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import FooterBG from '../../../assets/footer-bg.svg';
 import Phone from '../../../assets/phone-outline.svg';
 import UserCircle from '../../../assets/user-circle.svg';
 import Email from '../../../assets/email.svg';
@@ -10,16 +9,24 @@ import { LAYOUT_CONFIG } from '../../constants/layout';
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-primary text-white pb-12 overflow-hidden">
-      <FooterBG className="absolute w-full h-full pointer-events-none translate-x-1/4" />
-      <div className="container mx-auto pt-10 grid grid-cols-3 gap-x-16 gap-y-8">
+    <footer className="relative bg-primary text-white pb-12 overflow-hidden z-0">
+      <div className="absolute w-full h-full -z-10">
+        <Image
+          className="scale-y-[1.6] scale-x-[1.6] translate-x-[12%] -translate-y-[30%]"
+          src="/assets/footer-bg.svg"
+          alt="Advatages backgound"
+          layout="fill"
+        />
+      </div>
+      <div className="container mx-auto pt-10 grid grid-cols-footer gap-x-16 gap-y-8 pr-20">
         <Info />
         <MenuSection title="Решения" items={LAYOUT_CONFIG.productsMenu} isDouble />
         <div className="grid grid-cols-2 gap-x-20">
           <MenuSection title="Услуги" items={LAYOUT_CONFIG.servicesMenu} />
           <MenuSection title="Вакансии" items={LAYOUT_CONFIG.jobsMenu} />
         </div>
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-3">
+          <h5>Мы в соцсетях:</h5>
           <div className="flex gap-7">
             {LAYOUT_CONFIG.socials.map(({ icon, link }, idx) => (
               <a key={idx} href={link} className="relative h-10 w-10">
@@ -27,7 +34,6 @@ export const Footer = () => {
               </a>
             ))}
           </div>
-          <h5>Мы в соцсетях:</h5>
         </div>
         <h5 className="text-[15px] self-end">{LAYOUT_CONFIG.copyright}</h5>
         <Link href={LAYOUT_CONFIG.policy.link}>
@@ -42,10 +48,10 @@ export const Footer = () => {
 
 const Info = () => (
   <div className="flex flex-col gap-5">
-    <div className="relative h-10 w-40">
-      <Image src="/assets/logo.svg" alt="Logo" layout="fill" />
+    <div className="relative h-11 w-40">
+      <Image src="/assets/logo.png" alt="Logo" layout="fill" />
     </div>
-    <div className="flex flex-col gap-7 w-3/4 2xl:w-7/12">
+    <div className="flex flex-col gap-7 w-3/4">
       <h2 className="text-[15px]">{LAYOUT_CONFIG.title}</h2>
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-4">

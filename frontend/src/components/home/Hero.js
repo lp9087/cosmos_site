@@ -4,19 +4,12 @@ import Image from 'next/image';
 import ArrowLeft from '../../../assets/arrow-left.svg';
 import ArrowRight from '../../../assets/arrow-right.svg';
 import { HERO_MOCK } from '../../constants/hero';
+import { HeroBG } from '..';
 
 export const Hero = () => {
   return (
     <div className="relative h-screen -mt-20 2xl:-mt-[120px] text-white">
-      <div className="absolute h-[86%] -left-2 -top-2 -right-2 -z-10 blur-sm 2xl:blur-[6px]">
-        <Image
-          className="object-cover "
-          src="/assets/hero-bg.png"
-          alt="Hero backgound"
-          layout="fill"
-          priority
-        />
-      </div>
+      <HeroBG className="h-[86%]" />
       <div className="container flex flex-col h-full gap-1 mx-auto 2xl:gap-3 pt-28 2xl:pt-40">
         <div>
           <h2 className="text-xs 2xl:text-sm font-medium tracking-[0.08em] uppercase">
@@ -51,7 +44,7 @@ const Slider = ({ slides = [] }) => {
           setActiveSlide(state => (state === 0 ? slides.length - 1 : state - 1))
         }
       >
-        <ArrowLeft />
+        <ArrowLeft className="fill-white" />
       </div>
       <div
         className="absolute right-0 p-1 -mr-2 text-2xl -translate-y-1/2 cursor-pointer 2xl:-mr-5 top-1/2"
@@ -59,7 +52,7 @@ const Slider = ({ slides = [] }) => {
           setActiveSlide(state => (state === slides.length - 1 ? 0 : state + 1))
         }
       >
-        <ArrowRight />
+        <ArrowRight className="fill-white" />
       </div>
       <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2 translate-y-full -mb-3 2xl:-mb-6 z-20">
         {slides.map((_, idx) => (

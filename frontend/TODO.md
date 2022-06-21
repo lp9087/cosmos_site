@@ -1,7 +1,4 @@
-- update icons
-- update hero bg
-- update partners block
+- add tooltips to partners
 - scrollable header + item animations
 - add counting text to stats
-- make slider services work
 - Adjust shadow on hero slider

@@ -3,7 +3,7 @@ import { PARTNERS_MOCK } from '../../constants/partners';
 
 export const Partners = () => {
   return (
-    <div className="container flex flex-col items-center pb-36 2xl:pb-48 mx-auto gap-24 2x:gap-40">
+    <div className="container flex flex-col items-center pb-36 2xl:pb-48 mx-auto gap-20 2xl:gap-28">
       <h3 className="text-4xl font-bold 2xl:text-5xl text-primary">
         Среди наших клиентов
       </h3>
@@ -14,7 +14,7 @@ export const Partners = () => {
         {PARTNERS_MOCK.map(({ title, link, image }, idx) => (
           <div
             key={idx}
-            className="relative w-16 h-16 grayscale hover:grayscale-0 transition-all"
+            className="relative w-[120px] h-[90px] grayscale hover:grayscale-0 transition-all cursor-pointer"
           >
             <Image
               className="object-contain pointer-events-none"

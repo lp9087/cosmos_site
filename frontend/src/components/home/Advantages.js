@@ -4,8 +4,8 @@ import { ADVANTAGES_MOCK } from '../../constants/advantages';
 
 export const Advantages = () => {
   return (
-    <div className="relative flex flex-col w-full gap-20 pt-16 pb-20 bg-primary/50">
-      <div className="absolute w-full h-full -mt-16 -z-10">
+    <div className="relative flex flex-col w-full gap-8 pt-14 pb-28 bg-primary/50">
+      <div className="absolute w-full h-full -mt-14 -z-10">
         <Image
           className="object-cover"
           src="/assets/advantages/bg.png"
@@ -20,10 +20,10 @@ export const Advantages = () => {
         {ADVANTAGES_MOCK.map(({ title, image }, idx) => (
           <div
             key={idx}
-            className={`flex flex-col gap-6 items-center pt-20 pb-16 px-8 bg-white border border-primary/30
+            className={`flex flex-col gap-4 items-center pt-14 pb-10 px-8 bg-white border border-primary/30
               ${idx !== ADVANTAGES_MOCK.length - 1 ? '-mx-px' : ''}`}
           >
-            <div className="relative w-24 h-24">
+            <div className="relative w-40 h-40">
               <Image src={image} alt="Advatages backgound" layout="fill" />
             </div>
             <h4 className="font-semibold text-center text-primary">{title}</h4>

@@ -21,8 +21,8 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ## Using Docker
 
 1. Install Docker on your machine.
-2. Build your container: `docker build -t nextjs-docker .`.
-3. Run your container: `docker run -p 3000:3000 nextjs-docker`.
+2. Build your container: docker build -t nextjs-docker ..
+3. Run your container: docker run -p 3000:3000 nextjs-docker.
 
 ## Learn More
 
