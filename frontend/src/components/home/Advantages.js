@@ -23,7 +23,7 @@ export const Advantages = () => {
             className={`flex flex-col gap-4 items-center pt-14 pb-10 px-8 bg-white border border-primary/30
               ${idx !== ADVANTAGES_MOCK.length - 1 ? '-mx-px' : ''}`}
           >
-            <div className="relative w-40 h-40">
+            <div className="relative w-24 h-24">
               <Image src={image} alt="Advatages backgound" layout="fill" />
             </div>
             <h4 className="font-semibold text-center text-primary">{title}</h4>

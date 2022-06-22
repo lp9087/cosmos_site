@@ -2,7 +2,7 @@ export const LAYOUT_CONFIG = {
   title: 'ООО «Научно-производственный центр «Космос-2»',
   menuItems: [
     { title: 'О нас', link: '#' },
-    { title: 'Решения', link: '#' },
+    { title: 'Решения', link: '/products' },
     { title: 'Услуги', link: '#' },
     { title: 'Партнеры', link: '#' },
     { title: 'Новости', link: '#' },
