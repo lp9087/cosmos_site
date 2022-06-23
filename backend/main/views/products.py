@@ -40,18 +40,12 @@ class ProductsViewSet(viewsets.ModelViewSet):
 
 class ProductsTabViewSet(viewsets.ModelViewSet):
     serializer_class = ProductTabsSerializer
-    http_method_names = ['get']
+    http_method_names = ['get', 'head']
+    lookup_field = 'slug'
 
     def get_queryset(self):
         queryset = ProductTabs.objects.filter(product__slug=self.kwargs.get('product_slug'))
         return queryset
-
-    @action(detail=True, methods=['GET'])
-    def blocks(self, *args, **kwargs):
-        blocks = self.get_queryset().filter(slug=self.kwargs.get('pk'))
-        return Response(
-            self.get_serializer(blocks, many=True).data
-        )
 
 
 class FileDownloadView(viewsets.ModelViewSet):
