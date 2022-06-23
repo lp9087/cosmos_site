@@ -30,13 +30,14 @@ class Pages(BaseABSModel):
         verbose_name_plural = 'страницы'
 
 
-class ProductPages(Pages):
+class ProductTabs(Pages):
     product = models.ForeignKey('main.Products',
-                                verbose_name='Продукт', on_delete=models.CASCADE, related_name='product_pages')
+                                verbose_name='Продукт', on_delete=models.CASCADE, related_name='product_tabs')
+    slug = models.SlugField(verbose_name='URL', max_length=50, unique=True)
 
     class Meta:
-        verbose_name = 'страница продукта'
-        verbose_name_plural = 'страницы продуктов'
+        verbose_name = 'вкладка продукта'
+        verbose_name_plural = 'вкладки продуктов'
 
 
 class ServicePages(Pages):

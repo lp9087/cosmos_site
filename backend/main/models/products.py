@@ -2,7 +2,7 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from martor.models import MartorField
 
-from main.models.pages import ProductPages, ServicePages
+from main.models.pages import ServicePages, ProductTabs
 from main.models.base import BaseABSModel, BaseCategoryABSModel, ServiceMixin, PriorityMixin
 from main.validators import validate_file_extension
 
@@ -33,8 +33,8 @@ class Products(BaseABSModel, ServiceMixin, PriorityMixin):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        if not ProductPages.objects.filter(product=self):
-            ProductPages.objects.create(product=self, title="Пусто")
+        if not ProductTabs.objects.filter(product=self):
+            ProductTabs.objects.create(product=self, title="Пусто")
 
     class Meta(PriorityMixin.Meta):
         verbose_name = 'продукт'

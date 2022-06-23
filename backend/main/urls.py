@@ -6,7 +6,7 @@ from main.views import martor as martor_views
 from rest_framework_nested.routers import DefaultRouter
 from main.views.views import NewsViewSet, VacancyViewSet, ResumeViewSet, ContactsViewSet, PartnersTypesViewSet, \
     PartnerViewSet, ServicesViewSet, AchievementsViewSet, FeedbackViewSet, CustomPagesViewSet, BannersViewSet
-from main.views.products import ProductCategoriesViewSet, ProductsViewSet
+from main.views.products import ProductCategoriesViewSet, ProductsViewSet, ProductsTabViewSet
 from .views import products as files_views
 from main.views import menu as menu_views
 
@@ -20,6 +20,10 @@ router.register('partners_types', PartnersTypesViewSet)
 router.register('partners', PartnerViewSet)
 router.register('product-categories', ProductCategoriesViewSet)
 router.register('products', ProductsViewSet)
+
+tabs_router = routers.NestedSimpleRouter(router, 'products', lookup='product')
+tabs_router.register(r'product-tabs', ProductsTabViewSet, basename='product-tabs')
+
 router.register('services', ServicesViewSet)
 router.register('achievements', AchievementsViewSet)
 router.register('feedback', FeedbackViewSet)
@@ -32,5 +36,6 @@ urlpatterns = [
     path('api/uploader/', martor_views.markdown_uploader, name='markdown_uploader_page'),
     path('api/menu/', menu_views.MenuAPIView.as_view()),
     path('api/', include(router.urls)),
+    path('api/', include(tabs_router.urls)),
     path('api/', include(file_router.urls)),
 ]

@@ -133,6 +133,7 @@ class CustomPagesViewSet(viewsets.ReadOnlyModelViewSet):
 class BannersViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Баннеры
+    "http://127.0.0.1:8001/api/banners/
     """
     queryset = Banners.objects.all()
     serializer_class = BannersSerializer

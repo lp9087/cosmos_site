@@ -3,10 +3,11 @@ import urllib
 from django.http import FileResponse
 from rest_framework import viewsets
 from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from main.models.products import *
 from main.serializers.products import ProductsCategoryListSerializers, ProductsCategoryRetrieveSerializers, \
-    ProductListSerializer, ProductRetrieveSerializer, ProductFileSerializer
+    ProductListSerializer, ProductRetrieveSerializer, ProductFileSerializer, ProductTabsSerializer
 
 
 class ProductCategoriesViewSet(viewsets.ModelViewSet):
@@ -35,6 +36,22 @@ class ProductsViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         return self.serializers.get(self.action,
                                     self.serializers['default'])
+
+
+class ProductsTabViewSet(viewsets.ModelViewSet):
+    serializer_class = ProductTabsSerializer
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        queryset = ProductTabs.objects.filter(product__slug=self.kwargs.get('product_slug'))
+        return queryset
+
+    @action(detail=True, methods=['GET'])
+    def blocks(self, *args, **kwargs):
+        blocks = self.get_queryset().filter(slug=self.kwargs.get('pk'))
+        return Response(
+            self.get_serializer(blocks, many=True).data
+        )
 
 
 class FileDownloadView(viewsets.ModelViewSet):

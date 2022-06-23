@@ -8,7 +8,7 @@ from polymorphic.admin import PolymorphicChildModelAdmin, PolymorphicParentModel
 from main.models.banners import Banners
 from main.models.feedback import Feedback
 from main.models.achievements import Achievements
-from main.models.pages import Blocks, BlockImages, BlockText, Image, Icons, ProductPages, \
+from main.models.pages import Blocks, BlockImages, BlockText, Image, Icons, ProductTabs, \
     ServicePages, BlockCards, BlockCTA, DescriptionCards, CustomPages
 from main.models.menu import MenuItems, ServiceMenuItems, ProductMenuItems, CustomPageMenuItems, VacancyMenuItems, \
     NewsMenuItems
@@ -73,7 +73,7 @@ class BlockInline(NestedStackedPolymorphicInline):
     child_inlines = (TextInline, ImageBlockInline, CardsBlockInline, CTABlockInline)
 
 
-@admin.register(CustomPages, ProductPages, ServicePages)
+@admin.register(CustomPages, ProductTabs, ServicePages)
 class PageAdmin(NestedPolymorphicModelAdmin):
     inlines = (BlockInline,)
 

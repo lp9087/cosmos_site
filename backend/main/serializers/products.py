@@ -2,7 +2,8 @@ from rest_framework import serializers
 from rest_polymorphic.serializers import PolymorphicSerializer
 
 
-from main.models import ProductPages, Blocks, BlockImages, Image, BlockCards, BlockText, BlockCTA, DescriptionCards
+from main.models import Blocks, BlockImages, Image, BlockCards, BlockText, BlockCTA, DescriptionCards, \
+    ProductTabs
 from main.models.products import ProductCategories, Products, ProductFile
 
 
@@ -62,13 +63,13 @@ class BlocksPolymorphicSerializers(PolymorphicSerializer):
     }
 
 
-class ProductPagesSerializer(serializers.ModelSerializer):
+class ProductTabsSerializer(serializers.ModelSerializer):
 
     blocks = BlocksPolymorphicSerializers(many=True, read_only=True)
 
     class Meta:
-        model = ProductPages
-        fields = ('title', 'description', 'blocks')
+        model = ProductTabs
+        fields = ('title', 'description', 'blocks', 'slug')
 
 
 class ProductListSerializer(serializers.ModelSerializer):
@@ -78,7 +79,7 @@ class ProductListSerializer(serializers.ModelSerializer):
 
 
 class ProductRetrieveSerializer(serializers.ModelSerializer):
-    product_pages = ProductPagesSerializer(many=True, read_only=True)
+    product_tabs = ProductTabsSerializer(many=True, read_only=True)
 
     class Meta:
         model = Products
