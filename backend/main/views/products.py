@@ -16,7 +16,7 @@ class ProductCategoriesViewSet(viewsets.ModelViewSet):
         'retrieve': ProductsCategoryRetrieveSerializers,
         'default': ProductsCategoryRetrieveSerializers
     }
-    queryset = ProductCategories.objects.all()
+    queryset = ProductCategories.objects.prefetch_related('products').all()
     lookup_field = 'slug'
 
     def get_serializer_class(self):

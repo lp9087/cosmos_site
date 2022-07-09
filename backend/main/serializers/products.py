@@ -99,10 +99,11 @@ class ProductsCategoryRetrieveSerializers(serializers.ModelSerializer):
 
 
 class ProductsCategoryListSerializers(serializers.ModelSerializer):
+    products = ProductListSerializer(read_only=True, many=True)
 
     class Meta:
         model = ProductCategories
-        fields = ('id', 'title', 'image', 'slug', 'priority')
+        fields = '__all__'
 
 
 class ProductFileSerializer(serializers.ModelSerializer):
