@@ -98,6 +98,8 @@ class Image(models.Model):
 
 class BlockText(Blocks):
     text = MartorField()
+    img_position = models.PositiveSmallIntegerField(verbose_name='Позиция картинки', null=True)
+    img = models.ImageField(upload_to='images/', null=True)
 
     class Meta:
         verbose_name = 'текстовый блок'
